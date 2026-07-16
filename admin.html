@@ -1,0 +1,2349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <script src="/config/university.js"></script>
+    <title>Admin Dashboard | Demo University Results Portal</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="/index.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css">
+
+    <style>
+        /* ═══════════════════════════════════════════
+           MOKSH ADMIN — ELEVATED DESIGN SYSTEM v2
+           Refined glassmorphism, premium spacing,
+           micro-interactions, professional polish.
+           ═══════════════════════════════════════════ */
+
+        /* ── Entrance animation ── */
+        @keyframes fadeSlideUp {
+            from { opacity: 0; transform: translateY(12px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes subtlePulse {
+            0%, 100% { opacity: 0.6; }
+            50%      { opacity: 1; }
+        }
+        @keyframes shimmer {
+            0%   { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        /* ── Page canvas ── */
+        body {
+            background-color: #f1f5f9 !important;
+            background-image:
+                radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.06) 0, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(139, 92, 246, 0.04) 0, transparent 50%),
+                radial-gradient(at 50% 100%, rgba(59, 130, 246, 0.03) 0, transparent 50%) !important;
+            padding: 24px 28px !important;
+            font-family: var(--font) !important;
+            min-height: 100vh !important;
+        }
+
+        /* ── Main container ── */
+        .admin-container {
+            width: 100%;
+            max-width: 1320px !important;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            animation: fadeSlideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        /* ── Auth screen ── */
+        .auth-view {
+            max-width: 420px !important;
+            margin: 8vh auto 0 !important;
+            text-align: center;
+        }
+
+        .auth-view .hero {
+            margin-bottom: 8px !important;
+        }
+
+        .auth-view .logo-icon {
+            width: 64px !important;
+            height: 64px !important;
+            border-radius: 18px !important;
+            background: linear-gradient(135deg, #6366f1 0%, #818cf8 100%) !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            margin: 0 auto 20px !important;
+            box-shadow: 0 8px 24px rgba(99, 102, 241, 0.25), 0 0 0 6px rgba(99, 102, 241, 0.08) !important;
+        }
+
+        .auth-view .logo-icon i {
+            font-size: 28px !important;
+            color: #ffffff !important;
+        }
+
+        .auth-view h1 {
+            font-size: 28px !important;
+            margin-bottom: 6px !important;
+        }
+
+        .auth-view .hero p {
+            font-size: 14px !important;
+            color: var(--text-secondary) !important;
+            line-height: 1.5 !important;
+            max-width: 320px;
+            margin: 0 auto !important;
+        }
+
+        .auth-view .glass-panel {
+            padding: 28px !important;
+            margin-top: 12px !important;
+        }
+
+        /* ── Glass panels (cards) ── */
+        .glass-panel {
+            background: #ffffff !important;
+            border: 1px solid rgba(226, 232, 240, 0.8) !important;
+            border-radius: 14px !important;
+            box-shadow:
+                0 1px 2px rgba(0, 0, 0, 0.04),
+                0 4px 12px rgba(0, 0, 0, 0.03),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8) !important;
+            padding: 24px !important;
+            transition: box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        .glass-panel:hover {
+            box-shadow:
+                0 1px 2px rgba(0, 0, 0, 0.04),
+                0 8px 24px rgba(0, 0, 0, 0.05),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8) !important;
+        }
+
+        /* ── Dashboard header ── */
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #ffffff;
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            border-radius: 14px;
+            padding: 16px 24px;
+            margin-bottom: 4px;
+            flex-wrap: wrap;
+            gap: 16px;
+            box-shadow:
+                0 1px 2px rgba(0, 0, 0, 0.04),
+                0 4px 12px rgba(0, 0, 0, 0.03),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+        }
+
+        /* ── Grid layouts ── */
+        #compilerPanel {
+            display: grid !important;
+            grid-template-columns: minmax(340px, 380px) 1fr !important;
+            gap: 20px !important;
+            align-items: flex-start !important;
+        }
+
+        #compilerPanel > .glass-panel:first-child {
+            position: sticky !important;
+            top: 24px !important;
+            max-height: calc(100vh - 48px) !important;
+            overflow-y: auto !important;
+        }
+
+        .coordinators-grid {
+            display: grid !important;
+            grid-template-columns: minmax(340px, 380px) 1fr !important;
+            gap: 20px !important;
+            align-items: flex-start !important;
+        }
+
+        .coordinators-grid > .glass-panel:first-child {
+            position: sticky !important;
+            top: 24px !important;
+            max-height: calc(100vh - 48px) !important;
+            overflow-y: auto !important;
+        }
+
+        /* ── Tab panels ── */
+        .tab-panel {
+            display: none;
+            flex-direction: column;
+            gap: 16px !important;
+        }
+        .tab-panel.active {
+            display: flex;
+        }
+
+        /* ── Form layouts ── */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px !important;
+        }
+
+        .sem-selector {
+            display: flex;
+            flex-direction: column !important;
+            align-items: flex-start !important;
+            gap: 6px !important;
+            margin-bottom: 0 !important;
+        }
+
+        /* ── Typography ── */
+        h1 {
+            font-size: 26px !important;
+            font-weight: 700 !important;
+            letter-spacing: -0.025em !important;
+            margin: 0 !important;
+            background: none !important;
+            -webkit-text-fill-color: var(--text-primary) !important;
+            line-height: 1.2 !important;
+        }
+
+        .glass-panel h3 {
+            font-size: 16px !important;
+            font-weight: 700 !important;
+            letter-spacing: -0.01em !important;
+            color: var(--text-primary) !important;
+            margin: 0 0 4px 0 !important;
+            line-height: 1.3 !important;
+        }
+
+        .glass-panel p {
+            font-size: 13px !important;
+            color: var(--text-secondary) !important;
+            line-height: 1.55 !important;
+            margin: 0 !important;
+            max-width: 100% !important;
+            text-align: left !important;
+        }
+
+        label, .batch-label {
+            font-size: 13px !important;
+            font-weight: 500 !important;
+            color: var(--text-secondary) !important;
+            margin: 0 !important;
+        }
+
+        /* ── Inputs & Selects ── */
+        input[type="text"],
+        input[type="password"],
+        input[type="number"],
+        select {
+            height: 42px !important;
+            border: 1.5px solid #e2e8f0 !important;
+            border-radius: 10px !important;
+            font-size: 14px !important;
+            font-weight: 500 !important;
+            font-family: var(--font) !important;
+            padding: 10px 14px !important;
+            background-color: #f8fafc !important;
+            color: var(--text-primary) !important;
+            outline: none !important;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            width: 100%;
+        }
+
+        input:focus,
+        select:focus {
+            border-color: var(--accent) !important;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1) !important;
+            background-color: #ffffff !important;
+        }
+
+        .input-wrapper {
+            margin-bottom: 0 !important;
+        }
+        .input-wrapper i {
+            font-size: 17px !important;
+            left: 14px !important;
+            color: #94a3b8 !important;
+            top: 50% !important;
+            transform: translateY(-50%) !important;
+        }
+        .input-wrapper input {
+            padding-left: 44px !important;
+        }
+
+        /* ── Textarea ── */
+        .text-paste-area {
+            min-height: 200px !important;
+            height: 200px !important;
+            border: 1.5px solid #e2e8f0 !important;
+            border-radius: 10px !important;
+            padding: 14px !important;
+            font-size: 13px !important;
+            font-family: 'SF Mono', 'Cascadia Code', 'Fira Code', monospace !important;
+            line-height: 1.65 !important;
+            background-color: #f8fafc !important;
+            resize: vertical !important;
+            color: var(--text-primary) !important;
+        }
+        .text-paste-area:focus {
+            border-color: var(--accent) !important;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1) !important;
+            background-color: #ffffff !important;
+        }
+
+        /* ── Buttons ── */
+        .primary-btn,
+        .secondary-btn {
+            height: 42px !important;
+            border-radius: 10px !important;
+            font-size: 14px !important;
+            font-weight: 600 !important;
+            padding: 0 18px !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            gap: 7px !important;
+            margin: 0 !important;
+            width: 100% !important;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            cursor: pointer !important;
+            border: none;
+            letter-spacing: -0.01em;
+        }
+
+        .primary-btn {
+            background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%) !important;
+            color: #ffffff !important;
+            box-shadow: 0 1px 3px rgba(99, 102, 241, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
+        }
+
+        .primary-btn:hover {
+            background: linear-gradient(135deg, #4f46e5 0%, #4338ca 100%) !important;
+            transform: translateY(-1px) !important;
+            box-shadow: 0 4px 16px rgba(99, 102, 241, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
+        }
+
+        .primary-btn:active {
+            transform: translateY(0) !important;
+            box-shadow: 0 1px 2px rgba(99, 102, 241, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+        }
+
+        .secondary-btn {
+            background: #ffffff !important;
+            color: var(--text-primary) !important;
+            border: 1.5px solid #e2e8f0 !important;
+        }
+
+        .secondary-btn:hover {
+            background: #f8fafc !important;
+            border-color: #cbd5e1 !important;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04) !important;
+        }
+
+        .icon-btn {
+            height: 42px !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            padding: 0 16px !important;
+            border-radius: 10px !important;
+            border: 1.5px solid #fecaca !important;
+            background: #fff5f5 !important;
+            margin: 0 !important;
+            font-size: 13px !important;
+            font-weight: 600 !important;
+            color: #dc2626 !important;
+            transition: all 0.2s ease !important;
+            gap: 6px !important;
+        }
+        .icon-btn:hover {
+            background: #fee2e2 !important;
+            border-color: #fca5a5 !important;
+            box-shadow: 0 2px 8px rgba(239, 68, 68, 0.1) !important;
+        }
+
+        /* ── Tab Switchers ── */
+        .tab-switcher {
+            border: 1.5px solid #e2e8f0 !important;
+            border-radius: 10px !important;
+            height: 40px !important;
+            overflow: hidden !important;
+            margin-bottom: 0 !important;
+            display: flex !important;
+            background: #f1f5f9 !important;
+            padding: 3px !important;
+            gap: 2px !important;
+        }
+
+        .tab-btn {
+            flex: 1 !important;
+            height: 100% !important;
+            border-radius: 7px !important;
+            font-size: 13px !important;
+            font-weight: 600 !important;
+            color: var(--text-secondary) !important;
+            background: transparent !important;
+            border: none !important;
+            transition: all 0.2s ease !important;
+            cursor: pointer !important;
+            letter-spacing: -0.01em !important;
+        }
+
+        .tab-btn:hover {
+            color: var(--text-primary) !important;
+            background: rgba(255, 255, 255, 0.5) !important;
+        }
+
+        .tab-btn.active {
+            background: #ffffff !important;
+            color: var(--text-primary) !important;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04) !important;
+        }
+
+        /* ── Dropzone ── */
+        .dropzone {
+            border: 2px dashed #c7d2fe !important;
+            border-radius: 12px !important;
+            padding: 28px 16px !important;
+            background: linear-gradient(135deg, #f8fafc 0%, #eef2ff 100%) !important;
+            gap: 8px !important;
+            transition: all 0.25s ease !important;
+        }
+        .dropzone:hover {
+            background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%) !important;
+            border-color: #818cf8 !important;
+            transform: scale(1.005);
+        }
+
+        /* ── Table styles ── */
+        .matrix-scroll {
+            border: 1.5px solid #e2e8f0 !important;
+            border-radius: 10px !important;
+            overflow-x: auto !important;
+            overflow-y: hidden !important;
+            background: #ffffff !important;
+            margin-bottom: 16px !important;
+        }
+
+        .admin-table {
+            border-collapse: collapse !important;
+            width: 100% !important;
+            margin-bottom: 0 !important;
+        }
+
+        .admin-table th {
+            background: #f8fafc !important;
+            color: #64748b !important;
+            font-size: 11px !important;
+            font-weight: 600 !important;
+            text-transform: uppercase !important;
+            letter-spacing: 0.06em !important;
+            padding: 12px 10px !important;
+            border-bottom: 1.5px solid #e2e8f0 !important;
+            position: sticky !important;
+            top: 0 !important;
+            z-index: 10 !important;
+            text-align: center !important;
+            white-space: nowrap !important;
+        }
+
+        .admin-table th:first-child {
+            text-align: left !important;
+            padding-left: 16px !important;
+        }
+
+        .admin-table td {
+            padding: 8px !important;
+            border-bottom: 1px solid #f1f5f9 !important;
+            vertical-align: middle !important;
+        }
+
+        .admin-table td:first-child {
+            padding-left: 12px !important;
+        }
+
+        .admin-table tr:nth-child(even) td {
+            background: #fafbfc !important;
+        }
+
+        .admin-table tr:hover td {
+            background: #f1f5f9 !important;
+        }
+
+        .admin-table input {
+            height: 34px !important;
+            padding: 4px 6px !important;
+            border-radius: 7px !important;
+            font-size: 13px !important;
+            border: 1.5px solid #e2e8f0 !important;
+            background-color: transparent !important;
+            text-align: center !important;
+            transition: all 0.15s ease !important;
+        }
+
+        .admin-table input.student-id-input {
+            text-align: left !important;
+            font-weight: 600 !important;
+            letter-spacing: 0.02em !important;
+            font-family: 'SF Mono', 'Cascadia Code', monospace !important;
+            font-size: 12.5px !important;
+        }
+
+        .admin-table input:focus {
+            border-color: var(--accent) !important;
+            box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.1) !important;
+            background-color: #ffffff !important;
+        }
+
+        /* Semester column widths */
+        .admin-table th:nth-child(n+2):nth-child(-n+9),
+        .admin-table td:nth-child(n+2):nth-child(-n+9) {
+            width: 9% !important;
+        }
+        .admin-table th:first-child,
+        .admin-table td:first-child {
+            width: 20% !important;
+        }
+        .admin-table th:last-child,
+        .admin-table td:last-child {
+            width: 7% !important;
+        }
+
+        .delete-btn {
+            width: 30px !important;
+            height: 30px !important;
+            border-radius: 7px !important;
+            color: #94a3b8 !important;
+            background: transparent !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            padding: 0 !important;
+            margin: 0 auto !important;
+            border: none !important;
+            cursor: pointer !important;
+            transition: all 0.15s ease !important;
+            font-size: 15px !important;
+        }
+        .delete-btn:hover {
+            background: #fee2e2 !important;
+            color: #ef4444 !important;
+        }
+
+        /* ── Search input wrapper ── */
+        .search-input-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+            width: 280px;
+        }
+        .search-input-wrapper i {
+            position: absolute;
+            left: 12px;
+            color: #94a3b8;
+            font-size: 15px;
+            pointer-events: none;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .search-input-wrapper input {
+            width: 100% !important;
+            height: 36px !important;
+            padding: 8px 12px 8px 36px !important;
+            border-radius: 8px !important;
+            font-size: 13px !important;
+            border: 1.5px solid #e2e8f0 !important;
+            background: #f8fafc !important;
+        }
+        .search-input-wrapper input:focus {
+            background: #ffffff !important;
+        }
+
+        /* ── Status badges ── */
+        .status-badge {
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 5px !important;
+            padding: 4px 10px !important;
+            border-radius: 20px !important;
+            font-size: 11px !important;
+            font-weight: 600 !important;
+            letter-spacing: 0.02em !important;
+            line-height: 1 !important;
+        }
+
+        .status-badge.excellent {
+            background: linear-gradient(135deg, #ecfdf5, #d1fae5) !important;
+            color: #059669 !important;
+            border: 1px solid #a7f3d0 !important;
+        }
+
+        /* ── Pulse loader ── */
+        .pulse-loader {
+            display: inline-block;
+            position: relative;
+            width: 64px;
+            height: 64px;
+        }
+        .pulse-loader div {
+            position: absolute;
+            border: 3px solid var(--accent);
+            opacity: 1;
+            border-radius: 50%;
+            animation: pulse-loader-anim 1.2s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+        }
+        .pulse-loader div:nth-child(2) {
+            animation-delay: -0.6s;
+        }
+        @keyframes pulse-loader-anim {
+            0%   { top: 28px; left: 28px; width: 0; height: 0; opacity: 0; }
+            4.9% { top: 28px; left: 28px; width: 0; height: 0; opacity: 0; }
+            5%   { top: 28px; left: 28px; width: 0; height: 0; opacity: 1; }
+            100% { top: 0; left: 0; width: 56px; height: 56px; opacity: 0; }
+        }
+
+        .loading-overlay {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            padding: 40px 20px;
+        }
+
+        .action-row {
+            display: flex;
+            gap: 10px;
+            margin-top: 12px;
+        }
+
+        /* ── Success modal ── */
+        .success-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(15, 23, 42, 0.5);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .success-modal.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-content {
+            max-width: 420px;
+            width: 90%;
+            text-align: center;
+            transform: scale(0.9) translateY(10px);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .success-modal.active .modal-content {
+            transform: scale(1) translateY(0);
+        }
+
+        .checkmark-icon {
+            font-size: 52px;
+            color: var(--success);
+            margin-bottom: 12px;
+            display: inline-block;
+            animation: subtlePulse 2s ease-in-out infinite;
+        }
+
+        /* ── Gemini AI button ── */
+        .gemini-btn {
+            background: linear-gradient(135deg, #6366f1, #818cf8) !important;
+            color: #ffffff !important;
+            border: none !important;
+            transition: all 0.2s ease !important;
+        }
+
+        .gemini-btn:hover {
+            background: linear-gradient(135deg, #4f46e5, #6366f1) !important;
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.25) !important;
+            transform: translateY(-1px) !important;
+        }
+
+        .gemini-btn i {
+            color: #e0e7ff;
+            transition: transform 0.25s ease;
+        }
+
+        .gemini-btn:hover i {
+            transform: scale(1.15) rotate(8deg);
+        }
+
+        /* ── Coordinator toggle styling ── */
+        input[type="checkbox"]#coordinatorToggle {
+            width: 16px !important;
+            height: 16px !important;
+            accent-color: var(--accent) !important;
+            cursor: pointer !important;
+        }
+
+        /* ── Error message ── */
+        .error-msg {
+            margin-top: 12px !important;
+            font-size: 13px !important;
+            font-weight: 500 !important;
+            padding: 10px 14px !important;
+            border-radius: 8px !important;
+            background: #fef2f2 !important;
+            color: #dc2626 !important;
+            border: 1px solid #fecaca !important;
+        }
+
+        /* ── Parse hint info box ── */
+        .parse-hint {
+            font-size: 11px !important;
+            line-height: 1.5 !important;
+            color: var(--text-secondary) !important;
+        }
+        .parse-hint code {
+            background: #f1f5f9 !important;
+            padding: 1px 5px !important;
+            border-radius: 4px !important;
+            font-size: 10.5px !important;
+            font-family: 'SF Mono', 'Cascadia Code', monospace !important;
+            border: 1px solid #e2e8f0 !important;
+        }
+
+        /* ── Grid header (table controls) ── */
+        .grid-header {
+            margin-bottom: 16px !important;
+        }
+
+        /* ── Bottom actions bar ── */
+        .bottom-actions-wrapper {
+            padding-top: 14px !important;
+            margin-top: 2px !important;
+        }
+
+        /* ── Pagination styling ── */
+        .table-pagination {
+            opacity: 0.6;
+        }
+
+        /* ── Scrollbar refinement ── */
+        .glass-panel::-webkit-scrollbar {
+            width: 6px;
+        }
+        .glass-panel::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .glass-panel::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 99px;
+        }
+        .glass-panel::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+
+        /* ── Mobile responsiveness ── */
+        @media (max-width: 960px) {
+            body {
+                padding: 16px !important;
+            }
+            .admin-header {
+                flex-direction: column !important;
+                align-items: stretch !important;
+                gap: 12px !important;
+                padding: 16px !important;
+                margin-bottom: 0 !important;
+            }
+            #compilerPanel,
+            .coordinators-grid {
+                grid-template-columns: 1fr !important;
+                gap: 16px !important;
+            }
+            #compilerPanel > .glass-panel:first-child,
+            .coordinators-grid > .glass-panel:first-child {
+                position: relative !important;
+                top: 0 !important;
+                max-height: none !important;
+            }
+            .bottom-actions-wrapper {
+                flex-direction: column !important;
+                align-items: stretch !important;
+                gap: 12px !important;
+            }
+            .bottom-actions-wrapper button {
+                width: 100% !important;
+            }
+            .search-input-wrapper {
+                width: 100% !important;
+            }
+            .tab-switcher {
+                height: 38px !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px !important;
+            }
+            .glass-panel {
+                padding: 16px !important;
+                border-radius: 12px !important;
+            }
+            h1 {
+                font-size: 22px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. AUTH SCREEN -->
+    <div id="authView" class="admin-container auth-view">
+        <div class="hero">
+            <div class="logo-icon"><i class="ri-lock-password-line"></i></div>
+            <h1>Admin Authentication</h1>
+            <p>Enter the secret administrative passcode to access the result scanning portal.</p>
+        </div>
+
+        <div class="glass-panel">
+            <div style="display: flex; align-items: center; justify-content: flex-start; gap: 8px; margin-bottom: 20px; padding-bottom: 14px; border-bottom: 1px solid #f1f5f9;">
+                <input type="checkbox" id="coordinatorToggle" style="width: auto !important; height: auto !important; margin: 0;">
+                <label for="coordinatorToggle" style="font-size: 13px; font-weight: 600; color: var(--text-secondary); cursor: pointer; user-select: none;">Coordinator Login</label>
+            </div>
+            <div class="input-wrapper" id="usernameWrapper" style="display: none; margin-bottom: 14px;">
+                <i class="ri-user-line"></i>
+                <input type="text" id="coordinatorUsername" placeholder="Coordinator Username" autocomplete="username">
+            </div>
+            <div class="input-wrapper" style="margin-bottom: 14px;">
+                <i class="ri-key-2-line"></i>
+                <input type="password" id="adminPassword" placeholder="Enter passcode" autocomplete="current-password">
+            </div>
+            <button id="loginBtn" class="primary-btn" style="height: 46px !important; font-size: 15px !important;"><i class="ri-lock-unlock-line"></i> Unlock Portal</button>
+            <div id="authError" class="error-msg hidden">Incorrect passcode. Access Denied.</div>
+        </div>
+    </div>
+
+    <!-- 2. MAIN COMPILER SCREEN -->
+    <div id="mainView" class="admin-container" style="display: none;">
+        <!-- Header -->
+        <div class="admin-header">
+            <div style="display: flex; align-items: center; gap: 14px;">
+                <div style="width: 40px; height: 40px; border-radius: 10px; background: linear-gradient(135deg, #6366f1, #818cf8); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                    <i class="ri-shield-user-line" style="color: #fff; font-size: 18px;"></i>
+                </div>
+                <div>
+                    <h1 style="font-size: 20px !important; line-height: 1.2 !important;">DEMO-UNIV Admin</h1>
+                    <span id="roleBadge" class="status-badge excellent" style="margin-top: 2px;">Authorized</span>
+                </div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <!-- Main Navigation Tabs for Super Admin -->
+                <div id="adminNavTabs" class="tab-switcher" style="display: none; min-width: 240px;">
+                    <button class="tab-btn active" id="navCompilerBtn" onclick="switchMainTab('compiler')">
+                        <i class="ri-draft-line"></i> Compiler
+                    </button>
+                    <button class="tab-btn" id="navCoordinatorsBtn" onclick="switchMainTab('coordinators')">
+                        <i class="ri-group-line"></i> Coordinators
+                    </button>
+                </div>
+                <button id="logoutBtn" class="icon-btn"><i class="ri-logout-box-r-line"></i> Lock Portal</button>
+            </div>
+        </div>
+
+        <!-- Dashboard Widgets -->
+        <div id="compilerPanel">
+
+            <!-- Left Panel: Input Method Switcher -->
+            <div class="glass-panel">
+                <h3 style="margin-bottom: 16px; font-weight: 700; display: flex; align-items: center; gap: 8px; padding-bottom: 14px; border-bottom: 1px solid #f1f5f9;"><i class="ri-edit-2-line" style="color: var(--accent);"></i> 1. Input Result Data</h3>
+
+                <!-- Department Selector -->
+                <div class="sem-selector" style="margin-bottom: 14px;">
+                    <label for="deptSelect" style="font-size: 12px; font-weight: 600; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.04em; display: flex; align-items: center; gap: 5px;">
+                        <i class="ri-government-line" style="color: var(--accent); font-size: 14px;"></i> Department
+                    </label>
+                    <select id="deptSelect" required style="width: 100%; padding: 8px 10px; font-size: 13px; border: 1px solid var(--border); border-radius: 6px; background: var(--surface-solid); color: var(--text-primary); font-weight: 600;">
+                        <!-- Loaded dynamically -->
+                    </select>
+                </div>
+
+                <!-- Tab Switcher -->
+                <div class="tab-switcher">
+                    <button class="tab-btn active" id="tabTextBtn" onclick="switchTab('text')">
+                        <i class="ri-file-text-line"></i> Paste Text
+                    </button>
+                    <button class="tab-btn" id="tabImageBtn" onclick="switchTab('image')">
+                        <i class="ri-image-add-line"></i> Scan Image
+                    </button>
+                </div>
+
+                <!-- Tab: Paste Text -->
+                <div class="tab-panel active" id="panelText">
+                    <p style="margin: 0 0 10px 0; font-size: 13px; text-align: left;">Paste the official MUET result announcement text below. The system will extract all Student IDs and GPAs automatically, including multi-semester text.</p>
+
+                    <div class="sem-selector">
+                        <label for="semSelect"><i class="ri-calendar-line"></i> Default Semester:</label>
+                        <select id="semSelect">
+                            <option value="s1">Semester 1</option>
+                            <option value="s2" selected>Semester 2</option>
+                            <option value="s3">Semester 3</option>
+                            <option value="s4">Semester 4</option>
+                            <option value="s5">Semester 5</option>
+                            <option value="s6">Semester 6</option>
+                            <option value="s7">Semester 7</option>
+                            <option value="s8">Semester 8</option>
+                        </select>
+                    </div>
+
+                    <textarea id="resultTextInput" class="text-paste-area" placeholder="Paste result text here...&#10;&#10;Examples:&#10;## First Semester&#10;* **24SW001** - 3.34&#10;&#10;## Second Semester&#10;* **24SW001** - 2.94&#10;&#10;ID.No: 23BSCS001    G.P.A: 3.88"></textarea>
+
+                    <div class="parse-hint" style="display: flex; justify-content: space-between; align-items: flex-end; margin-top: 12px; font-size: 11px; line-height: 1.5; color: var(--text-secondary);">
+                        <div>
+                            Supports formats like:<br>
+                            <code>ID.No: 23BSCS001&nbsp;&nbsp;G.P.A: 3.88</code><br>
+                            <code>23CS001 - 3.62</code><br>
+                            <code>## First Semester</code>, <code>## Second Semester</code> sections in one paste
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: 6px; align-items: flex-end;">
+                            <button id="copyPromptBtn" class="secondary-btn" style="margin: 0; padding: 6px 10px; font-size: 11px; width: auto; gap: 4px; display: inline-flex; align-items: center; white-space: nowrap; border-radius: 6px;"><i class="ri-clipboard-line"></i> Copy Prompt</button>
+                            <a href="https://gemini.google.com/gem/1sFVLMsfDUgBUIf4SDwCsV1KrhTQ_5MIY?usp=sharing" target="_blank" rel="noopener noreferrer" class="secondary-btn gemini-btn" style="text-decoration: none; margin: 0; padding: 6px 10px; font-size: 11px; width: auto; gap: 4px; display: inline-flex; align-items: center; white-space: nowrap; border-radius: 6px;"><i class="ri-sparkling-fill"></i> Open Gemini</a>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 16px; padding: 12px; background: rgba(99, 102, 241, 0.04); border: 1px dashed var(--border); border-radius: var(--radius-md); font-size: 11px; line-height: 1.6; color: var(--text-secondary); text-align: left;">
+                        <span style="display: block; font-weight: 700; color: var(--accent); margin-bottom: 6px; font-size: 11.5px;"><i class="ri-information-line" style="vertical-align: middle; margin-right: 4px;"></i> Gemini AI OCR Workflow:</span>
+                        1. Click the <strong style="color: var(--text-primary);">Copy Prompt</strong> button above.<br>
+                        2. Click <strong style="color: var(--text-primary);">Open Gemini</strong>, upload your result sheets, and submit.<br>
+                        3. Copy the extracted results response from Gemini.<br>
+                        4. Paste the text in the box above.<br>
+                        5. Click <strong style="color: var(--text-primary);">Parse &amp; Load Table</strong>, then verify, save, and deploy live.
+                    </div>
+
+                    <div class="action-row">
+                        <button id="parseTextBtn" class="primary-btn" style="gap: 8px;"><i class="ri-magic-line"></i> Parse &amp; Load Table</button>
+                    </div>
+                </div>
+
+                <!-- Tab: Image Upload -->
+                <div class="tab-panel" id="panelImage">
+                    <div class="sem-selector">
+                        <label for="scanSemSelect"><i class="ri-calendar-line"></i> Target Semester:</label>
+                        <select id="scanSemSelect">
+                            <option value="s1">Semester 1</option>
+                            <option value="s2" selected>Semester 2</option>
+                            <option value="s3">Semester 3</option>
+                            <option value="s4">Semester 4</option>
+                            <option value="s5">Semester 5</option>
+                            <option value="s6">Semester 6</option>
+                            <option value="s7">Semester 7</option>
+                            <option value="s8">Semester 8</option>
+                        </select>
+                    </div>
+
+                    <div class="dropzone" id="dropzone">
+                        <i class="ri-camera-lens-line dropzone-icon" id="dropzoneIcon"></i>
+                        <span style="font-size: 14px; font-weight: 600; color: var(--text-primary);" id="dropzoneText">Drag image here or tap to capture</span>
+                        <span style="font-size: 12px; color: var(--text-secondary);">Supports PNG, JPG, WebP</span>
+                        <input type="file" id="fileInput" accept="image/*" multiple style="display: none;">
+                        <img id="previewImage" class="image-preview" src="#" alt="Preview">
+                    </div>
+
+                    <div class="action-row">
+                        <button id="scanBtn" class="primary-btn" disabled style="opacity: 0.5; gap: 8px;"><i class="ri-scan-2-line"></i> Scan &amp; Extract Data</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Panel: Scanned Table Editor -->
+            <div class="glass-panel" style="min-height: 400px; display: flex; flex-direction: column; overflow: hidden;">
+                <!-- Table Controls / Header -->
+                <div class="grid-header" style="display: flex; flex-direction: column; gap: 14px; margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid #f1f5f9;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; width: 100%;">
+                        <div>
+                            <h3 style="margin: 0; font-weight: 700; display: flex; align-items: center; gap: 8px;"><i class="ri-table-line" style="color: var(--accent);"></i> 2. Verify & Edit Table</h3>
+                            <p style="margin: 3px 0 0 0; font-size: 12px; color: #94a3b8;">Review, edit GPAs, or delete students before publishing.</p>
+                        </div>
+                        <button id="addRowBtn" class="secondary-btn" style="width: auto !important; height: 34px !important; padding: 0 12px !important; font-size: 12px !important;"><i class="ri-user-add-line"></i> Add Row</button>
+                    </div>
+                    
+                    <!-- Search Controls -->
+                    <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap; width: 100%;">
+                        <div class="search-input-wrapper">
+                            <i class="ri-search-line"></i>
+                            <input type="text" id="tableSearch" placeholder="Search by Student ID...">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Scanning loader state -->
+                <div id="scanningLoader" class="loading-overlay">
+                    <div class="pulse-loader"><div></div><div></div></div>
+                    <span id="ocrStatusLabel" style="font-weight: 600; color: var(--text-primary); font-size: 16px;">Local OCR Pipeline Scanning Image...</span>
+                    <span style="font-size: 12px; color: var(--text-secondary); max-width: 320px; text-align: center;">Running local Python microservice (FastAPI + EasyOCR) for maximum layout-aware accuracy. Auto-correcting characters & pairing GPAs.</span>
+                </div>
+
+                <!-- Grid Empty State -->
+                <div id="gridEmptyState" style="text-align: center; margin: auto; padding: 40px 20px;">
+                    <i class="ri-bubble-chart-line" style="font-size: 48px; color: #cbd5e1; display: block; margin-bottom: 12px;"></i>
+                    <span style="font-weight: 600; color: var(--text-secondary); font-size: 14px; display: block;">No data scanned yet</span>
+                    <span style="font-size: 12px; color: var(--text-secondary); max-width: 280px; display: inline-block;">Upload a photo on the left and scan it, or click "Add Row" to input data manually.</span>
+                </div>
+
+                <!-- Interactive Data Grid -->
+                <div id="gridWrapper" style="display: none; flex: 1; overflow-x: hidden; max-width: 100%;">
+                    <div class="matrix-scroll" style="max-height: 380px;">
+                        <table class="admin-table" style="min-width: 900px;">
+                            <thead>
+                                <tr>
+                                    <th style="width: 20%;">Student ID</th>
+                                    <th style="width: 9%;">S1</th>
+                                    <th style="width: 9%;">S2</th>
+                                    <th style="width: 9%;">S3</th>
+                                    <th style="width: 9%;">S4</th>
+                                    <th style="width: 9%;">S5</th>
+                                    <th style="width: 9%;">S6</th>
+                                    <th style="width: 9%;">S7</th>
+                                    <th style="width: 9%;">S8</th>
+                                    <th style="width: 8%; text-align: center;">Del</th>
+                                </tr>
+                            </thead>
+                            <tbody id="editorTableBody">
+                                <!-- Dynamically generated rows -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Bottom Actions -->
+                    <div class="bottom-actions-wrapper" style="display: flex; align-items: center; justify-content: space-between; border-top: 1.5px solid #f1f5f9; padding-top: 14px; flex-wrap: wrap; gap: 12px; margin-top: 4px;">
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <span style="width: 8px; height: 8px; border-radius: 50%; background: #6366f1; display: inline-block;"></span>
+                            <span id="rowCountLabel" style="font-size: 13px; font-weight: 600; color: var(--text-secondary);">Students to save: 0</span>
+                        </div>
+                        <button id="saveBtn" class="primary-btn" style="width: auto !important; height: 40px !important; padding: 0 22px !important; font-size: 13px !important; gap: 7px !important; border-radius: 10px !important;"><i class="ri-cloud-upload-line"></i> Save & Deploy Live</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab coordinators panel (Only shown for Admin) -->
+        <div id="coordinatorsPanel" style="display: none;">
+            <div class="coordinators-grid">
+                <!-- Left Column: Add/Edit Coordinator Form -->
+                <div class="glass-panel" style="padding: 24px;">
+                    <h3 id="formTitle" style="margin-bottom: 12px; font-weight: 700; display: flex; align-items: center; gap: 8px;">
+                        <i class="ri-user-add-line" style="color: var(--accent);"></i> Add New Coordinator
+                    </h3>
+                    <p style="margin: 0 0 16px 0; font-size: 13px; text-align: left;">Register a coordinator to manage their specific department's GPA results.</p>
+                    
+                    <form id="coordinatorForm" onsubmit="event.preventDefault(); saveCoordinator();" style="display: flex; flex-direction: column; gap: 16px;">
+                        <div>
+                            <label style="font-size: 12px; font-weight: 600; color: var(--text-secondary); margin-bottom: 6px; display: block;">Username</label>
+                            <input type="text" id="coordUsername" required placeholder="e.g. sw_rep" style="width: 100%; padding: 10px 12px; font-size: 13px; border: 1px solid var(--border); border-radius: 6px; background: var(--surface-solid); color: var(--text-primary);">
+                        </div>
+                        <div>
+                            <label style="font-size: 12px; font-weight: 600; color: var(--text-secondary); margin-bottom: 6px; display: block;">Full Name</label>
+                            <input type="text" id="coordName" required placeholder="e.g. Alex Smith" style="width: 100%; padding: 10px 12px; font-size: 13px; border: 1px solid var(--border); border-radius: 6px; background: var(--surface-solid); color: var(--text-primary);">
+                        </div>
+                        <div>
+                            <label style="font-size: 12px; font-weight: 600; color: var(--text-secondary); margin-bottom: 6px; display: block;">Department</label>
+                            <select id="coordDept" required style="width: 100%; padding: 10px 12px; font-size: 13px; border: 1px solid var(--border); border-radius: 6px; background: var(--surface-solid); color: var(--text-primary); font-weight: 600;">
+                                <!-- Will be loaded dynamically -->
+                            </select>
+                        </div>
+                        <div>
+                            <label style="font-size: 12px; font-weight: 600; color: var(--text-secondary); margin-bottom: 6px; display: block;">Passcode / Password</label>
+                            <input type="password" id="coordPassword" required placeholder="Enter passcode" style="width: 100%; padding: 10px 12px; font-size: 13px; border: 1px solid var(--border); border-radius: 6px; background: var(--surface-solid); color: var(--text-primary);">
+                        </div>
+                        
+                        <div style="display: flex; gap: 10px; margin-top: 8px;">
+                            <button type="submit" id="submitCoordBtn" class="primary-btn" style="padding: 10px 16px; font-size: 13px; font-weight: 600; width: auto; flex: 1;"><i class="ri-user-add-line"></i> Create Account</button>
+                            <button type="button" id="cancelCoordEditBtn" class="secondary-btn" onclick="resetCoordForm()" style="display: none; padding: 10px 16px; font-size: 13px; width: auto;"><i class="ri-close-line"></i> Cancel</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Right Column: Registered Coordinators List -->
+                <div class="glass-panel" style="padding: 24px; min-height: 400px; display: flex; flex-direction: column;">
+                    <h3 style="margin-bottom: 12px; font-weight: 700; display: flex; align-items: center; gap: 8px;">
+                        <i class="ri-group-line" style="color: var(--accent);"></i> Registered Coordinators
+                    </h3>
+                    <p style="margin: 0 0 16px 0; font-size: 13px; text-align: left;">View all coordinators, toggle status, reset passwords, or delete accounts.</p>
+                    
+                    <div id="coordinatorsLoading" style="text-align: center; margin: auto;">
+                        <div class="pulse-loader" style="width: 50px; height: 50px;"><div></div><div></div></div>
+                        <p style="font-size: 13px; color: var(--text-secondary); margin-top: 8px;">Fetching coordinators...</p>
+                    </div>
+
+                    <div id="coordinatorsEmpty" style="text-align: center; margin: auto; display: none;">
+                        <i class="ri-group-line" style="font-size: 40px; color: #cbd5e1; display: block; margin-bottom: 12px;"></i>
+                        <span style="font-weight: 600; color: var(--text-secondary); font-size: 14px;">No coordinators registered</span>
+                    </div>
+
+                    <div id="coordinatorsTableWrapper" style="display: none; overflow-x: auto; border: 1px solid var(--border); border-radius: var(--radius-md);">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th style="width: 25%;">Name</th>
+                                    <th style="width: 20%;">Username</th>
+                                    <th style="width: 20%;">Dept</th>
+                                    <th style="width: 15%; text-align: center;">Status</th>
+                                    <th style="width: 20%; text-align: right;">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="coordinatorsTableBody">
+                                <!-- Loaded dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. SUCCESS DEPLOY MODAL -->
+    <div id="successModal" class="success-modal">
+        <div class="glass-panel modal-content">
+            <i class="ri-checkbox-circle-fill checkmark-icon"></i>
+            <h2 style="font-size: 22px; font-weight: 800; margin-bottom: 8px;">Deployment Started!</h2>
+            <p style="font-size: 14px; text-align: center; max-width: 100%; color: var(--text-secondary); margin-bottom: 20px;">
+                Your scanned results were successfully merged into the database. Vercel is now rebuilding your site in the background. It will be live globally in a few seconds!
+            </p>
+            <button id="modalCloseBtn" class="primary-btn" style="padding: 12px 20px;">Return to Dashboard</button>
+        </div>
+    </div>
+
+    <script>
+        // Core Dashboard Logic
+        let selectedFiles = [];
+        let departmentsList = [];
+        let coordinatorsList = [];
+        let currentUserRole = null;
+        let currentUserDept = null;
+        let currentUserName = null;
+
+        // Elements
+        const authView = document.getElementById('authView');
+        const mainView = document.getElementById('mainView');
+        const loginBtn = document.getElementById('loginBtn');
+        const logoutBtn = document.getElementById('logoutBtn');
+        const adminPassword = document.getElementById('adminPassword');
+        const authError = document.getElementById('authError');
+        const coordinatorToggle = document.getElementById('coordinatorToggle');
+        const usernameWrapper = document.getElementById('usernameWrapper');
+        const coordinatorUsername = document.getElementById('coordinatorUsername');
+        const deptSelect = document.getElementById('deptSelect');
+
+        const dropzone = document.getElementById('dropzone');
+        const fileInput = document.getElementById('fileInput');
+        const dropzoneIcon = document.getElementById('dropzoneIcon');
+        const dropzoneText = document.getElementById('dropzoneText');
+        const previewImage = document.getElementById('previewImage');
+
+        const scanBtn = document.getElementById('scanBtn');
+        const saveBtn = document.getElementById('saveBtn');
+        const addRowBtn = document.getElementById('addRowBtn');
+        const gridWrapper = document.getElementById('gridWrapper');
+        const gridEmptyState = document.getElementById('gridEmptyState');
+        const scanningLoader = document.getElementById('scanningLoader');
+        const editorTableBody = document.getElementById('editorTableBody');
+        const rowCountLabel = document.getElementById('rowCountLabel');
+
+        const successModal = document.getElementById('successModal');
+        const modalCloseBtn = document.getElementById('modalCloseBtn');
+
+        // Escape HTML helper to prevent XSS
+        function escapeHtml(unsafe) {
+            if (unsafe === undefined || unsafe === null) return '';
+            return String(unsafe)
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+
+        // Tab switching logic
+        function switchTab(tab) {
+            document.getElementById('tabTextBtn').classList.toggle('active', tab === 'text');
+            document.getElementById('tabImageBtn').classList.toggle('active', tab === 'image');
+            document.getElementById('panelText').classList.toggle('active', tab === 'text');
+            document.getElementById('panelImage').classList.toggle('active', tab === 'image');
+        }
+
+        const semesterMap = {
+            'FIRST': 's1', 'SECOND': 's2', 'THIRD': 's3', 'FOURTH': 's4',
+            'FIFTH': 's5', 'SIXTH': 's6', 'SEVENTH': 's7', 'EIGHTH': 's8',
+            '1ST': 's1', '2ND': 's2', '3RD': 's3', '4TH': 's4',
+            '5TH': 's5', '6TH': 's6', '7TH': 's7', '8TH': 's8',
+            'ONE': 's1', 'TWO': 's2', 'THREE': 's3', 'FOUR': 's4',
+            'FIVE': 's5', 'SIX': 's6', 'SEVEN': 's7', 'EIGHT': 's8'
+        };
+
+        function createEmptyResultRow(id) {
+            return { id, s1: null, s2: null, s3: null, s4: null, s5: null, s6: null, s7: null, s8: null };
+        }
+
+        function getSemesterNumber(semKey) {
+            return parseInt(String(semKey || '').replace('s', ''), 10);
+        }
+
+        function detectSemesterKey(text) {
+            const upper = String(text || '').toUpperCase();
+            for (const [word, key] of Object.entries(semesterMap)) {
+                if (upper.includes(`${word} SEMESTER`) || upper.includes(`SEMESTER ${word}`)) {
+                    return key;
+                }
+            }
+
+            const numericMatch = upper.match(/\bSEM(?:ESTER)?\s*[-:]?\s*([1-8])\b|\b([1-8])\s*(?:ST|ND|RD|TH)?\s+SEM(?:ESTER)?\b/);
+            if (numericMatch) {
+                return `s${numericMatch[1] || numericMatch[2]}`;
+            }
+
+            return null;
+        }
+
+        function extractStudentGpaPairs(line) {
+            const cleaned = String(line || '')
+                .replace(/[\u2014\u2013]/g, '-')
+                .replace(/[|]/g, ' ')
+                .replace(/\*\*/g, '')
+                .trim();
+
+            if (!cleaned || cleaned.length < 5) return [];
+
+            const idPattern = String.raw`\d{2}(?:-\d{2})?[A-Z]{2,8}\d{2,4}`;
+            const pairs = [];
+            const seenInLine = new Set();
+            const addPair = (id, gpa) => {
+                const fixedId = fixStudentId(id);
+                const fixedGpa = parseFloat(gpa);
+                if (!fixedId || isNaN(fixedGpa) || fixedGpa < 0 || fixedGpa > 4.00) return;
+                const key = `${fixedId}:${fixedGpa}`;
+                if (seenInLine.has(key)) return;
+                seenInLine.add(key);
+                pairs.push({ id: fixedId, gpa: fixedGpa });
+            };
+
+            const pairPatterns = [
+                new RegExp(String.raw`ID\.?\s*No\.?\s*:?\s*(${idPattern})\b.*?G\.?\s*P\.?\s*A\.?\s*:?\s*(\d(?:\.\d{1,2})?)\b`, 'gi'),
+                new RegExp(String.raw`\b(${idPattern})\b\s*(?:-|:|=|,|\s)\s*(\d(?:\.\d{1,2})?)\b`, 'gi')
+            ];
+
+            for (const pattern of pairPatterns) {
+                let match;
+                while ((match = pattern.exec(cleaned)) !== null) {
+                    addPair(match[1], match[2]);
+                }
+            }
+
+            if (pairs.length > 0) return pairs;
+
+            const idRegex = new RegExp(String.raw`\b(${idPattern})\b`, 'gi');
+            const gpaRegex = /(?<!\d)([0-4](?:\.\d{1,2})?)(?!\d)/g;
+            const ids = [];
+            const gpas = [];
+            let idMatch, gpaMatch;
+
+            while ((idMatch = idRegex.exec(cleaned)) !== null) {
+                ids.push(idMatch[1]);
+            }
+            while ((gpaMatch = gpaRegex.exec(cleaned)) !== null) {
+                const value = parseFloat(gpaMatch[1]);
+                if (value >= 0 && value <= 4.00) gpas.push(value);
+            }
+
+            const count = Math.min(ids.length, gpas.length);
+            for (let i = 0; i < count; i++) {
+                addPair(ids[i], gpas[i]);
+            }
+
+            return pairs;
+        }
+
+        function parseResultText(raw, defaultSemKey) {
+            const rowsById = new Map();
+            const semesterCounts = {};
+            let currentSemKey = defaultSemKey || 's2';
+
+            String(raw || '').split('\n').forEach(line => {
+                const detectedSemKey = detectSemesterKey(line);
+                if (detectedSemKey) {
+                    currentSemKey = detectedSemKey;
+                    if (!semesterCounts[currentSemKey]) semesterCounts[currentSemKey] = 0;
+                    return;
+                }
+
+                const pairs = extractStudentGpaPairs(line);
+                pairs.forEach(pair => {
+                    if (!rowsById.has(pair.id)) {
+                        rowsById.set(pair.id, createEmptyResultRow(pair.id));
+                    }
+                    rowsById.get(pair.id)[currentSemKey] = pair.gpa;
+                    semesterCounts[currentSemKey] = (semesterCounts[currentSemKey] || 0) + 1;
+                });
+            });
+
+            const results = Array.from(rowsById.values())
+                .sort((a, b) => a.id.localeCompare(b.id, undefined, { numeric: true }));
+
+            return { results, semesterCounts };
+        }
+
+        function handleParseTextClick(event) {
+            event.preventDefault();
+            event.stopImmediatePropagation();
+
+            const raw = document.getElementById('resultTextInput').value.trim();
+            const semKey = document.getElementById('semSelect').value;
+
+            if (!raw) {
+                alert('Please paste some result text first.');
+                return;
+            }
+
+            const parsed = parseResultText(raw, semKey);
+
+            if (parsed.results.length === 0) {
+                alert('No student records found in the pasted text. Make sure it contains lines like:\nID.No: 23BSCS001   G.P.A: 3.88');
+                return;
+            }
+
+            populateGrid(parsed.results);
+
+            const semSummary = Object.entries(parsed.semesterCounts)
+                .sort(([a], [b]) => getSemesterNumber(a) - getSemesterNumber(b))
+                .map(([key, count]) => `S${getSemesterNumber(key)}: ${count}`)
+                .join(', ');
+
+            alert(`Parsed ${parsed.results.length} student row(s)${semSummary ? ` across ${semSummary}` : ''}. Verify the table and click "Save & Deploy Live".`);
+        }
+
+        document.getElementById('parseTextBtn').addEventListener('click', handleParseTextClick, true);
+
+        // Parse pasted result text
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('parseTextBtn').addEventListener('click', () => {
+                const raw = document.getElementById('resultTextInput').value.trim();
+                const semKey = document.getElementById('semSelect').value; // e.g. "s2"
+                const semIndex = parseInt(semKey.replace('s', '')) - 1; // 0-based index
+
+                if (!raw) {
+                    alert('Please paste some result text first.');
+                    return;
+                }
+
+                // Pattern 1: "ID.No: 23BSCS001   G.P.A: 3.88" or "ID.No:23BSCS001 G.P.A:3.88"
+                // Pattern 2: "23CS001 - 3.62" or "23CS001  3.62"
+                const pattern1 = /ID\.No\s*:\s*([\w]+)\s+G\.P\.A\s*:\s*(\d+(?:\.\d+)?)/gi;
+                const pattern2 = /\b(\d{2}(?:[A-Z]{2,4})\d{3,4})\b[^\d]+(\d+\.\d{2})\b/gi;
+
+                const results = [];
+                let match;
+
+                // Try pattern 1 first
+                while ((match = pattern1.exec(raw)) !== null) {
+                    results.push({ id: match[1].toUpperCase(), gpa: parseFloat(match[2]) });
+                }
+
+                // Fallback to pattern 2 if pattern 1 found nothing
+                if (results.length === 0) {
+                    while ((match = pattern2.exec(raw)) !== null) {
+                        results.push({ id: match[1].toUpperCase(), gpa: parseFloat(match[2]) });
+                    }
+                }
+
+                if (results.length === 0) {
+                    alert('No student records found in the pasted text. Make sure it contains lines like:\nID.No: 23BSCS001   G.P.A: 3.88');
+                    return;
+                }
+
+                // Build row objects: set the selected semester GPA
+                const rowData = results.map(r => {
+                    const row = { id: r.id, s1: null, s2: null, s3: null, s4: null, s5: null, s6: null, s7: null, s8: null };
+                    row[semKey] = r.gpa;
+                    return row;
+                });
+
+                populateGrid(rowData);
+                alert(`✅ Parsed ${results.length} student record(s) for Semester ${semIndex + 1}. Verify the table and click "Save & Deploy Live".`);
+            });
+
+            // Copy OCR/LLM Prompt to Clipboard
+            const copyPromptBtn = document.getElementById('copyPromptBtn');
+            if (copyPromptBtn) {
+                copyPromptBtn.addEventListener('click', () => {
+                    const promptText = `You are an expert OCR and structured data extraction system specializing in official MUET (Mehran University of Engineering & Technology) result sheets.
+
+Your task is to accurately extract ONLY the "A. List of Successful Student(s)" section from every uploaded result sheet.
+
+## Instructions
+
+- Process ALL uploaded images together.
+- Detect the semester automatically.
+- Extract ONLY Student ID and GPA.
+- Ignore every other section, including:
+  - Students on probation
+  - Subject acronyms
+  - Notes
+  - Footer
+  - Controller signature
+
+## Accuracy Rules
+
+- Read the table exactly as printed.
+- Preserve Student IDs exactly.
+- Preserve GPA exactly (2 decimal places).
+- Double-check OCR mistakes such as:
+  - 0 vs O
+  - 8 vs 6
+  - 1 vs I
+  - Decimal points
+- Never guess or invent values.
+- Maintain the original reading order (left-to-right, top-to-bottom).
+
+## Output Format
+
+Generate a Markdown (.md) document.
+
+Example:
+
+## First Semester
+
+24SW001 | 3.34
+24SW002 | 1.97
+24SW003 | 2.85
+
+## Second Semester
+
+24SW001 | 3.51
+24SW002 | 3.12
+
+Requirements:
+
+- One line per student only.
+- No numbering.
+- No bullet points.
+- No tables.
+- No code blocks.
+- No explanations.
+- No conversational text.
+- Return only the Markdown document.`;
+
+                    navigator.clipboard.writeText(promptText).then(() => {
+                        const origHtml = copyPromptBtn.innerHTML;
+                        copyPromptBtn.innerHTML = '<i class="ri-check-line" style="color: var(--success);"></i> Copied!';
+                        setTimeout(() => {
+                            copyPromptBtn.innerHTML = origHtml;
+                        }, 2000);
+                    }).catch(err => {
+                        console.error('Failed to copy: ', err);
+                    });
+                });
+            }
+
+            // Local table search filtering
+            const tableSearch = document.getElementById('tableSearch');
+            if (tableSearch) {
+                tableSearch.addEventListener('input', () => {
+                    const query = tableSearch.value.toUpperCase().trim();
+                    const rows = editorTableBody.querySelectorAll('tr');
+                    rows.forEach(row => {
+                        const input = row.querySelector('.student-id-input');
+                        if (input) {
+                            const id = input.value.toUpperCase();
+                            row.style.display = id.includes(query) ? '' : 'none';
+                        }
+                    });
+                    updateRowCount();
+                });
+            }
+        });
+
+        // Toggle username input for Coordinator Login
+        coordinatorToggle.addEventListener('change', () => {
+            if (coordinatorToggle.checked) {
+                usernameWrapper.style.display = 'block';
+                coordinatorUsername.focus();
+            } else {
+                usernameWrapper.style.display = 'none';
+                coordinatorUsername.value = '';
+            }
+        });
+
+        // Load departments from public json
+        async function loadDepartments() {
+            try {
+                const res = await fetch('/config/departments.json');
+                if (res.ok) {
+                    departmentsList = await res.json();
+                    
+                    // Populate target department selector
+                    deptSelect.innerHTML = '';
+                    const sortedDepts = [...departmentsList].sort((a, b) => a.name.localeCompare(b.name));
+                    sortedDepts.forEach(d => {
+                        const opt = document.createElement('option');
+                        opt.value = d.code.toLowerCase();
+                        opt.textContent = `${d.name} (${d.code.toUpperCase()})`;
+                        deptSelect.appendChild(opt);
+                    });
+
+                    // Populate coordinator form department dropdown
+                    const coordDeptSelect = document.getElementById('coordDept');
+                    if (coordDeptSelect) {
+                        coordDeptSelect.innerHTML = '<option value="" disabled selected>Select a Department</option>';
+                        sortedDepts.forEach(d => {
+                            const opt = document.createElement('option');
+                            opt.value = d.code.toLowerCase();
+                            opt.textContent = `${d.name} (${d.code.toUpperCase()})`;
+                            coordDeptSelect.appendChild(opt);
+                        });
+                    }
+                }
+            } catch (err) {
+                console.error('Failed to load departments.json:', err);
+            }
+        }
+
+        // Setup the dashboard visual states based on the role and department
+        function setupDashboard(sessionData) {
+            currentUserRole = sessionData.role;
+            currentUserDept = sessionData.department;
+            currentUserName = sessionData.name;
+
+            const roleBadge = document.getElementById('roleBadge');
+            const adminNavTabs = document.getElementById('adminNavTabs');
+
+            // Reset back to compiler tab on login/load
+            switchMainTab('compiler');
+
+            if (currentUserRole === 'admin') {
+                roleBadge.textContent = 'Super Admin';
+                roleBadge.className = 'status-badge excellent';
+                adminNavTabs.style.display = 'flex';
+                deptSelect.disabled = false;
+            } else if (currentUserRole === 'coordinator') {
+                const deptObj = departmentsList.find(d => d.code.toLowerCase() === currentUserDept.toLowerCase());
+                const deptName = deptObj ? deptObj.name : currentUserDept.toUpperCase();
+                roleBadge.textContent = `${deptName} Coordinator`;
+                roleBadge.className = 'status-badge warning';
+                adminNavTabs.style.display = 'none';
+
+                // Lock the department dropdown to their authorized department
+                deptSelect.value = currentUserDept.toLowerCase();
+                deptSelect.disabled = true;
+            }
+        }
+
+        // Check active session on load
+        async function checkSession() {
+            try {
+                const res = await fetch('/api/auth/verify', {
+                    method: 'GET',
+                    credentials: 'same-origin'
+                });
+
+                if (res.ok) {
+                    const data = await res.json();
+                    if (data.authenticated) {
+                        setupDashboard(data);
+                        authView.style.display = 'none';
+                        mainView.style.display = 'block';
+                        return;
+                    }
+                }
+            } catch (err) {
+                console.error('Session check failed:', err);
+            }
+            authView.style.display = 'flex';
+            mainView.style.display = 'none';
+        }
+
+        window.addEventListener('DOMContentLoaded', async () => {
+            await loadDepartments();
+            await checkSession();
+        });
+
+        // 1. Password/Username Verification (Login Flow)
+        loginBtn.addEventListener('click', async () => {
+            const pass = adminPassword.value;
+            if (!pass) return;
+
+            loginBtn.disabled = true;
+            loginBtn.textContent = 'Authenticating...';
+            authError.classList.add('hidden');
+
+            const payload = { password: pass };
+            if (coordinatorToggle.checked) {
+                payload.username = coordinatorUsername.value.trim();
+                if (!payload.username) {
+                    authError.textContent = 'Coordinator Username is required.';
+                    authError.classList.remove('hidden');
+                    loginBtn.disabled = false;
+                    loginBtn.textContent = 'Unlock Portal';
+                    return;
+                }
+            }
+
+            try {
+                const res = await fetch('/api/auth/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    credentials: 'same-origin',
+                    body: JSON.stringify(payload)
+                });
+
+                if (!res.ok) {
+                    const err = await res.json();
+                    throw new Error(err.error || 'Unauthorized');
+                }
+
+                const data = await res.json();
+                setupDashboard(data);
+
+                // Session authorized
+                authView.style.display = 'none';
+                mainView.style.display = 'block';
+                authError.classList.add('hidden');
+            } catch (err) {
+                authError.textContent = err.message || 'Invalid credentials. Please try again.';
+                authError.classList.remove('hidden');
+            } finally {
+                loginBtn.disabled = false;
+                loginBtn.textContent = 'Unlock Portal';
+                adminPassword.value = '';
+                coordinatorUsername.value = '';
+            }
+        });
+
+        // Logout Flow
+        logoutBtn.addEventListener('click', async () => {
+            try {
+                await fetch('/api/auth/logout', {
+                    method: 'POST',
+                    credentials: 'same-origin'
+                });
+            } catch (err) {
+                console.error('Logout request failed:', err);
+            } finally {
+                currentUserRole = null;
+                currentUserDept = null;
+                currentUserName = null;
+                document.getElementById('adminNavTabs').style.display = 'none';
+                deptSelect.disabled = false;
+                deptSelect.value = '';
+                
+                mainView.style.display = 'none';
+                authView.style.display = 'flex';
+                clearEditor();
+            }
+        });
+
+        // 2. Drag & Drop Image Handlers
+        dropzone.addEventListener('click', () => fileInput.click());
+
+        dropzone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropzone.classList.add('dragover');
+        });
+        dropzone.addEventListener('dragleave', () => dropzone.classList.remove('dragover'));
+        dropzone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropzone.classList.remove('dragover');
+            if (e.dataTransfer.files.length) {
+                handleFiles(e.dataTransfer.files);
+            }
+        });
+        fileInput.addEventListener('change', (e) => {
+            if (e.target.files.length) {
+                handleFiles(e.target.files);
+            }
+        });
+
+        function handleFiles(files) {
+            selectedFiles = Array.from(files).filter(file => file.type.startsWith('image/'));
+            if (selectedFiles.length === 0) {
+                alert('Please upload image files (PNG, JPG, WebP).');
+                return;
+            }
+
+            // Preview the first image and show total count
+            const firstFile = selectedFiles[0];
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                previewImage.src = e.target.result;
+                previewImage.style.display = 'block';
+                dropzoneIcon.style.display = 'none';
+                
+                if (selectedFiles.length > 1) {
+                    dropzoneText.innerHTML = `<strong>${selectedFiles.length} images</strong> queued for scan.<br><span style="font-size:11px;opacity:0.7;">Tap to change selection</span>`;
+                } else {
+                    dropzoneText.innerHTML = `<strong>1 image</strong> selected.<br><span style="font-size:11px;opacity:0.7;">Tap to change selection</span>`;
+                }
+                dropzoneText.style.display = 'block';
+                
+                scanBtn.disabled = false;
+                scanBtn.style.opacity = '1';
+            };
+            reader.readAsDataURL(firstFile);
+        }
+        // 3. Scan Image Queue (POST to API)
+        scanBtn.addEventListener('click', async () => {
+            if (selectedFiles.length === 0) return;
+
+            scanBtn.disabled = true;
+            gridEmptyState.style.display = 'none';
+            gridWrapper.style.display = 'none';
+            scanningLoader.style.display = 'flex';
+            const statusLabel = document.getElementById('ocrStatusLabel');
+
+            const scanSemSelect = document.getElementById('scanSemSelect');
+            const semKey = scanSemSelect.value || 's2';
+
+            let allExtractedResults = [];
+            let errorCount = 0;
+
+            try {
+                // Process each file in order
+                for (let idx = 0; idx < selectedFiles.length; idx++) {
+                    const file = selectedFiles[idx];
+                    
+                    if (statusLabel) {
+                        statusLabel.innerHTML = `Scanning sheet <strong>${idx + 1} of ${selectedFiles.length}</strong>...<br><span style="font-size:12.5px; opacity:0.85; margin-top:5px; display:inline-block;">Processing ${file.name}</span>`;
+                    }
+
+                    try {
+                        // Convert to base64
+                        const base64Data = await new Promise((resolve, reject) => {
+                            const reader = new FileReader();
+                            reader.onload = (e) => resolve(e.target.result);
+                            reader.onerror = reject;
+                            reader.readAsDataURL(file);
+                        });
+
+                        // Call Local NodeJS Serverless emulator (which proxies to Python FastAPI)
+                        const res = await fetch('/api/extract-result', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({ image: base64Data })
+                        });
+
+                        if (!res.ok) {
+                            const errData = await res.json().catch(() => ({}));
+                            throw new Error(errData.message || `HTTP ${res.status}`);
+                        }
+
+                        const data = await res.json();
+                        if (data.results && data.results.length > 0) {
+                            allExtractedResults = allExtractedResults.concat(data.results);
+                        } else {
+                            console.warn(`[OCR] No student records found in sheet: ${file.name}`);
+                        }
+                    } catch (sheetErr) {
+                        console.error(`[OCR] Error scanning ${file.name}:`, sheetErr);
+                        errorCount++;
+                    }
+                }
+
+                if (allExtractedResults.length === 0) {
+                    throw new Error('No student GPA records could be extracted. Please make sure the images contain clear MUET result tables.');
+                }
+
+                // Group extracted entries by Student ID and set Target Semester GPAs
+                const mergedMap = {};
+                allExtractedResults.forEach(item => {
+                    const id = item.id.toUpperCase().replace(/\s+/g, '');
+                    if (!mergedMap[id]) {
+                        mergedMap[id] = {
+                            id: id,
+                            s1: null, s2: null, s3: null, s4: null,
+                            s5: null, s6: null, s7: null, s8: null
+                        };
+                    }
+                    mergedMap[id][semKey] = item.gpa;
+                });
+
+                // Convert back to sorted array
+                const finalResults = Object.values(mergedMap).sort((a, b) => a.id.localeCompare(b.id));
+
+                populateGrid(finalResults);
+
+                let msg = `✅ Processed ${selectedFiles.length} sheet(s) successfully. Extracted ${finalResults.length} student record(s) for Semester ${semKey.replace('s', '')}.`;
+                if (errorCount > 0) {
+                    msg += `\n⚠️ Note: ${errorCount} sheet(s) failed during scanning.`;
+                }
+                alert(msg + '\n\nPlease verify the grid data and click "Save & Deploy Live".');
+
+            } catch (err) {
+                console.error('[OCR] Batch scan error:', err);
+                alert('OCR scan failed: ' + err.message);
+                gridEmptyState.style.display = 'block';
+                gridWrapper.style.display = 'none';
+            } finally {
+                scanningLoader.style.display = 'none';
+                scanBtn.disabled = false;
+                scanBtn.innerHTML = '<i class="ri-scan-2-line"></i> Scan &amp; Extract Data';
+                if (statusLabel) statusLabel.textContent = 'Scanning Queue...';
+            }
+        });
+
+        // 4. Data Grid Editor Handlers
+        function populateGrid(results) {
+            editorTableBody.innerHTML = '';
+            if (results.length === 0) {
+                gridEmptyState.style.display = 'block';
+                gridWrapper.style.display = 'none';
+                return;
+            }
+
+            results.forEach(student => addTableRow(
+                student.id,
+                student.s1, student.s2, student.s3, student.s4,
+                student.s5, student.s6, student.s7, student.s8
+            ));
+            gridWrapper.style.display = 'flex';
+            updateRowCount();
+        }
+
+        function addTableRow(id = '', s1 = '', s2 = '', s3 = '', s4 = '', s5 = '', s6 = '', s7 = '', s8 = '') {
+            const tr = document.createElement('tr');
+            const gpaCell = (cls, val) =>
+                `<td><input type="number" step="0.01" min="0" max="4" class="gpa-input ${cls}" placeholder="-" value="${escapeHtml(val !== null && val !== undefined && val !== '' ? val : '')}"></td>`;
+
+            tr.innerHTML = `
+                <td><input type="text" class="student-id-input" placeholder="e.g. 24CS001" value="${escapeHtml(id)}"></td>
+                ${gpaCell('s1-input', s1)}
+                ${gpaCell('s2-input', s2)}
+                ${gpaCell('s3-input', s3)}
+                ${gpaCell('s4-input', s4)}
+                ${gpaCell('s5-input', s5)}
+                ${gpaCell('s6-input', s6)}
+                ${gpaCell('s7-input', s7)}
+                ${gpaCell('s8-input', s8)}
+                <td style="text-align: center;"><button class="delete-btn" title="Delete Row"><i class="ri-delete-bin-line"></i></button></td>
+            `;
+
+            tr.querySelector('.delete-btn').addEventListener('click', () => {
+                tr.remove();
+                updateRowCount();
+                if (editorTableBody.children.length === 0) {
+                    clearEditor();
+                }
+            });
+
+            tr.querySelectorAll('input').forEach(input => {
+                input.addEventListener('input', updateRowCount);
+            });
+
+            editorTableBody.appendChild(tr);
+            gridEmptyState.style.display = 'none';
+            gridWrapper.style.display = 'flex';
+            updateRowCount();
+        }
+
+        addRowBtn.addEventListener('click', () => {
+            addTableRow();
+        });
+
+        function updateRowCount() {
+            const total = editorTableBody.children.length;
+            const visible = Array.from(editorTableBody.children).filter(tr => tr.style.display !== 'none').length;
+            if (visible !== total) {
+                rowCountLabel.textContent = `Showing ${visible} of ${total} students to save`;
+            } else {
+                rowCountLabel.textContent = `Students to save: ${total}`;
+            }
+        }
+
+        function clearEditor() {
+            editorTableBody.innerHTML = '';
+            gridWrapper.style.display = 'none';
+            gridEmptyState.style.display = 'block';
+            previewImage.style.display = 'none';
+            previewImage.src = '#';
+            dropzoneIcon.style.display = 'block';
+            dropzoneText.style.display = 'block';
+            dropzoneText.textContent = 'Drag image here or tap to capture';
+            selectedFiles = [];
+            scanBtn.disabled = true;
+            scanBtn.style.opacity = '0.5';
+            fileInput.value = '';
+        }
+
+        // 5. Save & Deploy Live
+        saveBtn.addEventListener('click', async () => {
+            const rows = editorTableBody.querySelectorAll('tr');
+            if (rows.length === 0) return;
+
+            const payload = [];
+            let hasError = false;
+
+            rows.forEach(row => {
+                const idInput = row.querySelector('.student-id-input');
+                const id = idInput.value.trim().toUpperCase();
+
+                if (!id) {
+                    idInput.style.borderColor = '#ef4444';
+                    hasError = true;
+                    return;
+                } else {
+                    idInput.style.borderColor = 'var(--border)';
+                }
+
+                const g = (cls) => { const v = parseFloat(row.querySelector(`.${cls}`).value); return isNaN(v) ? null : v; };
+
+                payload.push({
+                    id,
+                    s1: g('s1-input'),
+                    s2: g('s2-input'),
+                    s3: g('s3-input'),
+                    s4: g('s4-input'),
+                    s5: g('s5-input'),
+                    s6: g('s6-input'),
+                    s7: g('s7-input'),
+                    s8: g('s8-input')
+                });
+            });
+
+            if (hasError) {
+                alert('Please fill out all Student ID fields.');
+                return;
+            }
+
+            saveBtn.disabled = true;
+            saveBtn.textContent = 'Saving & Deploying...';
+
+            try {
+                const res = await fetch('/api/save-result', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    credentials: 'same-origin',
+                    body: JSON.stringify({
+                        department: document.getElementById('deptSelect').value,
+                        data: payload
+                    })
+                });
+
+                if (!res.ok) {
+                    const errPayload = await res.json();
+                    throw new Error(errPayload.error || 'Save failed');
+                }
+
+                successModal.classList.add('active');
+                clearEditor();
+            } catch (err) {
+                alert('Failed to deploy live: ' + err.message);
+            } finally {
+                saveBtn.disabled = false;
+                saveBtn.innerHTML = '<i class="ri-cloud-upload-line"></i> Save & Deploy Live';
+            }
+        });
+
+        // 6. Close Modal
+        modalCloseBtn.addEventListener('click', () => {
+            successModal.classList.remove('active');
+        });
+
+        // =============================================
+        // Coordinator Management UI Switcher & Controllers
+        // =============================================
+
+        function switchMainTab(tab) {
+            const navCompilerBtn = document.getElementById('navCompilerBtn');
+            const navCoordinatorsBtn = document.getElementById('navCoordinatorsBtn');
+            const compilerPanel = document.getElementById('compilerPanel');
+            const coordinatorsPanel = document.getElementById('coordinatorsPanel');
+
+            if (tab === 'compiler') {
+                navCompilerBtn.classList.add('active');
+                navCoordinatorsBtn.classList.remove('active');
+                compilerPanel.style.display = 'grid';
+                coordinatorsPanel.style.display = 'none';
+            } else if (tab === 'coordinators') {
+                navCoordinatorsBtn.classList.add('active');
+                navCompilerBtn.classList.remove('active');
+                compilerPanel.style.display = 'none';
+                coordinatorsPanel.style.display = 'block';
+                fetchCoordinators();
+            }
+        }
+
+        async function fetchCoordinators() {
+            const loadingEl = document.getElementById('coordinatorsLoading');
+            const emptyEl = document.getElementById('coordinatorsEmpty');
+            const wrapperEl = document.getElementById('coordinatorsTableWrapper');
+            const tbody = document.getElementById('coordinatorsTableBody');
+
+            loadingEl.style.display = 'block';
+            emptyEl.style.display = 'none';
+            wrapperEl.style.display = 'none';
+            tbody.innerHTML = '';
+
+            try {
+                const res = await fetch('/api/admin/coordinators', {
+                    method: 'GET',
+                    credentials: 'same-origin'
+                });
+
+                if (!res.ok) {
+                    throw new Error(await res.text() || 'Failed to fetch');
+                }
+
+                const data = await res.json();
+                coordinatorsList = data.coordinators || [];
+
+                if (coordinatorsList.length === 0) {
+                    emptyEl.style.display = 'block';
+                } else {
+                    coordinatorsList.forEach(coord => {
+                        const tr = document.createElement('tr');
+                        
+                        const deptObj = departmentsList.find(d => d.code.toLowerCase() === coord.department.toLowerCase());
+                        const deptName = deptObj ? deptObj.name : coord.department.toUpperCase();
+
+                        const statusBadge = coord.status === 'active' 
+                            ? `<span class="status-badge excellent">Active</span>`
+                            : `<span class="status-badge danger">Disabled</span>`;
+
+                        tr.innerHTML = `
+                            <td style="font-weight: 600; padding: 12px 8px;">${escapeHtml(coord.name)}</td>
+                            <td style="padding: 12px 8px;"><code>${escapeHtml(coord.username)}</code></td>
+                            <td style="padding: 12px 8px;">${escapeHtml(deptName)}</td>
+                            <td style="text-align: center; padding: 12px 8px;">${statusBadge}</td>
+                            <td style="text-align: right; white-space: nowrap; padding: 12px 8px;">
+                                <button onclick="toggleCoordinatorStatus('${coord.username}')" class="secondary-btn" style="padding: 6px 10px; font-size: 11px; margin: 0 4px 0 0; width: auto;" title="Toggle Active Status">
+                                    <i class="ri-refresh-line"></i> ${coord.status === 'active' ? 'Disable' : 'Enable'}
+                                </button>
+                                <button onclick="promptResetPassword('${coord.username}')" class="secondary-btn" style="padding: 6px 10px; font-size: 11px; margin: 0 4px 0 0; width: auto;" title="Reset Password">
+                                    <i class="ri-lock-unlock-line"></i> Password
+                                </button>
+                                <button onclick="deleteCoordinator('${coord.username}')" class="delete-btn" style="font-size: 14px; padding: 6px; margin: 0;" title="Delete Coordinator">
+                                    <i class="ri-delete-bin-line"></i>
+                                </button>
+                            </td>
+                        `;
+                        tbody.appendChild(tr);
+                    });
+                    wrapperEl.style.display = 'block';
+                }
+            } catch (e) {
+                console.error('Failed to load coordinators:', e);
+                alert('Error loading coordinators: ' + e.message);
+            } finally {
+                loadingEl.style.display = 'none';
+            }
+        }
+
+        async function saveCoordinator() {
+            const usernameInput = document.getElementById('coordUsername');
+            const nameInput = document.getElementById('coordName');
+            const deptInput = document.getElementById('coordDept');
+            const passwordInput = document.getElementById('coordPassword');
+            const submitBtn = document.getElementById('submitCoordBtn');
+
+            const payload = {
+                action: 'add',
+                username: usernameInput.value.trim(),
+                name: nameInput.value.trim(),
+                department: deptInput.value.trim(),
+                password: passwordInput.value
+            };
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Saving...';
+
+            try {
+                const res = await fetch('/api/admin/coordinators', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    credentials: 'same-origin',
+                    body: JSON.stringify(payload)
+                });
+
+                if (!res.ok) {
+                    const err = await res.json();
+                    throw new Error(err.error || 'Failed to save coordinator');
+                }
+
+                alert('Coordinator account created successfully!');
+                resetCoordForm();
+                fetchCoordinators();
+            } catch (e) {
+                alert('Error saving coordinator: ' + e.message);
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="ri-user-add-line"></i> Create Account';
+            }
+        }
+
+        async function toggleCoordinatorStatus(username) {
+            try {
+                const res = await fetch('/api/admin/coordinators', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    credentials: 'same-origin',
+                    body: JSON.stringify({ action: 'toggle', username })
+                });
+
+                if (!res.ok) {
+                    const err = await res.json();
+                    throw new Error(err.error || 'Failed to toggle status');
+                }
+
+                fetchCoordinators();
+            } catch (e) {
+                alert('Error toggling status: ' + e.message);
+            }
+        }
+
+        async function promptResetPassword(username) {
+            const newPass = prompt(`Enter new passcode for coordinator '${username}':`);
+            if (!newPass) return;
+
+            try {
+                const res = await fetch('/api/admin/coordinators', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    credentials: 'same-origin',
+                    body: JSON.stringify({ action: 'reset-password', username, password: newPass })
+                });
+
+                if (!res.ok) {
+                    const err = await res.json();
+                    throw new Error(err.error || 'Failed to reset password');
+                }
+
+                alert('Password reset successfully!');
+            } catch (e) {
+                alert('Error resetting password: ' + e.message);
+            }
+        }
+
+        async function deleteCoordinator(username) {
+            if (!confirm(`Are you sure you want to permanently delete coordinator '${username}'?`)) return;
+
+            try {
+                const res = await fetch('/api/admin/coordinators', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    credentials: 'same-origin',
+                    body: JSON.stringify({ action: 'delete', username })
+                });
+
+                if (!res.ok) {
+                    const err = await res.json();
+                    throw new Error(err.error || 'Failed to delete coordinator');
+                }
+
+                fetchCoordinators();
+            } catch (e) {
+                alert('Error deleting coordinator: ' + e.message);
+            }
+        }
+
+        function resetCoordForm() {
+            document.getElementById('coordUsername').value = '';
+            document.getElementById('coordName').value = '';
+            document.getElementById('coordDept').value = '';
+            document.getElementById('coordPassword').value = '';
+        }
+
+        // =============================================
+        // OCR Helper Functions (Tesseract.js Pipeline)
+        // =============================================
+
+        // Preprocess image for better OCR accuracy
+        function preprocessImage(base64) {
+            return new Promise((resolve) => {
+                const img = new Image();
+                img.onload = () => {
+                    const canvas = document.createElement('canvas');
+                    const ctx = canvas.getContext('2d');
+
+                    // Scale up small images for better OCR
+                    const maxDim = Math.max(img.width, img.height);
+                    const scale = maxDim < 1500 ? 2 : (maxDim < 2500 ? 1.5 : 1);
+                    canvas.width = Math.round(img.width * scale);
+                    canvas.height = Math.round(img.height * scale);
+
+                    // Draw scaled image
+                    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+                    // Get pixel data for processing
+                    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                    const d = imageData.data;
+
+                    for (let i = 0; i < d.length; i += 4) {
+                        // Convert to grayscale
+                        const gray = 0.299 * d[i] + 0.587 * d[i+1] + 0.114 * d[i+2];
+                        // Binary threshold: text → black, background → white
+                        const val = gray < 160 ? 0 : 255;
+                        d[i] = val;
+                        d[i+1] = val;
+                        d[i+2] = val;
+                    }
+
+                    ctx.putImageData(imageData, 0, 0);
+                    resolve(canvas);
+                };
+                img.src = base64;
+            });
+        }
+
+        // Parse OCR text output into structured student data
+        function parseOcrText(text) {
+            // 1. Detect semester from header text
+            let semKey = null;
+            let semNum = null;
+            const semMap = {
+                'FIRST': 's1', 'SECOND': 's2', 'THIRD': 's3', 'FOURTH': 's4',
+                'FIFTH': 's5', 'SIXTH': 's6', 'SEVENTH': 's7', 'EIGHTH': 's8',
+                '1ST': 's1', '2ND': 's2', '3RD': 's3', '4TH': 's4',
+                '5TH': 's5', '6TH': 's6', '7TH': 's7', '8TH': 's8'
+            };
+
+            const upperText = text.toUpperCase();
+            for (const [word, key] of Object.entries(semMap)) {
+                if (upperText.includes(word + ' SEMESTER')) {
+                    semKey = key;
+                    semNum = parseInt(key.replace('s', ''));
+                    break;
+                }
+            }
+
+            // Sync with UI select element if detected, else use user's manual selection
+            const scanSemSelect = document.getElementById('scanSemSelect');
+            if (semKey && scanSemSelect) {
+                scanSemSelect.value = semKey;
+                console.log(`[OCR] Auto-detected semester: ${semKey}`);
+            } else if (scanSemSelect) {
+                semKey = scanSemSelect.value;
+                semNum = parseInt(semKey.replace('s', ''));
+                console.log(`[OCR] Semester auto-detect failed. Using target selection: ${semKey}`);
+            } else {
+                semKey = 's2'; // default fallback
+                semNum = 2;
+            }
+
+            const results = [];
+            const seenIds = new Set();
+
+            // Skip lines that are clearly headers/footers
+            const skipPattern = /ID\.?\s*No|G\.?P\.?A|SEMESTER|MEHRAN|UNIVERSITY|CONTROLLER|EXAMINATION|Continue|Page|DEPARTMENT|REGULAR|ANNOUNCEMENT|Student.*Identification|declared.*Successful|BATCH|ENGINEERING|TECHNOLOGY|JAMSHORO|PAKISTAN|MUET|Dated|SUBJECT|ACRONYM|Improving|Grade.*course|Note\s*:|certificate|Errors.*Omissions|reserves.*right|date of.*announcement|probation|register.*Summer|failing.*Subject/i;
+
+            const lines = text.split('\n');
+
+            for (const line of lines) {
+                const directPairs = extractStudentGpaPairs(line);
+                if (directPairs.length > 0) {
+                    directPairs.forEach(pair => {
+                        if (seenIds.has(pair.id)) return;
+                        seenIds.add(pair.id);
+
+                        const entry = createEmptyResultRow(pair.id);
+                        entry[semKey] = pair.gpa;
+                        results.push(entry);
+                    });
+                    continue;
+                }
+
+                if (skipPattern.test(line)) continue;
+
+                // Clean the line slightly
+                let fixedLine = line
+                    .replace(/[|]/g, ' ')
+                    .replace(/\s{2,}/g, '  ')
+                    .trim();
+
+                if (!fixedLine || fixedLine.length < 5) continue;
+
+                // Pattern to strictly pair: Student ID (any 2-8 letter dept) + separator + GPA
+                // Example: 23SW001  3.88  or  24CS022:4.00
+                const pairRegex = /(\b\d{2}(?:[\u2014\u2013\-]\d{2})?[A-Z]{2,8}\d{2,4}\b)[^\d\n]{1,20}?(\d\.\d{2})\b/gi;
+                let match;
+                let foundPairs = false;
+
+                while ((match = pairRegex.exec(fixedLine)) !== null) {
+                    const id = fixStudentId(match[1]);
+                    const gpa = parseFloat(match[2]);
+
+                    if (id && gpa >= 0 && gpa <= 4.00 && !seenIds.has(id)) {
+                        seenIds.add(id);
+                        foundPairs = true;
+
+                        const entry = {
+                            id: id,
+                            s1: null, s2: null, s3: null, s4: null,
+                            s5: null, s6: null, s7: null, s8: null
+                        };
+                        entry[semKey] = gpa;
+                        results.push(entry);
+                    }
+                }
+
+                // Fallback: if strict pairing failed for a line but it contains raw IDs and GPAs,
+                // do independent list matching for that line (as a safety measure)
+                if (!foundPairs) {
+                    const idRegex = /(\d{2}(?:[\u2014\u2013\-]\d{2})?[A-Z]{2,8}\d{2,4})/gi;
+                    const gpaRegex = /(?<!\d)(\d\.\d{2})(?!\d)/g;
+
+                    const ids = [];
+                    const gpas = [];
+                    let idMatch, gpaMatch;
+
+                    while ((idMatch = idRegex.exec(fixedLine)) !== null) {
+                        ids.push(fixStudentId(idMatch[1]));
+                    }
+                    while ((gpaMatch = gpaRegex.exec(fixedLine)) !== null) {
+                        const val = parseFloat(gpaMatch[1]);
+                        if (val >= 0 && val <= 4.00) {
+                            gpas.push(val);
+                        }
+                    }
+
+                    const count = Math.min(ids.length, gpas.length);
+                    for (let i = 0; i < count; i++) {
+                        const id = ids[i];
+                        if (seenIds.has(id)) continue;
+                        seenIds.add(id);
+
+                        const entry = {
+                            id: id,
+                            s1: null, s2: null, s3: null, s4: null,
+                            s5: null, s6: null, s7: null, s8: null
+                        };
+                        entry[semKey] = gpas[i];
+                        results.push(entry);
+                    }
+                }
+            }
+
+            // Sort by student ID
+            results.sort((a, b) => a.id.localeCompare(b.id));
+
+            return { semester: semKey, semesterNum: semNum, results };
+        }
+
+        // Fix common OCR errors in student IDs
+        function fixStudentId(id) {
+            return id
+                .toUpperCase()
+                .replace(/[\u2014\u2013]/g, '-')
+                .replace(/O(\d)/g, '0$1')
+                .replace(/(\d)O/g, '$10')
+                .replace(/(\d)[lI](\d)/g, '$11$2')
+                .trim();
+        }
+    </script>
+</body>
+</html>

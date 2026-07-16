@@ -1,0 +1,1335 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow">
+    <meta name="description"
+        content="Check Demo University of Engineering & Technology semester results, batch rankings, and CGPA. Fast student result lookup portal.">
+    <meta name="keywords"
+        content="DEMO-UNIV Results, Demo University Results Portal, Demo University of Engineering & Technology Examination Results, DEMO-UNIV Semester Results, DEMO-UNIV Batch Results">
+    <meta name="author" content="Open Source Developer">
+    <meta name="theme-color" content="#6366f1">
+    <link rel="canonical" href="https://demo-university-results.vercel.app/">
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="https://demo-university-results.vercel.app/sitemap.xml">
+    <title>Demo University Results Portal | Demo University of Engineering & Technology</title>
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://demo-university-results.vercel.app/">
+    <meta property="og:title" content="Demo University Results Portal">
+    <meta property="og:description"
+        content="Demo University of Engineering & Technology semester results, batch rankings, and CGPA lookup.">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:site_name" content="Demo University Results Portal">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Demo University Results Portal">
+    <meta name="twitter:description"
+        content="Lookup Demo University of Engineering & Technology semester results, GPA, and batch rankings.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="/index.css" as="style">
+    <link rel="stylesheet" href="/index.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+    </noscript>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" media="print"
+        onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css">
+    </noscript>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://demo-university-results.vercel.app/#organization",
+          "name": "Demo University Results Portal",
+          "url": "https://demo-university-results.vercel.app/",
+          "description": "Student result lookup and batch ranking portal for Demo University of Engineering & Technology (DEMO-UNIV) programmes.",
+          "areaServed": "US",
+          "knowsAbout": ["Demo University of Engineering & Technology", "DEMO-UNIV Results", "DEMO-UNIV Semester Results"]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://demo-university-results.vercel.app/#website",
+          "name": "Demo University Results Portal",
+          "url": "https://demo-university-results.vercel.app/",
+          "description": "DEMO-UNIV Semester Results, GPAs, and batch rankings for Demo University of Engineering & Technology students.",
+          "inLanguage": "en",
+          "publisher": { "@id": "https://demo-university-results.vercel.app/#organization" },
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://demo-university-results.vercel.app/?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://demo-university-results.vercel.app/#breadcrumb",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://demo-university-results.vercel.app/" },
+            { "@type": "ListItem", "position": 2, "name": "DEMO-UNIV Results Lookup", "item": "https://demo-university-results.vercel.app/#lookup" }
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://demo-university-results.vercel.app/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "How can I use this DEMO-UNIV Result Checker online?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Simply select your batch, input your official roll number, and click Lookup Record. Your term GPA breakdown, overall CGPA, and batch standing will display instantly."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Are these official Demo University of Engineering & Technology results?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "This is an independent informational student utility. All academic performance data is securely parsed and compiled from officially published Demo University of Engineering & Technology (DEMO-UNIV) Examination Department result announcements."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can I view the entire batch result lists?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes! By clicking View Batch Rankings, you can access the full interactive academic matrix for your batch, search for peers, and sort rankings by CGPA or specific semesters."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Are supplementary and improvement exams included?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Data reflects standard semester examination announcements. Supplementary, reassessment, or improvement results might experience slight delays or omissions on this interface."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="header-container">
+            <a href="/" class="header-logo">
+                <div class="logo-circle"><i class="ri-search-eye-line"></i></div>
+                <span>MUET Results Portal</span>
+            </a>
+            <nav class="header-nav">
+                <a href="/departments" id="navDeptsLink">Departments</a>
+                <a href="#rankings" id="navRankingsLink">Rankings</a>
+                <a href="/gpa-calculator" id="navGpaLink">GPA Calculator</a>
+                <a href="/academic-calendar" id="navCalendarLink">Academic Calendar</a>
+                <a href="/about" id="navAboutLink">About</a>
+                <a href="/faq" id="navFaqLink">FAQs</a>
+                <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Toggle dark mode"><i class="ri-moon-line"></i></button>
+            </nav>
+            <button class="hamburger-btn" id="hamburgerBtn" aria-label="Toggle mobile menu"><i class="ri-menu-line"></i></button>
+        </div>
+        <div class="mobile-nav-menu" id="mobileNavMenu">
+            <a href="/departments" id="mobDeptsLink">Departments</a>
+            <a href="#rankings" id="mobRankingsLink">Rankings</a>
+            <a href="/gpa-calculator" id="mobGpaLink">GPA Calculator</a>
+            <a href="/academic-calendar" id="mobCalendarLink">Academic Calendar</a>
+            <a href="/about" id="mobAboutLink">About</a>
+            <a href="/faq" id="mobFaqLink">FAQs</a>
+        </div>
+    </header>
+
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <noscript>
+        <p class="noscript-notice">MUET Results Portal: enable JavaScript to lookup Mehran University semester results, CGPA, and batch rankings.</p>
+    </noscript>
+    <div class="container" id="main-content">
+        <!-- Search Screen -->
+        <main id="searchView" class="view active" aria-label="MUET result lookup">
+            <div class="hero">
+                <div class="logo-icon" aria-hidden="true" style="margin-top: 16px;"><i class="ri-search-eye-line"></i></div>
+                <h1 style="font-size: 36px;">MUET Results Portal</h1>
+                <p style="font-size: 16px; max-width: 480px; color: var(--text-secondary);">Check Mehran University of Engineering &amp; Technology Results Online</p>
+            </div>
+
+            <div class="main-grid">
+                <!-- Search Card -->
+                <div class="search-box">
+                    <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 20px; color: var(--text-primary);">Search by Roll Number</h3>
+                    <div class="dept-select-wrapper">
+                        <label class="batch-label">Department</label>
+                        <div class="select-wrapper">
+                            <i class="ri-bank-line"></i>
+                            <button type="button" class="mobile-dept-btn" id="mobileDeptBtn">
+                                <span id="currentDeptLabel">Computer Science</span>
+                                <i class="ri-arrow-down-s-line"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="batch-select-wrapper">
+                        <label for="batchSelect" class="batch-label">Batch</label>
+                        <div class="select-wrapper">
+                            <i class="ri-group-line"></i>
+                            <select id="batchSelect">
+                                <option value="23CS">23CS</option>
+                                <option value="23BSCS">23BSCS</option>
+                                <option value="24CS">24CS</option>
+                                <option value="24BSCS">24BSCS</option>
+                                <option value="25CS">25CS</option>
+                                <option value="25BSCS">25BSCS</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="input-wrapper">
+                        <i class="ri-id-card-line"></i>
+                        <input type="text" id="rollInput" placeholder="Enter your roll number" autocomplete="off" spellcheck="false" style="padding-right: 48px;">
+                        <i class="ri-search-line" style="left: auto; right: 18px; color: #9ca3af; font-size: 20px;"></i>
+                    </div>
+                    <button id="searchBtn" class="primary-btn">Lookup Result</button>
+                    <button type="button" id="openRankingsBtn" class="secondary-btn">
+                        <i class="ri-trophy-line"></i> View Overall Rankings
+                    </button>
+                    <div id="errorMsg" class="error-msg hidden">Roll number not found. Please try again.</div>
+                    
+                    <!-- Internal Linking Context Box -->
+                    <div class="search-links-box" style="margin-top: 24px; padding-top: 16px; border-top: 1px solid var(--border-light); font-size: 13px; display: flex; flex-direction: column; gap: 8px;">
+                        <a href="/departments" style="color: var(--accent); text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 4px;"><i class="ri-bank-line"></i> Browse Academic Departments</a>
+                        <a href="/gpa-calculator" style="color: var(--accent); text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 4px;"><i class="ri-calculator-line"></i> Semester GPA Calculator</a>
+                    </div>
+                </div>
+
+                <!-- Features Card -->
+                <div class="features-card">
+                    <div class="feature-item">
+                        <div class="feature-icon-circle rocket">
+                            <i class="ri-rocket-line"></i>
+                        </div>
+                        <div class="feature-text-block">
+                            <h3>Fast &amp; Accurate</h3>
+                            <p>Get your results quickly and accurately with our optimized search.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon-circle shield">
+                            <i class="ri-shield-check-line"></i>
+                        </div>
+                        <div class="feature-text-block">
+                            <h3>Official &amp; Reliable</h3>
+                            <p>All results are verified and sourced from official MUET records.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon-circle chart">
+                            <i class="ri-bar-chart-fill"></i>
+                        </div>
+                        <div class="feature-text-block">
+                            <h3>Performance Insights</h3>
+                            <p>Explore rankings, charts, and detailed performance analytics.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!-- Contribute Banner -->
+            <div class="contribute-banner">
+                <div class="contribute-left">
+                    <i class="ri-upload-cloud-2-line contribute-icon"></i>
+                    <div class="contribute-text">
+                        <h2>Help us expand the MUET Results Portal.</h2>
+                        <p>Upload your official result screenshots to help us add your department and support more students.</p>
+                    </div>
+                </div>
+                <a href="https://forms.gle/4dEcAdZpir7xVH6c8" target="_blank" rel="noopener noreferrer" class="contribute-btn" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center;">Contribute Now</a>
+            </div>
+
+            <!-- Why Students Trust Us -->
+            <div class="trust-section" id="about">
+                <div class="trust-item">
+                    <i class="ri-search-eye-line"></i>
+                    <h3>Easy Search</h3>
+                    <p>Simply enter your roll number to find your results instantly.</p>
+                </div>
+                <div class="trust-item">
+                    <i class="ri-bar-chart-box-line"></i>
+                    <h3>Detailed Analytics</h3>
+                    <p>View performance trends.</p>
+                </div>
+                <div class="trust-item">
+                    <i class="ri-trophy-line"></i>
+                    <h3>Rankings</h3>
+                    <p>Check your position among peers.</p>
+                </div>
+                <div class="trust-item">
+                    <i class="ri-shield-keyhole-line"></i>
+                    <h3>Secure &amp; Private</h3>
+                    <p>Your data is secure and private.</p>
+                </div>
+            </div>
+
+
+            <div class="disclaimer-premium" role="note" style="margin-top: 32px;">
+                <div class="disclaimer-premium-badge">
+                    <div class="disclaimer-premium-circle">
+                        <i class="ri-error-warning-fill"></i>
+                    </div>
+                </div>
+                <div class="disclaimer-premium-content">
+                    <h2 class="disclaimer-premium-title">Important Disclaimer</h2>
+                    <p class="disclaimer-premium-text">
+                        MUET Results Portal is an <strong>independent student-run informational utility</strong> and is not officially affiliated with or endorsed by Mehran University of Engineering and Technology (MUET).
+                    </p>
+                    <p class="disclaimer-premium-text">
+                        All academic results, GPA data, and ranks displayed here are parsed from public result notices published by the official <a href="https://www.facebook.com/muetexam" target="_blank" rel="noopener noreferrer" class="disclaimer-premium-link">Mehran University Examination Department</a>. The primary authoritative source for all university notifications is the official MUET portal at <a href="https://www.muet.edu.pk" target="_blank" rel="noopener noreferrer" class="disclaimer-premium-link">muet.edu.pk</a>.
+                    </p>
+                    <p class="disclaimer-premium-text">
+                        Students who appeared in Supplementary, Re-assessment, or Improvement examinations may experience delayed or omitted results. Always verify your official transcripts with the university examination branch before taking key academic decisions.
+                    </p>
+                </div>
+                <div class="disclaimer-premium-illustration" aria-hidden="true">
+                    <svg viewBox="0 0 100 100" class="disclaimer-svg">
+                        <!-- Document outline -->
+                        <path d="M25 15H55L75 35V85H25V15Z" stroke="currentColor" stroke-width="2.5" fill="none"/>
+                        <path d="M55 15V35H75" stroke="currentColor" stroke-width="2.5" fill="none"/>
+                        <!-- Document lines -->
+                        <line x1="37" y1="48" x2="63" y2="48" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                        <line x1="37" y1="58" x2="52" y2="58" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                        <!-- Shield containing checkmark -->
+                        <path d="M52 65C52 65 65 60 78 65V78C78 86 65 92 65 92C65 92 52 86 52 78V65Z" stroke="currentColor" stroke-width="2.5" fill="#0e1320" />
+                        <path d="M60 76L64 80L71 72" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                    </svg>
+                </div>
+            </div>
+        </main>
+
+        <!-- Batch Rankings Screen -->
+        <main id="rankingView" class="view hidden wide-view" aria-label="MUET batch rankings leaderboard">
+            <button id="rankingBackBtn" class="icon-btn"><i class="ri-arrow-left-line"></i> Back to search</button>
+
+            <div class="ranking-header">
+                <h2 class="ranking-title"><i class="ri-bar-chart-grouped-line" aria-hidden="true"></i> Batch Rankings</h2>
+                <p class="ranking-subtitle">Full leaderboard and academic matrix for your batch.</p>
+                <div class="ranking-links-row" style="margin-top: 12px; display: flex; flex-wrap: wrap; gap: 16px; font-size: 13px;">
+                    <a href="/departments" id="rankingDeptHubLink" style="color: var(--accent); text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 4px;"><i class="ri-bank-line"></i> Academic Departments</a>
+                    <a href="#" id="rankingDeptLink" style="color: var(--accent); text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 4px;"><i class="ri-search-eye-line"></i> Department Search</a>
+                    <a href="/gpa-calculator" style="color: var(--accent); text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 4px;"><i class="ri-calculator-line"></i> GPA Calculator</a>
+                </div>
+            </div>
+
+            <div class="ranking-controls">
+                <div class="ranking-controls-row">
+                    <div class="batch-select-wrapper">
+                        <label for="rankBatchSelect" class="batch-label">Batch</label>
+                        <div class="select-wrapper">
+                            <i class="ri-group-line"></i>
+                            <select id="rankBatchSelect">
+                                <option value="23CS">23CS</option>
+                                <option value="23BSCS">23BSCS</option>
+                                <option value="24CS">24CS</option>
+                                <option value="24BSCS">24BSCS</option>
+                                <option value="25CS">25CS</option>
+                                <option value="25BSCS">25BSCS</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="batch-select-wrapper">
+                        <label for="rankBySelect" class="batch-label">Rank By</label>
+                        <div class="select-wrapper">
+                            <i class="ri-sort-desc"></i>
+                            <select id="rankBySelect">
+                                <option value="cgpa">Overall CGPA</option>
+                                <!-- Dynamically populated -->
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="input-wrapper matrix-search">
+                    <i class="ri-search-line"></i>
+                    <input type="text" id="matrixSearchInput" placeholder="Find roll number in list..."
+                        autocomplete="off" spellcheck="false">
+                </div>
+            </div>
+
+            <div id="analyticsPanel" class="analytics-panel"></div>
+
+            <div class="matrix-card">
+                <div class="matrix-card-header">
+                    <h3>Academic Matrix</h3>
+                    <span id="matrixCount" class="matrix-count"></span>
+                </div>
+                <div class="matrix-scroll">
+                    <table class="matrix-table" id="matrixTable">
+                        <thead id="matrixHead"></thead>
+                        <tbody id="matrixBody"></tbody>
+                    </table>
+                </div>
+            </div>
+
+        </main>
+
+        <!-- Result Screen -->
+        <main id="resultView" class="view hidden" aria-label="Individual MUET student result">
+            <button id="backBtn" class="icon-btn"><i class="ri-arrow-left-line"></i> Back to search</button>
+
+            <div class="student-card">
+                <div class="card-header">
+                    <div class="profile-info">
+                        <div class="avatar" id="resAvatar">CS</div>
+                        <div>
+                            <h2 id="resId">24CS001</h2>
+                            <span class="status-badge" id="resStatus">Excellent</span>
+                        </div>
+                    </div>
+                    <div class="rank-info">
+                        <span class="rank-label" id="resRankLabel">Batch Rank</span>
+                        <div class="rank-value" id="resRank">#1</div>
+                    </div>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <span class="stat-label">Net CGPA</span>
+                        <strong class="stat-value text-accent" id="resCgpa">3.94</strong>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-label">Grade Class</span>
+                        <strong class="stat-value" id="resGrade">A+</strong>
+                    </div>
+                </div>
+
+                <div class="progress-section">
+                    <div class="progress-header">
+                        <span class="stat-label">CGPA Progress</span>
+                        <span class="stat-label" id="resCgpaText">3.94 / 4.00</span>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" id="resProgressBar"></div>
+                    </div>
+                </div>
+
+                <div class="table-section">
+                    <h3>Semester Breakdown</h3>
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Semester</th>
+                                    <th>Term GPA</th>
+                                </tr>
+                            </thead>
+                            <tbody id="semTableBody">
+                                <!-- JS injected -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <button type="button" id="shareAchievementBtn" class="primary-btn share-btn">
+                <i class="ri-share-forward-line"></i> Share Achievement Card
+            </button>
+
+            <button type="button" id="viewInLeaderboardBtn" class="secondary-btn result-leaderboard-btn">
+                <i class="ri-focus-3-line"></i> View position in batch leaderboard
+            </button>
+
+        </main>
+
+        <!-- GPA Calculator Screen -->
+        <main id="gpaCalculatorView" class="view hidden wide-view" aria-label="MUET GPA Calculator">
+            <div class="breadcrumb-container" style="margin-bottom: 24px;">
+                <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+                    <ul class="breadcrumb-list">
+                        <li><a href="/">Home</a></li>
+                        <li>GPA Calculator</li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="gpa-header-grid">
+                <div>
+                    <h2 class="gpa-title">MUET GPA Calculator</h2>
+                    <p class="gpa-subtitle">Calculate your GPA based on MUET's official grading system.</p>
+                </div>
+                <div class="gpa-info-card">
+                    <div class="gpa-info-title">
+                        <i class="ri-graduation-cap-line"></i>
+                        <span>MUET Grading System</span>
+                    </div>
+                    <p class="gpa-info-text">This calculator uses the official MUET grading system for all undergraduate programs.</p>
+                    <button type="button" id="scrollToScaleBtn" class="secondary-btn gpa-info-btn">
+                        <i class="ri-table-line"></i> View Grading Scale
+                    </button>
+                </div>
+            </div>
+            <!-- Courses list -->
+            <div class="gpa-courses-card">
+                <div class="gpa-courses-header">
+                    <h3>Courses</h3>
+                    <button type="button" id="addCourseBtn" class="primary-btn gpa-add-course-btn">
+                        <i class="ri-add-line"></i> Add Course
+                    </button>
+                </div>
+                <div class="table-wrapper gpa-table-wrapper">
+                    <table class="gpa-table">
+                        <thead>
+                            <tr>
+                                <th class="gpa-col-num">#</th>
+                                <th class="gpa-col-theory-credits">Theory Credits</th>
+                                <th class="gpa-col-theory-grade">Theory Grade</th>
+                                <th class="gpa-col-practical-credits">Practical Credits</th>
+                                <th class="gpa-col-practical-grade">Practical Grade</th>
+                                <th class="gpa-col-action">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="gpaCoursesBody">
+                            <!-- Populated dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- GPA Results section -->
+            <div class="gpa-results-section">
+                <div class="gpa-results-header">
+                    <i class="ri-bar-chart-fill"></i>
+                    <h3>GPA Results</h3>
+                </div>
+                <div class="gpa-results-grid">
+                    <div class="gpa-result-box">
+                        <span class="gpa-result-label">Total Credit Hours</span>
+                        <strong id="gpaTotalCredits" class="gpa-result-val-credits">0</strong>
+                    </div>
+                    <div class="gpa-result-box">
+                        <span class="gpa-result-label">Total Grade Points</span>
+                        <strong id="gpaTotalPoints" class="gpa-result-val-points">0.00</strong>
+                    </div>
+                    <div class="gpa-result-box">
+                        <span class="gpa-result-label">Calculated GPA</span>
+                        <strong id="gpaSemesterGpa" class="gpa-result-val-gpa">0.00</strong>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scale & Notes -->
+            <div id="gpaScaleSection" class="gpa-scale-grid">
+                <div class="gpa-card">
+                    <div class="gpa-card-header">
+                        <i class="ri-scales-3-line"></i>
+                        <h3>MUET Grading Scale</h3>
+                    </div>
+                    <div class="table-wrapper">
+                        <table class="gpa-scale-table">
+                            <thead>
+                                <tr>
+                                    <th>Grade</th>
+                                    <th>Grade Point</th>
+                                    <th>Marks %</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td class="gpa-scale-grade">A+</td><td class="gpa-scale-point">4.0</td><td class="gpa-scale-marks">≥ 90%</td></tr>
+                                <tr><td class="gpa-scale-grade">A</td><td class="gpa-scale-point">3.5</td><td class="gpa-scale-marks">81% – 89%</td></tr>
+                                <tr><td class="gpa-scale-grade">B+</td><td class="gpa-scale-point">3.0</td><td class="gpa-scale-marks">73% – 80%</td></tr>
+                                <tr><td class="gpa-scale-grade">B</td><td class="gpa-scale-point">2.5</td><td class="gpa-scale-marks">65% – 72%</td></tr>
+                                <tr><td class="gpa-scale-grade">C+</td><td class="gpa-scale-point">2.0</td><td class="gpa-scale-marks">60% – 64%</td></tr>
+                                <tr><td class="gpa-scale-grade">C</td><td class="gpa-scale-point">1.5</td><td class="gpa-scale-marks">55% – 59%</td></tr>
+                                <tr><td class="gpa-scale-grade">C-</td><td class="gpa-scale-point">1.0</td><td class="gpa-scale-marks">50% – 54%</td></tr>
+                                <tr><td class="gpa-scale-grade">F</td><td class="gpa-scale-point">0.0</td><td class="gpa-scale-marks">&lt; 50%</td></tr>
+                                <tr><td class="gpa-scale-grade">W / I</td><td class="gpa-scale-point">—</td><td class="gpa-scale-marks">Excluded</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="gpa-card">
+                    <div class="gpa-card-header">
+                        <i class="ri-information-line"></i>
+                        <h3>Important Notes</h3>
+                    </div>
+                    <ul class="gpa-notes-list">
+                        <li>This calculator follows the official MUET grading system.</li>
+                        <li>Enter the course credit hours and select the grade you have obtained.</li>
+                        <li>GPA is calculated as total grade points divided by total credit hours.</li>
+                        <li>W (Withdrawal) and I (Incomplete) grades are excluded from calculations.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- On-Page SEO: FAQ, Guide & Glossary -->
+            <div class="gpa-card" style="margin-top: 24px;">
+                <div class="gpa-card-header">
+                    <i class="ri-article-line"></i>
+                    <h3>How to Calculate GPA at Mehran University (MUET)</h3>
+                </div>
+                <div class="gpa-notes-list" style="margin-top: 16px; line-height: 1.6; color: var(--text-primary);">
+                    <p style="margin-bottom: 12px; max-width: 100%;">Calculating your Grade Point Average (GPA) for a semester at Mehran University of Engineering and Technology (MUET) is simple. Follow these steps:</p>
+                    
+                    <h4 style="font-size: 14px; font-weight: 700; margin-top: 16px; margin-bottom: 8px;">Step-by-Step GPA Calculation:</h4>
+                    <ol style="padding-left: 20px; margin-bottom: 16px; display: flex; flex-direction: column; gap: 8px;">
+                        <li><strong>Find Grade Points:</strong> Check the official MUET grading scale to match your grade to points (e.g. A+ = 4.0, A = 3.5, B+ = 3.0, etc.).</li>
+                        <li><strong>Calculate Quality Points:</strong> For each course, multiply the course credit hours by the grade points earned. For example, if you got an A (3.5 points) in a 3-credit course, the quality points are: <code>3 × 3.5 = 10.5</code>.</li>
+                        <li><strong>Sum Up:</strong> Add all the quality points of the courses together, and add all the credit hours together.</li>
+                        <li><strong>Divide:</strong> Divide the total quality points by the total credit hours. (e.g. <code>Total Quality Points / Total Credit Hours = Semester GPA</code>).</li>
+                    </ol>
+
+                    <div style="background: var(--control-muted-bg); padding: 16px; border-radius: var(--radius-md); border: 1px solid var(--border-light); margin-bottom: 24px; font-size: 14px;">
+                        <strong>Calculation Example:</strong><br>
+                        • Course 1 (Theory 3 credits, Grade A) → 3 × 3.5 = 10.5 quality points<br>
+                        • Course 2 (Theory 3 credits, Grade B+) → 3 × 3.0 = 9.0 quality points<br>
+                        • Course 3 (Theory 2 credits, Grade A+) → 2 × 4.0 = 8.0 quality points<br>
+                        • Total Credit Hours = 8<br>
+                        • Total Quality Points = 10.5 + 9.0 + 8.0 = 27.5<br>
+                        • <strong>GPA = 27.5 / 8 = 3.44</strong>
+                    </div>
+
+                    <h4 style="font-size: 15px; font-weight: 700; border-bottom: 1px solid var(--border-light); padding-bottom: 8px; margin-top: 24px; margin-bottom: 12px; color: var(--text-primary);">Frequently Asked Questions (FAQs)</h4>
+                    <div style="display: flex; flex-direction: column; gap: 16px; margin-bottom: 24px;">
+                        <div>
+                            <strong style="display: block; margin-bottom: 4px; color: var(--text-primary);">Q: What is a passing GPA at MUET?</strong>
+                            <span style="color: var(--text-secondary); font-size: 14px;">A: To pass a subject at MUET, a student must obtain at least a C- grade (50% marks, equivalent to 1.0 grade point). An overall GPA of 2.0 or above is generally required to maintain good academic standing.</span>
+                        </div>
+                        <div>
+                            <strong style="display: block; margin-bottom: 4px; color: var(--text-primary);">Q: Are withdrawal (W) and incomplete (I) grades calculated?</strong>
+                            <span style="color: var(--text-secondary); font-size: 14px;">A: No. Any course marked with W (Withdrawal) or I (Incomplete) does not contribute credit hours or grade points to the GPA calculation.</span>
+                        </div>
+                        <div>
+                            <strong style="display: block; margin-bottom: 4px; color: var(--text-primary);">Q: What is the difference between GPA and CGPA?</strong>
+                            <span style="color: var(--text-secondary); font-size: 14px;">A: GPA (Grade Point Average) is calculated for a single semester, whereas CGPA (Cumulative Grade Point Average) is the cumulative average of all semesters completed so far.</span>
+                        </div>
+                    </div>
+
+                    <h4 style="font-size: 15px; font-weight: 700; border-bottom: 1px solid var(--border-light); padding-bottom: 8px; margin-top: 24px; margin-bottom: 12px; color: var(--text-primary);">Glossary of Terms</h4>
+                    <dl style="display: flex; flex-direction: column; gap: 12px;">
+                        <dt><strong>Credit Hour (Cr. Hr.)</strong></dt>
+                        <dd style="color: var(--text-secondary); font-size: 14px; margin-left: 0; margin-bottom: 4px;">A unit of measure representing the academic weight of a course. Typically, theory lectures are 2-3 credit hours, and labs are 1 credit hour.</dd>
+                        
+                        <dt><strong>Grade Point (GP)</strong></dt>
+                        <dd style="color: var(--text-secondary); font-size: 14px; margin-left: 0; margin-bottom: 4px;">The numerical value assigned to an alphabetical grade (e.g. A = 3.5, B = 2.5, F = 0.0).</dd>
+                        
+                        <dt><strong>Quality Points (QP)</strong></dt>
+                        <dd style="color: var(--text-secondary); font-size: 14px; margin-left: 0; margin-bottom: 4px;">The product of credit hours and grade points for a specific course (Credit Hours × Grade Points).</dd>
+                    </dl>
+                </div>
+            </div>
+        </main>
+
+        <!-- Departments Screen -->
+        <main id="departmentsView" class="view hidden wide-view" aria-label="Academic Departments at Mehran University">
+            <button id="departmentsBackBtn" class="icon-btn"><i class="ri-arrow-left-line"></i> Back to search</button>
+            <div class="breadcrumb-container" style="margin-bottom: 24px;">
+                <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+                    <ul class="breadcrumb-list">
+                        <li><a href="/">Home</a></li>
+                        <li>Departments</li>
+                    </ul>
+                </nav>
+            </div>
+            
+            <div class="gpa-header-grid" style="margin-bottom: 32px;">
+                <div>
+                    <h2 class="gpa-title">MUET Academic Departments</h2>
+                    <p class="gpa-subtitle">Explore semester results, batch leaderboards, and academic performance data across the engineering and technology programs at MUET.</p>
+                </div>
+            </div>
+
+            <div class="gpa-card">
+                <div class="gpa-card-header">
+                    <i class="ri-bank-line"></i>
+                    <h3>Active Departments</h3>
+                </div>
+                <div class="gpa-notes-list" style="margin-top: 16px;">
+                    <p style="color: var(--text-secondary); margin-bottom: 20px;">The following departments have active result databases in the portal:</p>
+                    <ul id="departmentsActiveList" style="list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px;">
+                        <!-- JS populated -->
+                    </ul>
+                </div>
+            </div>
+
+            <div class="gpa-card" style="margin-top: 24px;">
+                <div class="gpa-card-header">
+                    <i class="ri-time-line"></i>
+                    <h3>Other Departments (Coming Soon)</h3>
+                </div>
+                <div class="gpa-notes-list" style="margin-top: 16px;">
+                    <p style="color: var(--text-secondary); margin-bottom: 20px;">Results for these engineering and science programs are currently being parsed and will be added soon:</p>
+                    <ul id="departmentsInactiveList" style="list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px;">
+                        <!-- JS populated -->
+                    </ul>
+                </div>
+            </div>
+
+            <!-- On-Page SEO: FAQ, Guide & Glossary -->
+            <div class="gpa-card" style="margin-top: 24px;">
+                <div class="gpa-card-header">
+                    <i class="ri-article-line"></i>
+                    <h3>MUET Academic Departments & Grading Scale Overview</h3>
+                </div>
+                <div class="gpa-notes-list" style="margin-top: 16px; line-height: 1.6; color: var(--text-primary);">
+                    <p style="margin-bottom: 12px; max-width: 100%;">Mehran University of Engineering and Technology (MUET) Jamshoro houses numerous engineering, science, and management departments. The university follows a unified semester system, where results are announced batch-wise for each department.</p>
+
+                    <h4 style="font-size: 15px; font-weight: 700; border-bottom: 1px solid var(--border-light); padding-bottom: 8px; margin-top: 24px; margin-bottom: 12px; color: var(--text-primary);">Frequently Asked Questions (FAQs)</h4>
+                    <div style="display: flex; flex-direction: column; gap: 16px; margin-bottom: 24px;">
+                        <div>
+                            <strong style="display: block; margin-bottom: 4px; color: var(--text-primary);">Q: Which departments are currently active on the results portal?</strong>
+                            <span style="color: var(--text-secondary); font-size: 14px;">A: Currently, departments like Computer Science (CS), Computer Systems Engineering (CSE), Architecture (AR), and Software Engineering (SW) have active batch result databases. More departments are being compiled and added continuously.</span>
+                        </div>
+                        <div>
+                            <strong style="display: block; margin-bottom: 4px; color: var(--text-primary);">Q: How are batch rankings determined?</strong>
+                            <span style="color: var(--text-secondary); font-size: 14px;">A: Batch rankings are calculated using a dense ranking algorithm based on cumulative CGPA. If two students obtain the same CGPA (e.g. 4.00), they share the same rank (#1), and the next student with the lower CGPA (e.g. 3.95) receives the next consecutive rank (#2).</span>
+                        </div>
+                        <div>
+                            <strong style="display: block; margin-bottom: 4px; color: var(--text-primary);">Q: How can I request to add my department to the portal?</strong>
+                            <span style="color: var(--text-secondary); font-size: 14px;">A: You can contribute by clicking the "Contribute Now" button on the homepage and uploading your official batch results screenshots. Once compiled and verified, the department will become active.</span>
+                        </div>
+                    </div>
+
+                    <h4 style="font-size: 15px; font-weight: 700; border-bottom: 1px solid var(--border-light); padding-bottom: 8px; margin-top: 24px; margin-bottom: 12px; color: var(--text-primary);">Glossary of Academic Mappings</h4>
+                    <dl style="display: flex; flex-direction: column; gap: 12px;">
+                        <dt><strong>Batch Code Prefix (e.g., 23CS)</strong></dt>
+                        <dd style="color: var(--text-secondary); font-size: 14px; margin-left: 0; margin-bottom: 4px;">A combination of enrollment year (e.g., '23' for 2023 batch) and the department acronym (e.g., 'CS' for Computer Systems Engineering, or 'BSCS' for Computer Science).</dd>
+                        
+                        <dt><strong>Leaderboard (Academic Matrix)</strong></dt>
+                        <dd style="color: var(--text-secondary); font-size: 14px; margin-left: 0; margin-bottom: 4px;">An interactive grid mapping all students of a specific batch, listing their term GPAs, final CGPAs, grades, and dense rankings.</dd>
+                    </dl>
+                </div>
+            </div>
+        </main>
+
+        <!-- Privacy Policy Screen -->
+        <main id="privacyPolicyView" class="view hidden" aria-label="Privacy Policy">
+            <button id="privacyPolicyBackBtn" class="icon-btn"><i class="ri-arrow-left-line"></i> Back to search</button>
+            <div class="about-card" style="margin-top: 16px;">
+                <div style="text-align: center; margin-bottom: 28px;">
+                    <div class="logo-icon" aria-hidden="true" style="margin-top: 16px; margin-bottom: 16px;"><i class="ri-shield-user-line"></i></div>
+                    <h2 style="font-size: 26px; font-weight: 800; margin-bottom: 8px;">Privacy Policy</h2>
+                    <p style="font-size: 14px; max-width: 100%; color: var(--text-secondary);">How we handle academic data and user privacy</p>
+                </div>
+                
+                <div class="about-content" style="display: flex; flex-direction: column; gap: 20px; line-height: 1.6; font-size: 15px; color: var(--text-primary);">
+                    <p style="max-width: 100%; margin: 0;">
+                        At the <strong>MUET Results Portal</strong>, we prioritize student privacy and transparency. This Privacy Policy details our data collection, parsing practices, and search mechanics.
+                    </p>
+                    
+                    <h3 style="font-size: 16px; font-weight: 700; border-bottom: 1px solid var(--border-light); padding-bottom: 8px; margin-top: 12px; color: var(--text-primary);">Data Sourcing & Storage</h3>
+                    <p style="max-width: 100%; margin: 0;">
+                        All student academic records (GPA, CGPA, ranks, grades) displayed on this portal are parsed directly from public result announcements issued by the <strong>Mehran University Examination Department</strong>.
+                    </p>
+                    <ul style="padding-left: 20px; display: flex; flex-direction: column; gap: 8px; list-style-type: disc;">
+                        <li><strong>No Personal Databases:</strong> We do not collect, maintain, or store private personal student records or contact details. We only process public exam notifications.</li>
+                        <li><strong>Pure Static Parsing:</strong> Academic data is compiled statically into local files. Lookups are processed entirely client-side without storing queries or searches on a database.</li>
+                    </ul>
+
+                    <h3 style="font-size: 16px; font-weight: 700; border-bottom: 1px solid var(--border-light); padding-bottom: 8px; margin-top: 12px; color: var(--text-primary);">No Cookies & Tracking</h3>
+                    <p style="max-width: 100%; margin: 0;">
+                        We believe in tracking-free privacy. The MUET Results Portal:
+                    </p>
+                    <ul style="padding-left: 20px; display: flex; flex-direction: column; gap: 8px; list-style-type: disc;">
+                        <li>Does not store cookies on your web browser.</li>
+                        <li>Does not use tracking scripts or commercial advertisements.</li>
+                        <li>Does not collect user IP addresses or search histories.</li>
+                    </ul>
+
+                    <h3 style="font-size: 16px; font-weight: 700; border-bottom: 1px solid var(--border-light); padding-bottom: 8px; margin-top: 12px; color: var(--text-primary);">Official Disclaimers</h3>
+                    <p style="max-width: 100%; margin: 0;">
+                        This platform is a student-built informational utility. It is not affiliated with or endorsed by Mehran University of Engineering and Technology (MUET). For official results and notifications, please refer directly to the official <a href="https://www.facebook.com/muetexam" target="_blank" rel="noopener noreferrer" style="color: var(--accent); text-decoration: none; font-weight: 600;">Mehran University Examination Department</a> announcements. The primary authoritative source for all university notifications remains the official MUET portal at <a href="https://www.muet.edu.pk" target="_blank" rel="noopener noreferrer" style="color: var(--accent); text-decoration: none; font-weight: 600;">muet.edu.pk</a>.
+                    </p>
+                </div>
+            </div>
+        </main>
+
+        <!-- Academic Calendar Screen -->
+        <main id="academicCalendarView" class="view hidden wide-view" aria-label="MUET Academic Calendar 2026-27">
+            <button id="calendarBackBtn" class="icon-btn"><i class="ri-arrow-left-line"></i> Back to search</button>
+            <div class="breadcrumb-container" style="margin-bottom: 24px;">
+                <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+                    <ul class="breadcrumb-list">
+                        <li><a href="/">Home</a></li>
+                        <li>Academic Calendar 2026–27</li>
+                    </ul>
+                </nav>
+            </div>
+            
+            <div class="gpa-header-grid" style="margin-bottom: 28px;">
+                <div>
+                    <h2 class="gpa-title">MUET Academic Calendar 2026–27</h2>
+                    <p class="gpa-subtitle">Official academic schedule for Bachelor's Degree Programs at Mehran University of Engineering and Technology (MUET), Jamshoro. Plan your semesters, examinations, breaks, and important academic activities.</p>
+                </div>
+            </div>
+
+            <!-- Chips Navigation -->
+            <div class="calendar-chips-container" style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 32px;">
+                <button class="calendar-chip active" data-target="calendar-overview"><i class="ri-dashboard-line"></i> Overview</button>
+                <button class="calendar-chip" data-target="calendar-fall"><i class="ri-calendar-event-line"></i> Fall 2026</button>
+                <button class="calendar-chip" data-target="calendar-spring"><i class="ri-calendar-2-line"></i> Spring 2027</button>
+                <button class="calendar-chip" data-target="calendar-dates"><i class="ri-time-line"></i> Important Dates</button>
+                <button class="calendar-chip" data-target="calendar-vacations"><i class="ri-plane-line"></i> Vacations</button>
+                <button class="calendar-chip" data-target="calendar-faqs"><i class="ri-question-line"></i> FAQs</button>
+            </div>
+
+            <div class="calendar-grid">
+                <!-- Left: Official Calendar Image -->
+                <div class="gpa-card" id="calendar-overview" style="margin: 0;">
+                    <div class="gpa-card-header" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <i class="ri-image-line" style="color: var(--accent);"></i>
+                            <h3 style="margin: 0;">Official Academic Calendar (Source: MUET)</h3>
+                        </div>
+                    </div>
+                    <div style="padding: 16px; text-align: center; background: #ffffff; border-radius: var(--radius-md); margin-top: 16px; border: 1px solid var(--border-light);">
+                        <img src="/Academic Calendar 2026-27.jpeg" alt="Official MUET Academic Calendar 2026-27 for Bachelor Degree Programs" style="max-width: 100%; height: auto; border-radius: var(--radius-sm); border: 1px solid var(--border-light);" />
+                    </div>
+                    <p style="font-size: 13px; color: var(--text-secondary); margin-top: 12px; line-height: 1.5; font-style: italic;">
+                        This is the official academic calendar published by MUET. Please refer to official university announcements for future updates or revisions.
+                    </p>
+                </div>
+
+                <!-- Right: Important Dates Sidebar -->
+                <div class="gpa-card" id="calendar-dates" style="margin: 0; display: flex; flex-direction: column; gap: 20px;">
+                    <div class="gpa-card-header">
+                        <i class="ri-time-line" style="color: var(--accent);"></i>
+                        <h3 style="margin: 0;">Important Dates At a Glance</h3>
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 16px; margin-top: 8px;">
+                        <div class="date-glance-item" style="display: flex; align-items: flex-start; gap: 12px;">
+                            <div class="date-glance-icon" style="background: rgba(99, 102, 241, 0.1); color: var(--accent); width: 36px; height: 36px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><i class="ri-play-circle-line"></i></div>
+                            <div>
+                                <strong style="font-size: 13.5px; display: block; color: var(--text-primary);">Classes Start (Fall 2026)</strong>
+                                <span style="font-size: 12.5px; color: var(--text-secondary);">20 July 2026</span>
+                            </div>
+                        </div>
+                        <div class="date-glance-item" style="display: flex; align-items: flex-start; gap: 12px;">
+                            <div class="date-glance-icon" style="background: rgba(16, 185, 129, 0.1); color: var(--success); width: 36px; height: 36px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><i class="ri-edit-box-line"></i></div>
+                            <div>
+                                <strong style="font-size: 13.5px; display: block; color: var(--text-primary);">Mid Semester Exam (Fall 2026)</strong>
+                                <span style="font-size: 12.5px; color: var(--text-secondary);">14 September 2026</span>
+                            </div>
+                        </div>
+                        <div class="date-glance-item" style="display: flex; align-items: flex-start; gap: 12px;">
+                            <div class="date-glance-icon" style="background: rgba(245, 158, 11, 0.1); color: #f59e0b; width: 36px; height: 36px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><i class="ri-calendar-close-line"></i></div>
+                            <div>
+                                <strong style="font-size: 13.5px; display: block; color: var(--text-primary);">Classes Suspended (Fall 2026)</strong>
+                                <span style="font-size: 12.5px; color: var(--text-secondary);">11 November 2026</span>
+                            </div>
+                        </div>
+                        <div class="date-glance-item" style="display: flex; align-items: flex-start; gap: 12px;">
+                            <div class="date-glance-icon" style="background: rgba(59, 130, 246, 0.1); color: #3b82f6; width: 36px; height: 36px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><i class="ri-checkbox-circle-line"></i></div>
+                            <div>
+                                <strong style="font-size: 13.5px; display: block; color: var(--text-primary);">Final Semester Exam (Fall 2026)</strong>
+                                <span style="font-size: 12.5px; color: var(--text-secondary);">16 November 2026</span>
+                            </div>
+                        </div>
+                        <div class="date-glance-item" style="display: flex; align-items: flex-start; gap: 12px;">
+                            <div class="date-glance-icon" style="background: rgba(139, 92, 246, 0.1); color: #8b5cf6; width: 36px; height: 36px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><i class="ri-hotel-bed-line"></i></div>
+                            <div>
+                                <strong style="font-size: 13.5px; display: block; color: var(--text-primary);">Semester Break Starts (Fall 2026)</strong>
+                                <span style="font-size: 12.5px; color: var(--text-secondary);">5 December 2026</span>
+                            </div>
+                        </div>
+                        <div class="date-glance-item" style="display: flex; align-items: flex-start; gap: 12px;">
+                            <div class="date-glance-icon" style="background: rgba(16, 185, 129, 0.1); color: var(--success); width: 36px; height: 36px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><i class="ri-notification-line"></i></div>
+                            <div>
+                                <strong style="font-size: 13.5px; display: block; color: var(--text-primary);">Result Announcement (Fall 2026)</strong>
+                                <span style="font-size: 12.5px; color: var(--text-secondary);">8 December 2026 (Provisional)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- HTML Versions: Tables/Cards for Semesters -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; margin-top: 24px;">
+                <!-- Fall 2026 Semester Schedule -->
+                <div class="gpa-card" id="calendar-fall" style="margin: 0;">
+                    <div class="gpa-card-header">
+                        <i class="ri-calendar-event-line" style="color: var(--accent);"></i>
+                        <h3>Fall 2026 Semester Schedule</h3>
+                    </div>
+                    <div class="gpa-notes-list" style="margin-top: 16px; overflow-x: auto;">
+                        <table class="gpa-scale-table" style="width: 100%; border-collapse: collapse; text-align: left;">
+                            <thead>
+                                <tr style="border-bottom: 2px solid var(--border-light); font-weight: 700; font-size: 13.5px; color: var(--text-primary);">
+                                    <th style="padding: 10px 0;">Academic Event</th>
+                                    <th style="padding: 10px 0; text-align: right;">Date / Timeline</th>
+                                </tr>
+                            </thead>
+                            <tbody style="font-size: 13.5px; color: var(--text-secondary);">
+                                <tr style="border-bottom: 1px solid var(--border-light);"><td style="padding: 12px 0; font-weight: 500; color: var(--text-primary);">Date of Start of Classes</td><td style="padding: 12px 0; text-align: right; font-weight: 600; color: var(--text-primary);">20-07-2026</td></tr>
+                                <tr style="border-bottom: 1px solid var(--border-light);"><td style="padding: 12px 0; font-weight: 500; color: var(--text-primary);">Conduct of Mid Semester Exam</td><td style="padding: 12px 0; text-align: right;">14-09-2026</td></tr>
+                                <tr style="border-bottom: 1px solid var(--border-light);"><td style="padding: 12px 0; font-weight: 500; color: var(--text-primary);">Date of Suspension of Classes</td><td style="padding: 12px 0; text-align: right;">11-11-2026</td></tr>
+                                <tr style="border-bottom: 1px solid var(--border-light);"><td style="padding: 12px 0; font-weight: 500; color: var(--text-primary);">Conduct of Final Semester Exam</td><td style="padding: 12px 0; text-align: right;">16-11-2026</td></tr>
+                                <tr style="border-bottom: 1px solid var(--border-light);"><td style="padding: 12px 0; font-weight: 500; color: var(--text-primary);">Semester Break from</td><td style="padding: 12px 0; text-align: right;">05-12-2026</td></tr>
+                                <tr><td style="padding: 12px 0; font-weight: 500; color: var(--text-primary);">Announcement of Result <span style="background: rgba(245,158,11,0.1); color:#d97706; font-size:10px; padding:2px 6px; border-radius:4px; font-weight:700; margin-left:4px;">Provisional</span></td><td style="padding: 12px 0; text-align: right; font-weight: 600; color: var(--text-primary);">08-12-2026</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Spring 2027 Semester Schedule -->
+                <div class="gpa-card" id="calendar-spring" style="margin: 0;">
+                    <div class="gpa-card-header">
+                        <i class="ri-calendar-2-line" style="color: var(--accent);"></i>
+                        <h3>Spring 2027 Semester Schedule</h3>
+                    </div>
+                    <div class="gpa-notes-list" style="margin-top: 16px; overflow-x: auto;">
+                        <table class="gpa-scale-table" style="width: 100%; border-collapse: collapse; text-align: left;">
+                            <thead>
+                                <tr style="border-bottom: 2px solid var(--border-light); font-weight: 700; font-size: 13.5px; color: var(--text-primary);">
+                                    <th style="padding: 10px 0;">Academic Event</th>
+                                    <th style="padding: 10px 0; text-align: right;">Date / Timeline</th>
+                                </tr>
+                            </thead>
+                            <tbody style="font-size: 13.5px; color: var(--text-secondary);">
+                                <tr style="border-bottom: 1px solid var(--border-light);"><td style="padding: 12px 0; font-weight: 500; color: var(--text-primary);">Date of Start of Classes</td><td style="padding: 12px 0; text-align: right; font-weight: 600; color: var(--text-primary);">09-12-2026</td></tr>
+                                <tr style="border-bottom: 1px solid var(--border-light);"><td style="padding: 12px 0; font-weight: 500; color: var(--text-primary);">Conduct of Mid Semester Exam</td><td style="padding: 12px 0; text-align: right;">01-02-2027</td></tr>
+                                <tr style="border-bottom: 1px solid var(--border-light);"><td style="padding: 12px 0; font-weight: 500; color: var(--text-primary);">Date of Suspension of Classes</td><td style="padding: 12px 0; text-align: right;">21-04-2027</td></tr>
+                                <tr style="border-bottom: 1px solid var(--border-light);"><td style="padding: 12px 0; font-weight: 500; color: var(--text-primary);">Conduct of Final Semester Exam</td><td style="padding: 12px 0; text-align: right;">26-04-2027</td></tr>
+                                <tr style="border-bottom: 1px solid var(--border-light);"><td style="padding: 12px 0; font-weight: 500; color: var(--text-primary);">Semester Break from</td><td style="padding: 12px 0; text-align: right;">15-05-2027</td></tr>
+                                <tr><td style="padding: 12px 0; font-weight: 500; color: var(--text-primary);">Announcement of Result <span style="background: rgba(245,158,11,0.1); color:#d97706; font-size:10px; padding:2px 6px; border-radius:4px; font-weight:700; margin-left:4px;">Provisional</span></td><td style="padding: 12px 0; text-align: right; font-weight: 600; color: var(--text-primary);">19-05-2027</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vacation Schedule & Academic Notes -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; margin-top: 24px;">
+                <!-- Vacation Schedule -->
+                <div class="gpa-card" id="calendar-vacations" style="margin: 0;">
+                    <div class="gpa-card-header">
+                        <i class="ri-plane-line" style="color: var(--accent);"></i>
+                        <h3>Vacation & Summer Schedule 2026–27</h3>
+                    </div>
+                    <div class="gpa-notes-list" style="margin-top: 16px; display: flex; flex-direction: column; gap: 14px;">
+                        <div style="display: flex; justify-content: space-between; border-bottom: 1px solid var(--border-light); padding-bottom: 10px; gap: 12px;">
+                            <div>
+                                <strong style="font-size: 13.5px; color: var(--text-primary); display: block;">Vacation-1 (Eid Holidays Included)</strong>
+                                <span style="font-size: 11.5px; color: var(--text-secondary);">4-Week Spring Break</span>
+                            </div>
+                            <span style="font-size: 13px; font-weight: 600; color: var(--text-primary); text-align: right; flex-shrink: 0;">20 Feb 2027 – 14 Mar 2027</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; border-bottom: 1px solid var(--border-light); padding-bottom: 10px; gap: 12px;">
+                            <div>
+                                <strong style="font-size: 13.5px; color: var(--text-primary); display: block;">Summer Semester 2027</strong>
+                                <span style="font-size: 11.5px; color: var(--text-secondary);">Optional Remedial Session</span>
+                            </div>
+                            <span style="font-size: 13px; font-weight: 600; color: var(--text-primary); text-align: right; flex-shrink: 0;">24 May 2027 – 16 Jul 2027</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; gap: 12px;">
+                            <div>
+                                <strong style="font-size: 13.5px; color: var(--text-primary); display: block;">Vacation-2 (Summer Break)</strong>
+                                <span style="font-size: 11.5px; color: var(--text-secondary);">6-Week Academic Break</span>
+                            </div>
+                            <span style="font-size: 13px; font-weight: 600; color: var(--text-primary); text-align: right; flex-shrink: 0;">05 Jun 2027 – 18 Jul 2027</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Academic Notes -->
+                <div class="gpa-card" style="margin: 0;">
+                    <div class="gpa-card-header">
+                        <i class="ri-information-line" style="color: var(--accent);"></i>
+                        <h3>Academic Requirements & Notes</h3>
+                    </div>
+                    <ul class="gpa-notes-list" style="margin-top: 16px; display: flex; flex-direction: column; gap: 12px;">
+                        <li><strong>Attendance Requirement:</strong> Minimum attendance requirement to be eligible to appear in the Semester Examinations is <strong>75%</strong> in both theory and practical modules.</li>
+                        <li><strong>Theory Lecture Weight:</strong> The number of lectures during a semester in a subject of 3 CH, 2 CH, and 1 CH shall be <strong>48, 32, and 16</strong> respectively.</li>
+                        <li><strong>Practical Lab Weight:</strong> The number of contact hours for a practical module of 2 CH and 1 CH per semester is <strong>48 and 16</strong> respectively.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- FAQ Section Accordion -->
+            <div class="gpa-card" style="margin-top: 24px; margin-bottom: 0;" id="calendar-faqs">
+                <div class="gpa-card-header">
+                    <i class="ri-question-line" style="color: var(--accent);"></i>
+                    <h3>Frequently Asked Questions</h3>
+                </div>
+                <div class="faq-accordion" style="margin-top: 16px;">
+                    <details class="faq-item" open>
+                        <summary class="faq-summary">When do Fall 2026 classes begin?</summary>
+                        <div class="faq-answer">
+                            According to the official MUET Academic Calendar 2026–27, classes for the Fall 2026 semester will start on <strong>July 20, 2026</strong>.
+                        </div>
+                    </details>
+                    <details class="faq-item">
+                        <summary class="faq-summary">When are Mid Semester Exams for Fall 2026?</summary>
+                        <div class="faq-answer">
+                            Mid Semester examinations for the Fall 2026 term are scheduled to begin on <strong>September 14, 2026</strong>.
+                        </div>
+                    </details>
+                    <details class="faq-item">
+                        <summary class="faq-summary">When are Final Exams scheduled?</summary>
+                        <div class="faq-answer">
+                            Final Semester examinations for Fall 2026 will start on <strong>November 16, 2026</strong>. For Spring 2027, the Final examinations will commence on <strong>April 26, 2027</strong>.
+                        </div>
+                    </details>
+                    <details class="faq-item">
+                        <summary class="faq-summary">When will results be announced?</summary>
+                        <div class="faq-answer">
+                            Provisional results are scheduled to be announced on <strong>December 8, 2026</strong> for Fall 2026, and on <strong>May 19, 2027</strong> for Spring 2027.
+                        </div>
+                    </details>
+                    <details class="faq-item">
+                        <summary class="faq-summary">When does Spring 2027 start?</summary>
+                        <div class="faq-answer">
+                            Classes for the Spring 2027 semester will start immediately after results, on <strong>December 9, 2026</strong>.
+                        </div>
+                    </details>
+                    <details class="faq-item">
+                        <summary class="faq-summary">When is the Summer Semester 2027?</summary>
+                        <div class="faq-answer">
+                            The Summer Semester 2027 (remedial/improvement session) is scheduled to run from <strong>May 24, 2027</strong> to <strong>July 16, 2027</strong>.
+                        </div>
+                    </details>
+                    <details class="faq-item">
+                        <summary class="faq-summary">Where can I find official academic calendar updates?</summary>
+                        <div class="faq-answer">
+                            You can find official notifications, changes, or revisions on the Mehran University Examination Department notices or by visiting the official university portal at <a href="https://www.muet.edu.pk" target="_blank" rel="noopener noreferrer">muet.edu.pk</a>.
+                        </div>
+                    </details>
+                </div>
+            </div>
+
+            <!-- Explore More Links Grid -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-top: 28px;">
+                <a href="/" class="gpa-card explore-card" style="text-decoration: none; margin: 0; padding: 20px; display: flex; align-items: center; gap: 12px; border: 1px solid var(--border-light); background: var(--bg-card); transition: all 0.25s ease;">
+                    <div style="background: rgba(99, 102, 241, 0.1); color: var(--accent); width: 42px; height: 42px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><i class="ri-search-eye-line" style="font-size: 20px;"></i></div>
+                    <div>
+                        <strong style="font-size: 14px; display: block; color: var(--text-primary);">Results Portal</strong>
+                        <span style="font-size: 11.5px; color: var(--text-secondary);">Check semester results online</span>
+                    </div>
+                </a>
+                <a href="/gpa-calculator" class="gpa-card explore-card" style="text-decoration: none; margin: 0; padding: 20px; display: flex; align-items: center; gap: 12px; border: 1px solid var(--border-light); background: var(--bg-card); transition: all 0.25s ease;">
+                    <div style="background: rgba(16, 185, 129, 0.1); color: var(--success); width: 42px; height: 42px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><i class="ri-calculator-line" style="font-size: 20px;"></i></div>
+                    <div>
+                        <strong style="font-size: 14px; display: block; color: var(--text-primary);">GPA Calculator</strong>
+                        <span style="font-size: 11.5px; color: var(--text-secondary);">Calculate term GPAs instantly</span>
+                    </div>
+                </a>
+                <a href="/departments" class="gpa-card explore-card" style="text-decoration: none; margin: 0; padding: 20px; display: flex; align-items: center; gap: 12px; border: 1px solid var(--border-light); background: var(--bg-card); transition: all 0.25s ease;">
+                    <div style="background: rgba(139, 92, 246, 0.1); color: #8b5cf6; width: 42px; height: 42px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><i class="ri-bank-line" style="font-size: 20px;"></i></div>
+                    <div>
+                        <strong style="font-size: 14px; display: block; color: var(--text-primary);">Departments</strong>
+                        <span style="font-size: 11.5px; color: var(--text-secondary);">Browse active departments</span>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Premium Disclaimer Component -->
+            <div class="disclaimer-premium" role="note" style="margin-top: 32px;">
+                <div class="disclaimer-premium-badge">
+                    <div class="disclaimer-premium-circle">
+                        <i class="ri-error-warning-fill"></i>
+                    </div>
+                </div>
+                <div class="disclaimer-premium-content">
+                    <h2 class="disclaimer-premium-title">Important Disclaimer</h2>
+                    <p class="disclaimer-premium-text">
+                        MUET Results Portal is an <strong>independent student-run informational utility</strong> and is not officially affiliated with or endorsed by Mehran University of Engineering and Technology (MUET).
+                    </p>
+                    <p class="disclaimer-premium-text">
+                        All academic results, GPA data, and ranks displayed here are parsed from public result notices published by the official <a href="https://www.facebook.com/muetexam" target="_blank" rel="noopener noreferrer" class="disclaimer-premium-link">Mehran University Examination Department</a>. The primary authoritative source for all university notifications is the official MUET portal at <a href="https://www.muet.edu.pk" target="_blank" rel="noopener noreferrer" class="disclaimer-premium-link">muet.edu.pk</a>.
+                    </p>
+                    <p class="disclaimer-premium-text">
+                        Students who appeared in Supplementary, Re-assessment, or Improvement examinations may experience delayed or omitted results. Always verify your official transcripts with the university examination branch before taking key academic decisions.
+                    </p>
+                </div>
+                <div class="disclaimer-premium-illustration" aria-hidden="true">
+                    <svg viewBox="0 0 100 100" class="disclaimer-svg">
+                        <path d="M25 15H55L75 35V85H25V15Z" stroke="currentColor" stroke-width="2.5" fill="none"/>
+                        <path d="M55 15V35H75" stroke="currentColor" stroke-width="2.5" fill="none"/>
+                        <line x1="37" y1="48" x2="63" y2="48" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                        <line x1="37" y1="58" x2="52" y2="58" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                        <path d="M52 65C52 65 65 60 78 65V78C78 86 65 92 65 92C65 92 52 86 52 78V65Z" stroke="currentColor" stroke-width="2.5" fill="#0e1320" />
+                        <path d="M60 76L64 80L71 72" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                    </svg>
+                </div>
+            </div>
+        </main>
+
+        <!-- About Screen -->
+        <main id="aboutView" class="view hidden" aria-label="About MUET Results Portal">
+            <button id="aboutBackBtn" class="icon-btn"><i class="ri-arrow-left-line"></i> Back to search</button>
+            <div class="about-card">
+                <div style="text-align: center; margin-bottom: 28px;">
+                    <div class="logo-icon" aria-hidden="true" style="margin-top: 16px; margin-bottom: 16px;"><i class="ri-information-line"></i></div>
+                    <h2 style="font-size: 26px; font-weight: 800; margin-bottom: 8px;">About MUET Results Portal</h2>
+                    <p style="font-size: 14px; max-width: 100%; color: var(--text-secondary);">Independent results and analytics platform</p>
+                </div>
+                
+                <div class="about-content" style="display: flex; flex-direction: column; gap: 20px; line-height: 1.6; font-size: 15px; color: var(--text-primary);">
+                    <p style="max-width: 100%; margin: 0;">
+                        Welcome to the <strong>MUET Results Portal</strong>, an independent platform built for students of Mehran University of Engineering &amp; Technology (MUET), Jamshoro.
+                    </p>
+                    <p style="max-width: 100%; margin: 0;">
+                        The portal is designed to make academic results easier to access by providing a modern interface to view semester results, GPA, CGPA, batch rankings, and academic insights—all in one place.
+                    </p>
+                    <p style="max-width: 100%; margin: 0;">
+                        Our long-term goal is to support every department at MUET through a single, unified results platform.
+                    </p>
+                    
+                    <h3 style="font-size: 16px; font-weight: 700; border-bottom: 1px solid var(--border-light); padding-bottom: 8px; margin-top: 12px; color: var(--text-primary);">Currently Supported Departments</h3>
+                    <p style="max-width: 100%; margin: 0; color: var(--text-secondary);">The portal currently provides complete result data for:</p>
+                    <ul id="aboutSupportList" style="padding-left: 20px; display: flex; flex-direction: column; gap: 12px; list-style-type: none;">
+                        <!-- Dynamically populated -->
+                    </ul>
+                    <div class="support-box" style="margin: 8px 0 0 0; max-width: 100%;">
+                        <div class="support-item">
+                            <i class="ri-error-warning-line warning" style="color: #f59e0b;"></i>
+                            <span>🚧 More departments will be added as result data becomes available.</span>
+                        </div>
+                    </div>
+
+                    <h3 style="font-size: 16px; font-weight: 700; border-bottom: 1px solid var(--border-light); padding-bottom: 8px; margin-top: 12px; color: var(--text-primary);">Features</h3>
+                    <p style="max-width: 100%; margin: 0; color: var(--text-secondary);">The MUET Results Portal currently includes:</p>
+                    <ul style="padding-left: 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; list-style-type: none;">
+                        <li style="font-size: 14px; display: flex; align-items: center; gap: 8px;"><i class="ri-checkbox-circle-line" style="color: var(--success);"></i> Instant result lookup</li>
+                        <li style="font-size: 14px; display: flex; align-items: center; gap: 8px;"><i class="ri-checkbox-circle-line" style="color: var(--success);"></i> Semester GPA breakdown</li>
+                        <li style="font-size: 14px; display: flex; align-items: center; gap: 8px;"><i class="ri-checkbox-circle-line" style="color: var(--success);"></i> Overall CGPA calculation</li>
+                        <li style="font-size: 14px; display: flex; align-items: center; gap: 8px;"><i class="ri-checkbox-circle-line" style="color: var(--success);"></i> Grade classification</li>
+                        <li style="font-size: 14px; display: flex; align-items: center; gap: 8px;"><i class="ri-checkbox-circle-line" style="color: var(--success);"></i> Batch leaderboards</li>
+                        <li style="font-size: 14px; display: flex; align-items: center; gap: 8px;"><i class="ri-checkbox-circle-line" style="color: var(--success);"></i> Dense ranking system</li>
+                        <li style="font-size: 14px; display: flex; align-items: center; gap: 8px;"><i class="ri-checkbox-circle-line" style="color: var(--success);"></i> Fast roll number search</li>
+                        <li style="font-size: 14px; display: flex; align-items: center; gap: 8px;"><i class="ri-checkbox-circle-line" style="color: var(--success);"></i> Mobile-friendly UI</li>
+                        <li style="font-size: 14px; display: flex; align-items: center; gap: 8px;"><i class="ri-checkbox-circle-line" style="color: var(--success);"></i> Performance analytics</li>
+                    </ul>
+                    <p style="max-width: 100%; margin: 8px 0 0 0; font-size: 13.5px; color: var(--text-secondary);">
+                        More student tools—including a GPA Calculator, department analytics, and additional academic utilities—are planned for future updates.
+                    </p>
+
+                    <h3 style="font-size: 16px; font-weight: 700; border-bottom: 1px solid var(--border-light); padding-bottom: 8px; margin-top: 12px; color: var(--text-primary);">Academic Rankings</h3>
+                    <p style="max-width: 100%; margin: 0;">
+                        Batch rankings are calculated using a dense ranking algorithm based on cumulative CGPA. 
+                    </p>
+                    <p style="max-width: 100%; margin: 0;">
+                        Students with identical CGPAs receive the same rank.
+                    </p>
+                    <div style="background: var(--control-muted-bg); padding: 16px; border-radius: var(--radius-md); font-family: monospace; font-size: 13px; color: var(--text-primary); border: 1px solid var(--border-light);">
+                        For example:<br>
+                        Student A — CGPA 4.00 → Rank #1<br>
+                        Student B — CGPA 4.00 → Rank #1<br>
+                        Student C — CGPA 3.95 → Rank #2
+                    </div>
+                    <p style="max-width: 100%; margin: 0;">
+                        This ensures rankings remain fair and accurate.
+                    </p>
+
+                    <h3 style="font-size: 16px; font-weight: 700; border-bottom: 1px solid var(--border-light); padding-bottom: 8px; margin-top: 12px; color: var(--text-primary);">Department Pages</h3>
+                    <p style="max-width: 100%; margin: 0;">
+                        Every supported department has its own dedicated results section.
+                    </p>
+                    <p style="max-width: 100%; margin: 0; color: var(--text-secondary);">
+                        Current departments:<br>
+                        • Computer Systems Engineering<br>
+                        • Computer Science
+                    </p>
+                    <p style="max-width: 100%; margin: 0;">
+                        Additional departments will automatically become available as their academic records are added to the portal.
+                    </p>
+
+                    <h3 style="font-size: 16px; font-weight: 700; border-bottom: 1px solid var(--border-light); padding-bottom: 8px; margin-top: 24px; color: var(--text-primary);">Authorship & E-E-A-T Signals</h3>
+                    <p style="max-width: 100%; margin: 0;">
+                        This portal was developed by <strong>Open Source Developer</strong>. All database compiling, frontend logic, and technical SEO architecture have been designed to make results checking seamless.
+                    </p>
+                    <div style="display: flex; gap: 12px; margin-top: 8px;">
+                        <a href="https://www.linkedin.com/in/your-profile" target="_blank" rel="noopener noreferrer" style="color: var(--accent); text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 4px;">
+                            <i class="ri-linkedin-box-fill"></i> LinkedIn Profile
+                        </a>
+                        <a href="https://github.com/your-username" target="_blank" rel="noopener noreferrer" style="color: var(--accent); text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 4px;">
+                            <i class="ri-github-fill"></i> GitHub Profile
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- FAQ Screen -->
+        <main id="faqView" class="view hidden" aria-label="Frequently Asked Questions">
+            <button id="faqBackBtn" class="icon-btn"><i class="ri-arrow-left-line"></i> Back to search</button>
+            <div class="faq-card">
+                <div style="text-align: center; margin-bottom: 28px;">
+                    <div class="logo-icon" aria-hidden="true" style="margin-top: 16px; margin-bottom: 16px;"><i class="ri-question-line"></i></div>
+                    <h2 style="font-size: 26px; font-weight: 800; margin-bottom: 8px;">Frequently Asked Questions</h2>
+                    <p style="font-size: 14px; max-width: 100%; color: var(--text-secondary);">Find answers to common questions about the portal</p>
+                </div>
+
+                <div class="faq-accordion">
+                    <details class="faq-item" open>
+                        <summary class="faq-summary">Is this an official MUET website?</summary>
+                        <div class="faq-answer">
+                            No. The MUET Results Portal is an independent student-built project and is not affiliated with Mehran University of Engineering &amp; Technology (MUET). It is designed to improve accessibility and presentation of publicly available examination results.
+                        </div>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary class="faq-summary">Where does the data come from?</summary>
+                        <div class="faq-answer">
+                            Academic records are compiled from officially published MUET Examination Department result announcements.
+                        </div>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary class="faq-summary">Can I check my GPA and CGPA?</summary>
+                        <div class="faq-answer">
+                            Yes. You can search using your roll number to instantly view:
+                            <ul style="margin-top: 8px; margin-bottom: 0; padding-left: 20px; color: var(--text-secondary); list-style-type: disc;">
+                                <li>Semester GPAs</li>
+                                <li>Overall CGPA</li>
+                                <li>Grade classification</li>
+                                <li>Academic standing</li>
+                                <li>Batch ranking</li>
+                            </ul>
+                        </div>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary class="faq-summary">Can I view my batch leaderboard?</summary>
+                        <div class="faq-answer">
+                            Yes. Each supported department includes an interactive leaderboard where students can browse rankings, search by roll number, and compare academic performance.
+                        </div>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary class="faq-summary">Why are only a few departments available?</summary>
+                        <div class="faq-answer">
+                            The portal is expanding gradually. At the moment, complete support is available for Computer Systems Engineering and Computer Science. Additional departments will be added as result data is collected and verified.
+                        </div>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary class="faq-summary">How can I help add my department?</summary>
+                        <div class="faq-answer">
+                            If your department is not yet available, you can contribute by submitting your official result screenshots through the Contribute page. Once verified, your department can be added to the portal for everyone to use.
+                        </div>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary class="faq-summary">Are supplementary or improvement results included?</summary>
+                        <div class="faq-answer">
+                            The portal primarily reflects regular semester examination results. Supplementary, reassessment, or improvement examinations may appear after the relevant data has been published and processed.
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Share Modal -->
+    <div id="shareModal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="shareModalTitle">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="shareModalTitle"><i class="ri-share-line"></i> Share Achievement</h3>
+                <button id="closeShareModalBtn" class="modal-close-btn" aria-label="Close modal">&times;</button>
+            </div>
+            
+            <div class="modal-body">
+                <!-- Preview panel: canvas is hidden, image is shown -->
+                <div class="share-preview-container">
+                    <canvas id="shareCanvas" class="hidden-canvas"></canvas>
+                    <div class="preview-img-wrapper">
+                        <img id="sharePreviewImg" alt="Achievement Card Preview" src="">
+                        <div id="sharePreviewLoading" class="preview-loading">
+                            <i class="ri-loader-4-line ri-spin"></i> Generating card...
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Customization Controls -->
+                <div class="share-controls">
+                    <!-- Format Toggle -->
+                    <div class="control-group">
+                        <span class="control-label">Card Format</span>
+                        <div class="toggle-tabs">
+                            <button type="button" class="tab-btn active" data-ratio="story">
+                                <i class="ri-smartphone-line"></i> Story (9:16)
+                            </button>
+                            <button type="button" class="tab-btn" data-ratio="post">
+                                <i class="ri-square-line"></i> Post (1:1)
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="modal-footer">
+                <button type="button" id="downloadShareBtn" class="primary-btn">
+                    <i class="ri-download-2-line"></i> Download PNG
+                </button>
+                <div class="modal-footer-row">
+                    <button type="button" id="nativeShareBtn" class="secondary-btn">
+                        <i class="ri-send-plane-fill"></i> Share Card
+                    </button>
+                    <button type="button" id="copyShareLinkBtn" class="secondary-btn">
+                        <i class="ri-link"></i> Copy Link
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Coming Soon Modal -->
+    <div id="comingSoonModal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-icon-container">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent);"><rect x="6" y="8" width="12" height="3" /><rect x="6" y="13" width="12" height="3" /><path d="M4 20h2M18 20h2M7 8V4h10v4M6 8v12M18 8v12"/></svg>
+            </div>
+            <h3 id="comingSoonTitle" style="font-size: 18px; font-weight: 800; color: var(--text-primary); margin-bottom: 8px;">Results for this department are coming soon.</h3>
+            <p id="comingSoonText" style="font-size: 14px; color: var(--text-secondary); margin-bottom: 24px;">We're working hard to add results for this department. Stay tuned!</p>
+            <button id="closeModal" class="primary-btn" style="width: 100%;">Got it</button>
+        </div>
+    </div>
+
+    <!-- Mobile Option Selection Overlay Menu -->
+    <div id="mobileDeptOverlay" class="mobile-option-overlay">
+        <div class="mobile-option-menu">
+            <div class="mobile-option-header">
+                <h3 style="margin: 0; font-size: 16px; font-weight: 800; color: var(--text-primary);">Select Department</h3>
+                <button id="closeOptionBtn" class="close-option-btn"><i class="ri-close-line"></i></button>
+            </div>
+            <div class="mobile-option-list" id="mobileDeptList">
+                <!-- Javascript populated -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <footer class="site-footer">
+        <div class="footer-info">
+            <p class="developed-by">Developed by <strong>Open Source Developer</strong></p>
+            <p class="copyright">© 2024 Demo University of Engineering & Technology. All rights reserved.</p>
+            <p style="margin-top: 8px; font-size: 12.5px;"><a href="/privacy-policy" style="color: var(--text-secondary); text-decoration: none; font-weight: 500;" id="footerPrivacyLink">Privacy Policy</a></p>
+        </div>
+        <div class="footer-socials">
+            <a href="https://www.linkedin.com/in/your-profile" target="_blank" rel="noopener noreferrer" class="footer-btn linkedin">
+                <i class="ri-linkedin-box-fill"></i> LinkedIn
+            </a>
+            <a href="https://github.com/your-username" target="_blank" rel="noopener noreferrer" class="footer-btn github">
+                <i class="ri-github-fill"></i> GitHub
+            </a>
+        </div>
+    </footer>
+
+    <script src="/config/university.js"></script>
+    <script src="/data.js" defer></script>
+    <script src="/config/departments.js" defer></script>
+    <script src="/seo.js" defer></script>
+    <script src="/app.js" defer></script>
+    <script src="/share.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+{
+  "name": "muet-results-portal",
+  "version": "1.0.0",
+  "description": "Automated results portal and ranking system for MUET batches.",
+  "scripts": {
+    "clean": "node scripts/clean-build.js",
+    "compile-templates": "node scripts/compile-template.js",
+    "dev": "node scripts/compile-template.js && node scripts/compile-data.js && node scripts/local-dev-server.js",
+    "ocr": "python scripts/ocr_service.py",
+    "build": "node scripts/compile-template.js && node scripts/compile-data.js && node scripts/generate-sitemap.js && node scripts/generate-static-pages.js",
+    "hash-password": "node scripts/hash-password.js",
+    "verify-seo": "node scripts/verify-seo-deploy.js"
+  },
+  "dependencies": {
+    "@google/generative-ai": "^0.24.1",
+    "bcryptjs": "^2.4.3",
+    "cookie": "^0.6.0",
+    "jsonwebtoken": "^9.0.2",
+    "zod": "^3.23.8"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

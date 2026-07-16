@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /result/
+Disallow: /admin
+Disallow: /api/
+
+Sitemap: https://demo-university-results.vercel.app/sitemap.xml

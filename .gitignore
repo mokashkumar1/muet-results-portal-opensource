@@ -1,0 +1,62 @@
+# dependencies
+node_modules/
+package-lock.json
+
+# vercel
+.vercel/
+
+# environment variables
+.env
+.env.*
+!.env.example
+.env.local
+.env.production
+
+# IDEs and Editors
+.vscode/
+.idea/
+
+# system files
+.DS_Store
+Thumbs.db
+
+# logs
+*.log
+
+# deploy and scratch files
+deploy.ps1
+deploy.txt
+scratch/
+.vercel
+
+# test outputs and docs
+*.pdf
+check-card-*.png
+
+# generated static pages (built during deployment)
+/about/
+/faq/
+/gpa-calculator/
+/departments/
+/ranking/
+/computer-science/
+/computer-systems-engineering/
+/privacy-policy/
+/academic-calendar/
+/architecture/
+/artificial-intelligence/
+/biomedical-engineering/
+/business-administration/
+/city-regional-planning/
+/civil-engineering/
+/cyber-security/
+/electrical-engineering/
+/environmental-engineering/
+/environmental-sciences/
+/industrial-management-engineering/
+/mechatronics-engineering/
+/metallurgy-materials-engineering/
+/petroleum-natural-gas-engineering/
+/software-engineering/
+/telecommunication-engineering/
+/textile-engineering/

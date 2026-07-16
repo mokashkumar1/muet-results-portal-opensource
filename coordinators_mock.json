@@ -1,0 +1,11 @@
+{
+  "coordinators.json": [
+    {
+      "username": "demo_coord",
+      "name": "Demo Coordinator",
+      "department": "cs",
+      "status": "active",
+      "passwordHash": "$2a$10$nn1r/YCj07BfLdLyULx9Iu9ciE6NpUGRIRx.5PqT0Yf8IRu3TLJnm"
+    }
+  ]
+}
