@@ -1049,12 +1049,34 @@ handleRouting();
 // =========================================================================
 
 // Theme Toggle Action (Sleek Dark Mode)
+// Body already carries the correct "dark-mode" class pre-paint (see inline
+// script in <head>/<body>); here we just keep the icon + storage in sync.
 if (themeToggleBtn) {
+    const syncThemeIcon = () => {
+        const isDark = document.body.classList.contains("dark-mode");
+        themeToggleBtn.innerHTML = isDark ? `<i class="ri-sun-line" id="themeToggleIcon"></i>` : `<i class="ri-moon-line" id="themeToggleIcon"></i>`;
+    };
+    syncThemeIcon();
+
     themeToggleBtn.addEventListener("click", () => {
         document.body.classList.toggle("dark-mode");
         const isDark = document.body.classList.contains("dark-mode");
-        themeToggleBtn.innerHTML = isDark ? `<i class="ri-sun-line"></i>` : `<i class="ri-moon-line"></i>`;
+        syncThemeIcon();
+        try {
+            localStorage.setItem("theme", isDark ? "dark" : "light");
+        } catch (e) { /* localStorage unavailable (private browsing, etc.) */ }
     });
+
+    // Follow the OS-level theme only if the user hasn't made an explicit choice
+    if (window.matchMedia) {
+        window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e) => {
+            let explicitChoice = null;
+            try { explicitChoice = localStorage.getItem("theme"); } catch (err) { /* ignore */ }
+            if (explicitChoice) return;
+            document.body.classList.toggle("dark-mode", e.matches);
+            syncThemeIcon();
+        });
+    }
 }
 
 // Mobile Nav Menu Drawer Toggle
@@ -1711,3 +1733,33 @@ function initializeCalendarChips() {
 // Initialize on script load
 initializeGpaCalculator();
 initializeCalendarChips();
+
+// =========================================================================
+// Scroll Reveal — lightweight, opt-out for reduced motion, no-JS safe
+// (elements are visible by default in CSS; this only adds the entrance
+// animation for capable browsers with motion enabled)
+// =========================================================================
+(function initScrollReveal() {
+    const revealEls = document.querySelectorAll("[data-reveal]");
+    if (!revealEls.length) return;
+
+    const prefersReducedMotion = window.matchMedia &&
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (prefersReducedMotion || !("IntersectionObserver" in window)) {
+        // Skip the animation, just show everything immediately.
+        revealEls.forEach(el => el.classList.add("is-visible"));
+        return;
+    }
+
+    const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+                obs.unobserve(entry.target); // animate once, then stop observing
+            }
+        });
+    }, { threshold: 0.15, rootMargin: "0px 0px -40px 0px" });
+
+    revealEls.forEach(el => observer.observe(el));
+})();

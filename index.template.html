@@ -2,32 +2,43 @@
 <html lang="en">
 
 <head>
+    <script>
+        // Prevent flash-of-incorrect-theme: apply saved/system theme before first paint
+        (function () {
+            try {
+                var saved = localStorage.getItem('theme');
+                var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+                var isDark = saved ? saved === 'dark' : prefersDark;
+                if (isDark) document.documentElement.classList.add('theme-dark-init');
+            } catch (e) { /* localStorage unavailable, fall back to light theme */ }
+        })();
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="googlebot" content="index, follow">
     <meta name="description"
-        content="Check {{UNIVERSITY_NAME}} semester results, batch rankings, and CGPA. Fast student result lookup portal.">
+        content="Check Mehran University of Engineering & Technology (MUET) Jamshoro semester results, batch rankings, and CGPA. Fast student result lookup portal.">
     <meta name="keywords"
-        content="{{UNIVERSITY_SHORT_NAME}} Results, {{SITE_TITLE}}, {{UNIVERSITY_NAME}} Examination Results, {{UNIVERSITY_SHORT_NAME}} Semester Results, {{UNIVERSITY_SHORT_NAME}} Batch Results">
+        content="MUET Results, Mehran University Results, MUET Semester Results, Mehran University Jamshoro Results, MUET Batch Results, MUET CGPA">
     <meta name="author" content="{{DEVELOPER_NAME}}">
     <meta name="theme-color" content="#6366f1">
     <link rel="canonical" href="{{SITE_URL}}/">
     <link rel="sitemap" type="application/xml" title="Sitemap" href="{{SITE_URL}}/sitemap.xml">
-    <title>{{SITE_TITLE}} | {{UNIVERSITY_NAME}}</title>
+    <title>MUET Results Portal | Mehran University of Engineering & Technology Jamshoro</title>
 
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{SITE_URL}}/">
-    <meta property="og:title" content="{{SITE_TITLE}}">
+    <meta property="og:title" content="MUET Results Portal">
     <meta property="og:description"
-        content="{{UNIVERSITY_NAME}} semester results, batch rankings, and CGPA lookup.">
+        content="Mehran University of Engineering & Technology Jamshoro semester results, batch rankings, and CGPA lookup.">
     <meta property="og:locale" content="en_US">
-    <meta property="og:site_name" content="{{SITE_TITLE}}">
+    <meta property="og:site_name" content="MUET Results Portal">
 
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="{{SITE_TITLE}}">
+    <meta name="twitter:title" content="MUET Results Portal">
     <meta name="twitter:description"
-        content="Lookup {{UNIVERSITY_NAME}} semester results, GPA, and batch rankings.">
+        content="Lookup Mehran University of Engineering & Technology Jamshoro semester results, GPA, and batch rankings.">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -52,18 +63,18 @@
         {
           "@type": "Organization",
           "@id": "{{SITE_URL}}/#organization",
-          "name": "{{SITE_TITLE}}",
+          "name": "MUET Results Portal",
           "url": "{{SITE_URL}}/",
-          "description": "Student result lookup and batch ranking portal for {{UNIVERSITY_NAME}} ({{UNIVERSITY_SHORT_NAME}}) programmes.",
-          "areaServed": "US",
-          "knowsAbout": ["{{UNIVERSITY_NAME}}", "{{UNIVERSITY_SHORT_NAME}} Results", "{{UNIVERSITY_SHORT_NAME}} Semester Results"]
+          "description": "Student result lookup and batch ranking portal for Mehran University of Engineering and Technology (MUET) Jamshoro programmes.",
+          "areaServed": "PK",
+          "knowsAbout": ["Mehran University of Engineering & Technology", "MUET Results", "MUET Semester Results"]
         },
         {
           "@type": "WebSite",
           "@id": "{{SITE_URL}}/#website",
-          "name": "{{SITE_TITLE}}",
+          "name": "MUET Results Portal",
           "url": "{{SITE_URL}}/",
-          "description": "{{UNIVERSITY_SHORT_NAME}} Semester Results, GPAs, and batch rankings for {{UNIVERSITY_NAME}} students.",
+          "description": "MUET Semester Results, GPAs, and batch rankings for Mehran University of Engineering & Technology Jamshoro students.",
           "inLanguage": "en",
           "publisher": { "@id": "{{SITE_URL}}/#organization" },
           "potentialAction": {
@@ -77,7 +88,7 @@
           "@id": "{{SITE_URL}}/#breadcrumb",
           "itemListElement": [
             { "@type": "ListItem", "position": 1, "name": "Home", "item": "{{SITE_URL}}/" },
-            { "@type": "ListItem", "position": 2, "name": "{{UNIVERSITY_SHORT_NAME}} Results Lookup", "item": "{{SITE_URL}}/#lookup" }
+            { "@type": "ListItem", "position": 2, "name": "MUET Results Lookup", "item": "{{SITE_URL}}/#lookup" }
           ]
         },
         {
@@ -86,7 +97,7 @@
           "mainEntity": [
             {
               "@type": "Question",
-              "name": "How can I use this {{UNIVERSITY_SHORT_NAME}} Result Checker online?",
+              "name": "How can I use this MUET Result Checker online?",
               "acceptedAnswer": {
                 "@type": "Answer",
                 "text": "Simply select your batch, input your official roll number, and click Lookup Record. Your term GPA breakdown, overall CGPA, and batch standing will display instantly."
@@ -94,10 +105,10 @@
             },
             {
               "@type": "Question",
-              "name": "Are these official {{UNIVERSITY_NAME}} results?",
+              "name": "Are these official Mehran University of Engineering & Technology results?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "This is an independent informational student utility. All academic performance data is securely parsed and compiled from officially published {{UNIVERSITY_NAME}} ({{UNIVERSITY_SHORT_NAME}}) Examination Department result announcements."
+                "text": "This is an independent informational student utility. All academic performance data is securely parsed and compiled from officially published Mehran University of Engineering & Technology (MUET) Jamshoro Examination Department result announcements."
               }
             },
             {
@@ -124,6 +135,12 @@
 </head>
 
 <body>
+    <script>
+        // Apply the pre-computed theme to <body> immediately (still runs before first paint)
+        if (document.documentElement.classList.contains('theme-dark-init')) {
+            document.body.classList.add('dark-mode');
+        }
+    </script>
     <header class="site-header">
         <div class="header-container">
             <a href="/" class="header-logo">
@@ -137,7 +154,7 @@
                 <a href="/academic-calendar" id="navCalendarLink">Academic Calendar</a>
                 <a href="/about" id="navAboutLink">About</a>
                 <a href="/faq" id="navFaqLink">FAQs</a>
-                <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Toggle dark mode"><i class="ri-moon-line"></i></button>
+                <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Toggle dark mode"><i class="ri-moon-line" id="themeToggleIcon"></i></button>
             </nav>
             <button class="hamburger-btn" id="hamburgerBtn" aria-label="Toggle mobile menu"><i class="ri-menu-line"></i></button>
         </div>
@@ -153,7 +170,7 @@
 
     <a class="skip-link" href="#main-content">Skip to main content</a>
     <noscript>
-        <p class="noscript-notice">MUET Results Portal: enable JavaScript to lookup Mehran University semester results, CGPA, and batch rankings.</p>
+        <p class="noscript-notice">MUET Results Portal: enable JavaScript to lookup Mehran University of Engineering &amp; Technology Jamshoro semester results, CGPA, and batch rankings.</p>
     </noscript>
     <div class="container" id="main-content">
         <!-- Search Screen -->
@@ -161,7 +178,7 @@
             <div class="hero">
                 <div class="logo-icon" aria-hidden="true" style="margin-top: 16px;"><i class="ri-search-eye-line"></i></div>
                 <h1 style="font-size: 36px;">MUET Results Portal</h1>
-                <p style="font-size: 16px; max-width: 480px; color: var(--text-secondary);">Check Mehran University of Engineering &amp; Technology Results Online</p>
+                <p style="font-size: 16px; max-width: 480px; color: var(--text-secondary);">Check Mehran University of Engineering &amp; Technology Jamshoro Results Online</p>
             </div>
 
             <div class="main-grid">
@@ -227,7 +244,7 @@
                         </div>
                         <div class="feature-text-block">
                             <h3>Official &amp; Reliable</h3>
-                            <p>All results are verified and sourced from official MUET records.</p>
+                            <p>All results are verified and sourced from official MUET Jamshoro records.</p>
                         </div>
                     </div>
                     <div class="feature-item">
@@ -242,15 +259,13 @@
                 </div>
             </div>
 
-
-
             <!-- Contribute Banner -->
-            <div class="contribute-banner">
+            <div class="contribute-banner" data-reveal>
                 <div class="contribute-left">
                     <i class="ri-upload-cloud-2-line contribute-icon"></i>
                     <div class="contribute-text">
                         <h2>Help us expand the MUET Results Portal.</h2>
-                        <p>Upload your official result screenshots to help us add your department and support more students.</p>
+                        <p>Upload your official result screenshots to help us add your department and support more students at Mehran University Jamshoro.</p>
                     </div>
                 </div>
                 <a href="https://forms.gle/4dEcAdZpir7xVH6c8" target="_blank" rel="noopener noreferrer" class="contribute-btn" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center;">Contribute Now</a>
@@ -258,28 +273,27 @@
 
             <!-- Why Students Trust Us -->
             <div class="trust-section" id="about">
-                <div class="trust-item">
+                <div class="trust-item" data-reveal data-reveal-index="0">
                     <i class="ri-search-eye-line"></i>
                     <h3>Easy Search</h3>
                     <p>Simply enter your roll number to find your results instantly.</p>
                 </div>
-                <div class="trust-item">
+                <div class="trust-item" data-reveal data-reveal-index="1">
                     <i class="ri-bar-chart-box-line"></i>
                     <h3>Detailed Analytics</h3>
                     <p>View performance trends.</p>
                 </div>
-                <div class="trust-item">
+                <div class="trust-item" data-reveal data-reveal-index="2">
                     <i class="ri-trophy-line"></i>
                     <h3>Rankings</h3>
                     <p>Check your position among peers.</p>
                 </div>
-                <div class="trust-item">
+                <div class="trust-item" data-reveal data-reveal-index="3">
                     <i class="ri-shield-keyhole-line"></i>
                     <h3>Secure &amp; Private</h3>
                     <p>Your data is secure and private.</p>
                 </div>
             </div>
-
 
             <div class="disclaimer-premium" role="note" style="margin-top: 32px;">
                 <div class="disclaimer-premium-badge">
@@ -290,7 +304,7 @@
                 <div class="disclaimer-premium-content">
                     <h2 class="disclaimer-premium-title">Important Disclaimer</h2>
                     <p class="disclaimer-premium-text">
-                        MUET Results Portal is an <strong>independent student-run informational utility</strong> and is not officially affiliated with or endorsed by Mehran University of Engineering and Technology (MUET).
+                        MUET Results Portal is an <strong>independent student-run informational utility</strong> and is not officially affiliated with or endorsed by Mehran University of Engineering and Technology (MUET) Jamshoro.
                     </p>
                     <p class="disclaimer-premium-text">
                         All academic results, GPA data, and ranks displayed here are parsed from public result notices published by the official <a href="https://www.facebook.com/muetexam" target="_blank" rel="noopener noreferrer" class="disclaimer-premium-link">Mehran University Examination Department</a>. The primary authoritative source for all university notifications is the official MUET portal at <a href="https://www.muet.edu.pk" target="_blank" rel="noopener noreferrer" class="disclaimer-premium-link">muet.edu.pk</a>.
@@ -301,13 +315,10 @@
                 </div>
                 <div class="disclaimer-premium-illustration" aria-hidden="true">
                     <svg viewBox="0 0 100 100" class="disclaimer-svg">
-                        <!-- Document outline -->
                         <path d="M25 15H55L75 35V85H25V15Z" stroke="currentColor" stroke-width="2.5" fill="none"/>
                         <path d="M55 15V35H75" stroke="currentColor" stroke-width="2.5" fill="none"/>
-                        <!-- Document lines -->
                         <line x1="37" y1="48" x2="63" y2="48" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
                         <line x1="37" y1="58" x2="52" y2="58" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-                        <!-- Shield containing checkmark -->
                         <path d="M52 65C52 65 65 60 78 65V78C78 86 65 92 65 92C65 92 52 86 52 78V65Z" stroke="currentColor" stroke-width="2.5" fill="#0e1320" />
                         <path d="M60 76L64 80L71 72" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
                     </svg>
@@ -321,7 +332,7 @@
 
             <div class="ranking-header">
                 <h2 class="ranking-title"><i class="ri-bar-chart-grouped-line" aria-hidden="true"></i> Batch Rankings</h2>
-                <p class="ranking-subtitle">Full leaderboard and academic matrix for your batch.</p>
+                <p class="ranking-subtitle">Full leaderboard and academic matrix for your batch at MUET Jamshoro.</p>
                 <div class="ranking-links-row" style="margin-top: 12px; display: flex; flex-wrap: wrap; gap: 16px; font-size: 13px;">
                     <a href="/departments" id="rankingDeptHubLink" style="color: var(--accent); text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 4px;"><i class="ri-bank-line"></i> Academic Departments</a>
                     <a href="#" id="rankingDeptLink" style="color: var(--accent); text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 4px;"><i class="ri-search-eye-line"></i> Department Search</a>
@@ -377,7 +388,6 @@
                     </table>
                 </div>
             </div>
-
         </main>
 
         <!-- Result Screen -->
@@ -445,7 +455,6 @@
             <button type="button" id="viewInLeaderboardBtn" class="secondary-btn result-leaderboard-btn">
                 <i class="ri-focus-3-line"></i> View position in batch leaderboard
             </button>
-
         </main>
 
         <!-- GPA Calculator Screen -->
@@ -462,14 +471,14 @@
             <div class="gpa-header-grid">
                 <div>
                     <h2 class="gpa-title">MUET GPA Calculator</h2>
-                    <p class="gpa-subtitle">Calculate your GPA based on MUET's official grading system.</p>
+                    <p class="gpa-subtitle">Calculate your GPA based on Mehran University's official grading system.</p>
                 </div>
                 <div class="gpa-info-card">
                     <div class="gpa-info-title">
                         <i class="ri-graduation-cap-line"></i>
                         <span>MUET Grading System</span>
                     </div>
-                    <p class="gpa-info-text">This calculator uses the official MUET grading system for all undergraduate programs.</p>
+                    <p class="gpa-info-text">This calculator uses the official MUET Jamshoro grading system for all undergraduate programs.</p>
                     <button type="button" id="scrollToScaleBtn" class="secondary-btn gpa-info-btn">
                         <i class="ri-table-line"></i> View Grading Scale
                     </button>
@@ -561,7 +570,7 @@
                         <h3>Important Notes</h3>
                     </div>
                     <ul class="gpa-notes-list">
-                        <li>This calculator follows the official MUET grading system.</li>
+                        <li>This calculator follows the official MUET Jamshoro grading system.</li>
                         <li>Enter the course credit hours and select the grade you have obtained.</li>
                         <li>GPA is calculated as total grade points divided by total credit hours.</li>
                         <li>W (Withdrawal) and I (Incomplete) grades are excluded from calculations.</li>
@@ -573,10 +582,10 @@
             <div class="gpa-card" style="margin-top: 24px;">
                 <div class="gpa-card-header">
                     <i class="ri-article-line"></i>
-                    <h3>How to Calculate GPA at Mehran University (MUET)</h3>
+                    <h3>How to Calculate GPA at Mehran University (MUET) Jamshoro</h3>
                 </div>
                 <div class="gpa-notes-list" style="margin-top: 16px; line-height: 1.6; color: var(--text-primary);">
-                    <p style="margin-bottom: 12px; max-width: 100%;">Calculating your Grade Point Average (GPA) for a semester at Mehran University of Engineering and Technology (MUET) is simple. Follow these steps:</p>
+                    <p style="margin-bottom: 12px; max-width: 100%;">Calculating your Grade Point Average (GPA) for a semester at Mehran University of Engineering and Technology (MUET) Jamshoro is simple. Follow these steps:</p>
                     
                     <h4 style="font-size: 14px; font-weight: 700; margin-top: 16px; margin-bottom: 8px;">Step-by-Step GPA Calculation:</h4>
                     <ol style="padding-left: 20px; margin-bottom: 16px; display: flex; flex-direction: column; gap: 8px;">
@@ -600,7 +609,7 @@
                     <div style="display: flex; flex-direction: column; gap: 16px; margin-bottom: 24px;">
                         <div>
                             <strong style="display: block; margin-bottom: 4px; color: var(--text-primary);">Q: What is a passing GPA at MUET?</strong>
-                            <span style="color: var(--text-secondary); font-size: 14px;">A: To pass a subject at MUET, a student must obtain at least a C- grade (50% marks, equivalent to 1.0 grade point). An overall GPA of 2.0 or above is generally required to maintain good academic standing.</span>
+                            <span style="color: var(--text-secondary); font-size: 14px;">A: To pass a subject at Mehran University, a student must obtain at least a C- grade (50% marks, equivalent to 1.0 grade point). An overall GPA of 2.0 or above is generally required to maintain good academic standing.</span>
                         </div>
                         <div>
                             <strong style="display: block; margin-bottom: 4px; color: var(--text-primary);">Q: Are withdrawal (W) and incomplete (I) grades calculated?</strong>
@@ -615,7 +624,7 @@
                     <h4 style="font-size: 15px; font-weight: 700; border-bottom: 1px solid var(--border-light); padding-bottom: 8px; margin-top: 24px; margin-bottom: 12px; color: var(--text-primary);">Glossary of Terms</h4>
                     <dl style="display: flex; flex-direction: column; gap: 12px;">
                         <dt><strong>Credit Hour (Cr. Hr.)</strong></dt>
-                        <dd style="color: var(--text-secondary); font-size: 14px; margin-left: 0; margin-bottom: 4px;">A unit of measure representing the academic weight of a course. Typically, theory lectures are 2-3 credit hours, and labs are 1 credit hour.</dd>
+                        <dd style="color: var(--text-secondary); font-size: 14px; margin-left: 0; margin-bottom: 4px;">A unit of measure representing the academic weight of a course. Typically, theory lectures are 2-3 credit hours, and labs are 1 credit hour at MUET.</dd>
                         
                         <dt><strong>Grade Point (GP)</strong></dt>
                         <dd style="color: var(--text-secondary); font-size: 14px; margin-left: 0; margin-bottom: 4px;">The numerical value assigned to an alphabetical grade (e.g. A = 3.5, B = 2.5, F = 0.0).</dd>
@@ -628,7 +637,7 @@
         </main>
 
         <!-- Departments Screen -->
-        <main id="departmentsView" class="view hidden wide-view" aria-label="Academic Departments at Mehran University">
+        <main id="departmentsView" class="view hidden wide-view" aria-label="Academic Departments at Mehran University Jamshoro">
             <button id="departmentsBackBtn" class="icon-btn"><i class="ri-arrow-left-line"></i> Back to search</button>
             <div class="breadcrumb-container" style="margin-bottom: 24px;">
                 <nav class="breadcrumb-nav" aria-label="Breadcrumb">
@@ -642,7 +651,7 @@
             <div class="gpa-header-grid" style="margin-bottom: 32px;">
                 <div>
                     <h2 class="gpa-title">MUET Academic Departments</h2>
-                    <p class="gpa-subtitle">Explore semester results, batch leaderboards, and academic performance data across the engineering and technology programs at MUET.</p>
+                    <p class="gpa-subtitle">Explore semester results, batch leaderboards, and academic performance data across the engineering and technology programs at Mehran University of Engineering &amp; Technology Jamshoro.</p>
                 </div>
             </div>
 
@@ -665,7 +674,7 @@
                     <h3>Other Departments (Coming Soon)</h3>
                 </div>
                 <div class="gpa-notes-list" style="margin-top: 16px;">
-                    <p style="color: var(--text-secondary); margin-bottom: 20px;">Results for these engineering and science programs are currently being parsed and will be added soon:</p>
+                    <p style="color: var(--text-secondary); margin-bottom: 20px;">Results for these engineering and science programs at MUET are currently being parsed and will be added soon:</p>
                     <ul id="departmentsInactiveList" style="list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px;">
                         <!-- JS populated -->
                     </ul>
@@ -688,7 +697,7 @@
                             <span style="color: var(--text-secondary); font-size: 14px;">A: Currently, departments like Computer Science (CS), Computer Systems Engineering (CSE), Architecture (AR), and Software Engineering (SW) have active batch result databases. More departments are being compiled and added continuously.</span>
                         </div>
                         <div>
-                            <strong style="display: block; margin-bottom: 4px; color: var(--text-primary);">Q: How are batch rankings determined?</strong>
+                            <strong style="display: block; margin-bottom: 4px; color: var(--text-primary);">Q: How are batch rankings determined at MUET?</strong>
                             <span style="color: var(--text-secondary); font-size: 14px;">A: Batch rankings are calculated using a dense ranking algorithm based on cumulative CGPA. If two students obtain the same CGPA (e.g. 4.00), they share the same rank (#1), and the next student with the lower CGPA (e.g. 3.95) receives the next consecutive rank (#2).</span>
                         </div>
                         <div>
@@ -745,7 +754,7 @@
 
                     <h3 style="font-size: 16px; font-weight: 700; border-bottom: 1px solid var(--border-light); padding-bottom: 8px; margin-top: 12px; color: var(--text-primary);">Official Disclaimers</h3>
                     <p style="max-width: 100%; margin: 0;">
-                        This platform is a student-built informational utility. It is not affiliated with or endorsed by Mehran University of Engineering and Technology (MUET). For official results and notifications, please refer directly to the official <a href="https://www.facebook.com/muetexam" target="_blank" rel="noopener noreferrer" style="color: var(--accent); text-decoration: none; font-weight: 600;">Mehran University Examination Department</a> announcements. The primary authoritative source for all university notifications remains the official MUET portal at <a href="https://www.muet.edu.pk" target="_blank" rel="noopener noreferrer" style="color: var(--accent); text-decoration: none; font-weight: 600;">muet.edu.pk</a>.
+                        This platform is a student-built informational utility. It is not affiliated with or endorsed by Mehran University of Engineering and Technology (MUET) Jamshoro. For official results and notifications, please refer directly to the official <a href="https://www.facebook.com/muetexam" target="_blank" rel="noopener noreferrer" style="color: var(--accent); text-decoration: none; font-weight: 600;">Mehran University Examination Department</a> announcements. The primary authoritative source for all university notifications remains the official MUET portal at <a href="https://www.muet.edu.pk" target="_blank" rel="noopener noreferrer" style="color: var(--accent); text-decoration: none; font-weight: 600;">muet.edu.pk</a>.
                     </p>
                 </div>
             </div>
@@ -766,7 +775,7 @@
             <div class="gpa-header-grid" style="margin-bottom: 28px;">
                 <div>
                     <h2 class="gpa-title">MUET Academic Calendar 2026–27</h2>
-                    <p class="gpa-subtitle">Official academic schedule for Bachelor's Degree Programs at Mehran University of Engineering and Technology (MUET), Jamshoro. Plan your semesters, examinations, breaks, and important academic activities.</p>
+                    <p class="gpa-subtitle">Official academic schedule for Bachelor's Degree Programs at Mehran University of Engineering and Technology (MUET) Jamshoro. Plan your semesters, examinations, breaks, and important academic activities.</p>
                 </div>
             </div>
 
@@ -786,14 +795,14 @@
                     <div class="gpa-card-header" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
                         <div style="display: flex; align-items: center; gap: 8px;">
                             <i class="ri-image-line" style="color: var(--accent);"></i>
-                            <h3 style="margin: 0;">Official Academic Calendar (Source: MUET)</h3>
+                            <h3 style="margin: 0;">Official Academic Calendar (Source: MUET Jamshoro)</h3>
                         </div>
                     </div>
                     <div style="padding: 16px; text-align: center; background: #ffffff; border-radius: var(--radius-md); margin-top: 16px; border: 1px solid var(--border-light);">
-                        <img src="/Academic Calendar 2026-27.jpeg" alt="Official MUET Academic Calendar 2026-27 for Bachelor Degree Programs" style="max-width: 100%; height: auto; border-radius: var(--radius-sm); border: 1px solid var(--border-light);" />
+                        <img src="/Academic Calendar 2026-27.jpeg" alt="Official MUET Academic Calendar 2026-27 for Bachelor Degree Programs at Mehran University Jamshoro" width="720" height="944" loading="lazy" decoding="async" style="max-width: 100%; height: auto; border-radius: var(--radius-sm); border: 1px solid var(--border-light);" />
                     </div>
                     <p style="font-size: 13px; color: var(--text-secondary); margin-top: 12px; line-height: 1.5; font-style: italic;">
-                        This is the official academic calendar published by MUET. Please refer to official university announcements for future updates or revisions.
+                        This is the official academic calendar published by Mehran University of Engineering &amp; Technology Jamshoro. Please refer to official university announcements for future updates or revisions.
                     </p>
                 </div>
 
@@ -960,43 +969,43 @@
                 </div>
                 <div class="faq-accordion" style="margin-top: 16px;">
                     <details class="faq-item" open>
-                        <summary class="faq-summary">When do Fall 2026 classes begin?</summary>
+                        <summary class="faq-summary">When do Fall 2026 classes begin at MUET?</summary>
                         <div class="faq-answer">
-                            According to the official MUET Academic Calendar 2026–27, classes for the Fall 2026 semester will start on <strong>July 20, 2026</strong>.
+                            According to the official MUET Academic Calendar 2026–27, classes for the Fall 2026 semester at Mehran University Jamshoro will start on <strong>July 20, 2026</strong>.
                         </div>
                     </details>
                     <details class="faq-item">
                         <summary class="faq-summary">When are Mid Semester Exams for Fall 2026?</summary>
                         <div class="faq-answer">
-                            Mid Semester examinations for the Fall 2026 term are scheduled to begin on <strong>September 14, 2026</strong>.
+                            Mid Semester examinations for the Fall 2026 term at MUET are scheduled to begin on <strong>September 14, 2026</strong>.
                         </div>
                     </details>
                     <details class="faq-item">
-                        <summary class="faq-summary">When are Final Exams scheduled?</summary>
+                        <summary class="faq-summary">When are Final Exams scheduled at MUET?</summary>
                         <div class="faq-answer">
-                            Final Semester examinations for Fall 2026 will start on <strong>November 16, 2026</strong>. For Spring 2027, the Final examinations will commence on <strong>April 26, 2027</strong>.
+                            Final Semester examinations for Fall 2026 at Mehran University will start on <strong>November 16, 2026</strong>. For Spring 2027, the Final examinations will commence on <strong>April 26, 2027</strong>.
                         </div>
                     </details>
                     <details class="faq-item">
-                        <summary class="faq-summary">When will results be announced?</summary>
+                        <summary class="faq-summary">When will MUET results be announced?</summary>
                         <div class="faq-answer">
                             Provisional results are scheduled to be announced on <strong>December 8, 2026</strong> for Fall 2026, and on <strong>May 19, 2027</strong> for Spring 2027.
                         </div>
                     </details>
                     <details class="faq-item">
-                        <summary class="faq-summary">When does Spring 2027 start?</summary>
+                        <summary class="faq-summary">When does Spring 2027 start at MUET Jamshoro?</summary>
                         <div class="faq-answer">
-                            Classes for the Spring 2027 semester will start immediately after results, on <strong>December 9, 2026</strong>.
+                            Classes for the Spring 2027 semester at Mehran University will start immediately after results, on <strong>December 9, 2026</strong>.
                         </div>
                     </details>
                     <details class="faq-item">
                         <summary class="faq-summary">When is the Summer Semester 2027?</summary>
                         <div class="faq-answer">
-                            The Summer Semester 2027 (remedial/improvement session) is scheduled to run from <strong>May 24, 2027</strong> to <strong>July 16, 2027</strong>.
+                            The Summer Semester 2027 (remedial/improvement session) at MUET is scheduled to run from <strong>May 24, 2027</strong> to <strong>July 16, 2027</strong>.
                         </div>
                     </details>
                     <details class="faq-item">
-                        <summary class="faq-summary">Where can I find official academic calendar updates?</summary>
+                        <summary class="faq-summary">Where can I find official MUET academic calendar updates?</summary>
                         <div class="faq-answer">
                             You can find official notifications, changes, or revisions on the Mehran University Examination Department notices or by visiting the official university portal at <a href="https://www.muet.edu.pk" target="_blank" rel="noopener noreferrer">muet.edu.pk</a>.
                         </div>
@@ -1039,7 +1048,7 @@
                 <div class="disclaimer-premium-content">
                     <h2 class="disclaimer-premium-title">Important Disclaimer</h2>
                     <p class="disclaimer-premium-text">
-                        MUET Results Portal is an <strong>independent student-run informational utility</strong> and is not officially affiliated with or endorsed by Mehran University of Engineering and Technology (MUET).
+                        MUET Results Portal is an <strong>independent student-run informational utility</strong> and is not officially affiliated with or endorsed by Mehran University of Engineering and Technology (MUET) Jamshoro.
                     </p>
                     <p class="disclaimer-premium-text">
                         All academic results, GPA data, and ranks displayed here are parsed from public result notices published by the official <a href="https://www.facebook.com/muetexam" target="_blank" rel="noopener noreferrer" class="disclaimer-premium-link">Mehran University Examination Department</a>. The primary authoritative source for all university notifications is the official MUET portal at <a href="https://www.muet.edu.pk" target="_blank" rel="noopener noreferrer" class="disclaimer-premium-link">muet.edu.pk</a>.
@@ -1068,12 +1077,12 @@
                 <div style="text-align: center; margin-bottom: 28px;">
                     <div class="logo-icon" aria-hidden="true" style="margin-top: 16px; margin-bottom: 16px;"><i class="ri-information-line"></i></div>
                     <h2 style="font-size: 26px; font-weight: 800; margin-bottom: 8px;">About MUET Results Portal</h2>
-                    <p style="font-size: 14px; max-width: 100%; color: var(--text-secondary);">Independent results and analytics platform</p>
+                    <p style="font-size: 14px; max-width: 100%; color: var(--text-secondary);">Independent results and analytics platform for Mehran University Jamshoro</p>
                 </div>
                 
                 <div class="about-content" style="display: flex; flex-direction: column; gap: 20px; line-height: 1.6; font-size: 15px; color: var(--text-primary);">
                     <p style="max-width: 100%; margin: 0;">
-                        Welcome to the <strong>MUET Results Portal</strong>, an independent platform built for students of Mehran University of Engineering &amp; Technology (MUET), Jamshoro.
+                        Welcome to the <strong>MUET Results Portal</strong>, an independent platform built for students of Mehran University of Engineering &amp; Technology (MUET) Jamshoro.
                     </p>
                     <p style="max-width: 100%; margin: 0;">
                         The portal is designed to make academic results easier to access by providing a modern interface to view semester results, GPA, CGPA, batch rankings, and academic insights—all in one place.
@@ -1090,7 +1099,7 @@
                     <div class="support-box" style="margin: 8px 0 0 0; max-width: 100%;">
                         <div class="support-item">
                             <i class="ri-error-warning-line warning" style="color: #f59e0b;"></i>
-                            <span>🚧 More departments will be added as result data becomes available.</span>
+                            <span>🚧 More departments at MUET will be added as result data becomes available.</span>
                         </div>
                     </div>
 
@@ -1130,12 +1139,10 @@
 
                     <h3 style="font-size: 16px; font-weight: 700; border-bottom: 1px solid var(--border-light); padding-bottom: 8px; margin-top: 12px; color: var(--text-primary);">Department Pages</h3>
                     <p style="max-width: 100%; margin: 0;">
-                        Every supported department has its own dedicated results section.
+                        Every supported department at MUET has its own dedicated results section.
                     </p>
                     <p style="max-width: 100%; margin: 0; color: var(--text-secondary);">
-                        Current departments:<br>
-                        • Computer Systems Engineering<br>
-                        • Computer Science
+                        Current departments are listed above.
                     </p>
                     <p style="max-width: 100%; margin: 0;">
                         Additional departments will automatically become available as their academic records are added to the portal.
@@ -1143,7 +1150,7 @@
 
                     <h3 style="font-size: 16px; font-weight: 700; border-bottom: 1px solid var(--border-light); padding-bottom: 8px; margin-top: 24px; color: var(--text-primary);">Authorship & E-E-A-T Signals</h3>
                     <p style="max-width: 100%; margin: 0;">
-                        This portal was developed by <strong>{{DEVELOPER_NAME}}</strong>. All database compiling, frontend logic, and technical SEO architecture have been designed to make results checking seamless.
+                        This portal was developed by <strong>{{DEVELOPER_NAME}}</strong>. All database compiling, frontend logic, and technical SEO architecture have been designed to make results checking seamless for MUET students.
                     </p>
                     <div style="display: flex; gap: 12px; margin-top: 8px;">
                         <a href="{{DEVELOPER_LINKEDIN}}" target="_blank" rel="noopener noreferrer" style="color: var(--accent); text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 4px;">
@@ -1164,26 +1171,26 @@
                 <div style="text-align: center; margin-bottom: 28px;">
                     <div class="logo-icon" aria-hidden="true" style="margin-top: 16px; margin-bottom: 16px;"><i class="ri-question-line"></i></div>
                     <h2 style="font-size: 26px; font-weight: 800; margin-bottom: 8px;">Frequently Asked Questions</h2>
-                    <p style="font-size: 14px; max-width: 100%; color: var(--text-secondary);">Find answers to common questions about the portal</p>
+                    <p style="font-size: 14px; max-width: 100%; color: var(--text-secondary);">Find answers to common questions about the MUET Results Portal</p>
                 </div>
 
                 <div class="faq-accordion">
                     <details class="faq-item" open>
                         <summary class="faq-summary">Is this an official MUET website?</summary>
                         <div class="faq-answer">
-                            No. The MUET Results Portal is an independent student-built project and is not affiliated with Mehran University of Engineering &amp; Technology (MUET). It is designed to improve accessibility and presentation of publicly available examination results.
+                            No. The MUET Results Portal is an independent student-built project and is not affiliated with Mehran University of Engineering &amp; Technology (MUET) Jamshoro. It is designed to improve accessibility and presentation of publicly available examination results.
                         </div>
                     </details>
 
                     <details class="faq-item">
-                        <summary class="faq-summary">Where does the data come from?</summary>
+                        <summary class="faq-summary">Where does the MUET data come from?</summary>
                         <div class="faq-answer">
-                            Academic records are compiled from officially published MUET Examination Department result announcements.
+                            Academic records are compiled from officially published Mehran University Examination Department result announcements.
                         </div>
                     </details>
 
                     <details class="faq-item">
-                        <summary class="faq-summary">Can I check my GPA and CGPA?</summary>
+                        <summary class="faq-summary">Can I check my MUET GPA and CGPA?</summary>
                         <div class="faq-answer">
                             Yes. You can search using your roll number to instantly view:
                             <ul style="margin-top: 8px; margin-bottom: 0; padding-left: 20px; color: var(--text-secondary); list-style-type: disc;">
@@ -1191,36 +1198,36 @@
                                 <li>Overall CGPA</li>
                                 <li>Grade classification</li>
                                 <li>Academic standing</li>
-                                <li>Batch ranking</li>
+                                <li>Batch ranking at MUET</li>
                             </ul>
                         </div>
                     </details>
 
                     <details class="faq-item">
-                        <summary class="faq-summary">Can I view my batch leaderboard?</summary>
+                        <summary class="faq-summary">Can I view my MUET batch leaderboard?</summary>
                         <div class="faq-answer">
                             Yes. Each supported department includes an interactive leaderboard where students can browse rankings, search by roll number, and compare academic performance.
                         </div>
                     </details>
 
                     <details class="faq-item">
-                        <summary class="faq-summary">Why are only a few departments available?</summary>
+                        <summary class="faq-summary">Why are only a few MUET departments available?</summary>
                         <div class="faq-answer">
-                            The portal is expanding gradually. At the moment, complete support is available for Computer Systems Engineering and Computer Science. Additional departments will be added as result data is collected and verified.
+                            The portal is expanding gradually. Additional departments at Mehran University will be added as result data is collected and verified.
                         </div>
                     </details>
 
                     <details class="faq-item">
-                        <summary class="faq-summary">How can I help add my department?</summary>
+                        <summary class="faq-summary">How can I help add my MUET department?</summary>
                         <div class="faq-answer">
-                            If your department is not yet available, you can contribute by submitting your official result screenshots through the Contribute page. Once verified, your department can be added to the portal for everyone to use.
+                            If your department at MUET is not yet available, you can contribute by submitting your official result screenshots through the Contribute page. Once verified, your department can be added to the portal for everyone to use.
                         </div>
                     </details>
 
                     <details class="faq-item">
-                        <summary class="faq-summary">Are supplementary or improvement results included?</summary>
+                        <summary class="faq-summary">Are supplementary or improvement MUET results included?</summary>
                         <div class="faq-answer">
-                            The portal primarily reflects regular semester examination results. Supplementary, reassessment, or improvement examinations may appear after the relevant data has been published and processed.
+                            The portal primarily reflects regular semester examination results at Mehran University. Supplementary, reassessment, or improvement examinations may appear after the relevant data has been published and processed.
                         </div>
                     </details>
                 </div>
@@ -1287,8 +1294,8 @@
             <div class="modal-icon-container">
                 <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent);"><rect x="6" y="8" width="12" height="3" /><rect x="6" y="13" width="12" height="3" /><path d="M4 20h2M18 20h2M7 8V4h10v4M6 8v12M18 8v12"/></svg>
             </div>
-            <h3 id="comingSoonTitle" style="font-size: 18px; font-weight: 800; color: var(--text-primary); margin-bottom: 8px;">Results for this department are coming soon.</h3>
-            <p id="comingSoonText" style="font-size: 14px; color: var(--text-secondary); margin-bottom: 24px;">We're working hard to add results for this department. Stay tuned!</p>
+            <h3 id="comingSoonTitle" style="font-size: 18px; font-weight: 800; color: var(--text-primary); margin-bottom: 8px;">Results for this MUET department are coming soon.</h3>
+            <p id="comingSoonText" style="font-size: 14px; color: var(--text-secondary); margin-bottom: 24px;">We're working hard to add results for this department at Mehran University Jamshoro. Stay tuned!</p>
             <button id="closeModal" class="primary-btn" style="width: 100%;">Got it</button>
         </div>
     </div>
@@ -1309,19 +1316,58 @@
     <!-- Toast Notifications -->
     <div id="toastContainer" class="toast-container"></div>
 
+    <!-- ============================================================ -->
+    <!-- REDESIGNED FOOTER – Built by Mokesh Kumar & Muhammad Waqas    -->
+    <!-- ============================================================ -->
     <footer class="site-footer">
-        <div class="footer-info">
-            <p class="developed-by">Developed by <strong>{{DEVELOPER_NAME}}</strong></p>
-            <p class="copyright">© 2024 {{UNIVERSITY_NAME}}. All rights reserved.</p>
-            <p style="margin-top: 8px; font-size: 12.5px;"><a href="/privacy-policy" style="color: var(--text-secondary); text-decoration: none; font-weight: 500;" id="footerPrivacyLink">Privacy Policy</a></p>
-        </div>
-        <div class="footer-socials">
-            <a href="{{DEVELOPER_LINKEDIN}}" target="_blank" rel="noopener noreferrer" class="footer-btn linkedin">
-                <i class="ri-linkedin-box-fill"></i> LinkedIn
-            </a>
-            <a href="{{DEVELOPER_GITHUB}}" target="_blank" rel="noopener noreferrer" class="footer-btn github">
-                <i class="ri-github-fill"></i> GitHub
-            </a>
+        <div class="footer-grid">
+            <!-- Left Column: Built by -->
+            <div class="footer-built-by">
+                <span class="footer-label">Built by</span>
+                <div class="footer-developers">
+                    <!-- Developer 1: Mokesh Kumar -->
+                    <div class="developer-card">
+                        <div class="dev-avatar" style="background: linear-gradient(135deg, #6366f1, #8b5cf6);">
+                            <span>MK</span>
+                        </div>
+                        <div>
+                            <strong>Mokesh Kumar</strong>
+                            <div class="dev-links">
+                                <a href="https://www.linkedin.com/in/mokashkumar/" target="_blank" rel="noopener noreferrer" aria-label="Mokesh Kumar LinkedIn">
+                                    <i class="ri-linkedin-box-fill"></i>
+                                </a>
+                                <a href="https://github.com/mokashkumar1" target="_blank" rel="noopener noreferrer" aria-label="Mokesh Kumar GitHub">
+                                    <i class="ri-github-fill"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Developer 2: Muhammad Waqas -->
+                    <div class="developer-card">
+                        <div class="dev-avatar" style="background: linear-gradient(135deg, #f59e0b, #d97706);">
+                            <span>MW</span>
+                        </div>
+                        <div>
+                            <strong>Muhammad Waqas</strong>
+                            <div class="dev-links">
+                                <a href="https://www.linkedin.com/in/waqas-abbasi-07aa5a261/" target="_blank" rel="noopener noreferrer" aria-label="Muhammad Waqas LinkedIn">
+                                    <i class="ri-linkedin-box-fill"></i>
+                                </a>
+                                <a href="https://github.com/waqas12-lab" target="_blank" rel="noopener noreferrer" aria-label="Muhammad Waqas GitHub">
+                                    <i class="ri-github-fill"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Info & Legal -->
+            <div class="footer-info">
+                <p class="footer-tagline">MUET Results Portal — <span>independent student utility</span></p>
+                <p class="copyright">© 2026 · All rights reserved · <a href="/privacy-policy">Privacy Policy</a></p>
+            </div>
         </div>
     </footer>
 
