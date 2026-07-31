@@ -22,7 +22,12 @@
     <meta name="keywords"
         content="{{UNIVERSITY_SHORT_NAME}} Results, {{SITE_TITLE}}, {{UNIVERSITY_NAME}} Examination Results, {{UNIVERSITY_SHORT_NAME}} Semester Results, {{UNIVERSITY_SHORT_NAME}} Batch Results">
     <meta name="author" content="{{DEVELOPER_NAME}}">
-    <meta name="theme-color" content="#6366f1">
+    <meta name="theme-color" content="#0A5FAA">
+    <link rel="icon" href="/assets/logo/favicon.ico" sizes="any">
+    <link rel="icon" href="/assets/logo/favicon-32.png" type="image/png" sizes="32x32">
+    <link rel="icon" href="/assets/logo/favicon-16.png" type="image/png" sizes="16x16">
+    <link rel="apple-touch-icon" href="/assets/logo/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
     <link rel="canonical" href="{{SITE_URL}}/">
     <link rel="sitemap" type="application/xml" title="Sitemap" href="{{SITE_URL}}/sitemap.xml">
     <title>{{SITE_TITLE}} | {{UNIVERSITY_NAME}}</title>
@@ -35,7 +40,10 @@
     <meta property="og:locale" content="en_US">
     <meta property="og:site_name" content="{{SITE_TITLE}}">
 
-    <meta name="twitter:card" content="summary">
+    <meta property="og:image" content="{{SITE_URL}}/assets/logo/logo-full.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="{{SITE_URL}}/assets/logo/logo-full.png">
     <meta name="twitter:title" content="{{SITE_TITLE}}">
     <meta name="twitter:description"
         content="Lookup {{UNIVERSITY_NAME}} semester results, GPA, and batch rankings.">
@@ -144,8 +152,11 @@
     <header class="site-header">
         <div class="header-container">
             <a href="/" class="header-logo">
-                <div class="logo-circle"><i class="ri-search-eye-line"></i></div>
-                <span>MUET Results Portal</span>
+                <img src="/assets/logo/icon-mark-160.png" alt="MUET Result Portal logo" class="header-logo-mark" width="97" height="34">
+                <span class="header-logo-text">
+                    <span class="logo-primary">MUET</span>
+                    <span class="logo-secondary">Results Portal</span>
+                </span>
             </a>
             <nav class="header-nav">
                 <a href="/departments" id="navDeptsLink">Departments</a>
@@ -154,9 +165,11 @@
                 <a href="/academic-calendar" id="navCalendarLink">Academic Calendar</a>
                 <a href="/about" id="navAboutLink">About</a>
                 <a href="/faq" id="navFaqLink">FAQs</a>
-                <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Toggle dark mode"><i class="ri-moon-line" id="themeToggleIcon"></i></button>
             </nav>
-            <button class="hamburger-btn" id="hamburgerBtn" aria-label="Toggle mobile menu"><i class="ri-menu-line"></i></button>
+            <div class="header-actions">
+                <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Toggle dark mode"><i class="ri-moon-line" id="themeToggleIcon"></i></button>
+                <button class="hamburger-btn" id="hamburgerBtn" aria-label="Toggle mobile menu"><i class="ri-menu-line"></i></button>
+            </div>
         </div>
         <div class="mobile-nav-menu" id="mobileNavMenu">
             <a href="/departments" id="mobDeptsLink">Departments</a>
@@ -176,7 +189,7 @@
         <!-- Search Screen -->
         <main id="searchView" class="view active" aria-label="MUET result lookup">
             <div class="hero">
-                <div class="logo-icon" aria-hidden="true" style="margin-top: 16px;"><i class="ri-search-eye-line"></i></div>
+                <img src="/assets/logo/icon-mark-320.png" alt="" aria-hidden="true" class="hero-logo-mark" style="margin-top: 16px;">
                 <h1 style="font-size: 36px;">MUET Results Portal</h1>
                 <p style="font-size: 16px; max-width: 480px; color: var(--text-secondary);">Check Mehran University of Engineering &amp; Technology Results Online</p>
             </div>
@@ -822,7 +835,7 @@
                     </div>
                     <div style="display: flex; flex-direction: column; gap: 16px; margin-top: 8px;">
                         <div class="date-glance-item" style="display: flex; align-items: flex-start; gap: 12px;">
-                            <div class="date-glance-icon" style="background: rgba(99, 102, 241, 0.1); color: var(--accent); width: 36px; height: 36px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><i class="ri-play-circle-line"></i></div>
+                            <div class="date-glance-icon" style="background: rgba(10, 95, 170, 0.1); color: var(--accent); width: 36px; height: 36px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><i class="ri-play-circle-line"></i></div>
                             <div>
                                 <strong style="font-size: 13.5px; display: block; color: var(--text-primary);">Classes Start (Fall 2026)</strong>
                                 <span style="font-size: 12.5px; color: var(--text-secondary);">20 July 2026</span>
@@ -1024,7 +1037,7 @@
             <!-- Explore More Links Grid -->
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-top: 28px;">
                 <a href="/" class="gpa-card explore-card" style="text-decoration: none; margin: 0; padding: 20px; display: flex; align-items: center; gap: 12px; border: 1px solid var(--border-light); background: var(--bg-card); transition: all 0.25s ease;">
-                    <div style="background: rgba(99, 102, 241, 0.1); color: var(--accent); width: 42px; height: 42px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><i class="ri-search-eye-line" style="font-size: 20px;"></i></div>
+                    <div style="background: rgba(10, 95, 170, 0.1); color: var(--accent); width: 42px; height: 42px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><i class="ri-search-eye-line" style="font-size: 20px;"></i></div>
                     <div>
                         <strong style="font-size: 14px; display: block; color: var(--text-primary);">Results Portal</strong>
                         <span style="font-size: 11.5px; color: var(--text-secondary);">Check semester results online</span>
