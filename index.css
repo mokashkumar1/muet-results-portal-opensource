@@ -1,37 +1,146 @@
 :root {
-    --bg: #f9fafb;
-    --surface: rgba(255, 255, 255, 0.85);
-    --surface-solid: #ffffff;
+    /* ---- Surfaces ---- */
+    --bg: #FFFFFF;
+    --surface: #F8FAFC;
+    --surface-solid: #FFFFFF;
+    --card: #FFFFFF;
+
+    /* ---- Text ---- */
     --text-primary: #111827;
-    --text-secondary: #6b7280;
-    --border: #e5e7eb;
-    --border-light: rgba(229, 231, 235, 0.5);
-    --accent: #6366f1;
-    --accent-hover: #4f46e5;
-    --accent-text: #6366f1;
-    --accent-light: #e0e7ff;
-    --success: #059669;
-    --success-bg: #d1fae5;
-    --info: #2563eb;
-    --info-bg: #dbeafe;
-    --warning: #d97706;
-    --warning-bg: #fef3c7;
-    --danger: #ef4444;
-    --danger-bg: #fee2e2;
-    --rank-gold: #b45309;
-    --rank-gold-bg: #fef3c7;
-    --rank-silver: #4b5563;
-    --rank-silver-bg: #f3f4f6;
-    --rank-bronze: #c2410c;
-    --rank-bronze-bg: #ffedd5;
-    --control-muted-bg: #f3f4f6;
+    --text-secondary: #6B7280;
+
+    /* ---- Borders ---- */
+    --border: #E5E7EB;
+    --border-light: rgba(229, 231, 235, 0.6);
+
+    /* ---- Brand ---- */
+    --accent: #6D28D9;
+    --accent-hover: #5B21B6;
+    --accent-text: #6D28D9;
+    --accent-light: #EDE9FE;
+    --secondary: #7C3AED;
+
+    /* ---- Feedback ---- */
+    --success: #16A34A;
+    --success-bg: #DCFCE7;
+    --info: #2563EB;
+    --info-bg: #DBEAFE;
+    --warning: #F59E0B;
+    --warning-bg: #FEF3C7;
+    --danger: #DC2626;
+    --danger-bg: #FEE2E2;
+
+    --rank-gold: #B45309;
+    --rank-gold-bg: #FEF3C7;
+    --rank-silver: #4B5563;
+    --rank-silver-bg: #F3F4F6;
+    --rank-bronze: #C2410C;
+    --rank-bronze-bg: #FFEDD5;
+    --control-muted-bg: #F3F4F6;
+
+    /* ---- Typography scale ---- */
     --font: 'Inter', sans-serif;
-    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
-    --shadow-lg: 0 20px 25px -5px rgb(0 0 0 / 0.05), 0 8px 10px -6px rgb(0 0 0 / 0.05);
+    --fs-hero: clamp(2rem, 1.6rem + 2vw, 3rem);
+    --fs-h1: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+    --fs-h2: clamp(1.25rem, 1.15rem + 0.5vw, 1.5rem);
+    --fs-body: 1rem;
+    --fs-caption: 0.8125rem;
+
+    /* ---- Elevation ---- */
+    --shadow-sm: 0 1px 2px 0 rgb(15 23 42 / 0.04);
+    --shadow-md: 0 4px 6px -1px rgb(15 23 42 / 0.06), 0 2px 4px -2px rgb(15 23 42 / 0.05);
+    --shadow-lg: 0 20px 25px -5px rgb(15 23 42 / 0.08), 0 8px 10px -6px rgb(15 23 42 / 0.05);
+
+    /* ---- Shape ---- */
     --radius-md: 12px;
     --radius-lg: 24px;
     --radius-full: 9999px;
+
+    /* ---- Motion ---- */
+    --ease: cubic-bezier(0.16, 1, 0.3, 1);
+    --theme-transition: background-color 0.25s var(--ease), border-color 0.25s var(--ease), color 0.25s var(--ease), box-shadow 0.25s var(--ease);
+
+    /* ---- Disclaimer / warning card (theme-aware) ---- */
+    --disclaimer-bg: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%);
+    --disclaimer-border: rgba(245, 158, 11, 0.4);
+    --disclaimer-shadow: 0 10px 25px rgba(180, 83, 9, 0.1);
+    --disclaimer-title: #92400E;
+    --disclaimer-text: #78716C;
+    --disclaimer-text-strong: #1C1917;
+    --disclaimer-link: #B45309;
+    --disclaimer-link-hover: #92400E;
+    --disclaimer-circle-bg: #F59E0B;
+    --disclaimer-circle-color: #1F2937;
+    --disclaimer-illustration-color: #92400E;
+    --disclaimer-illustration-opacity: 0.12;
+}
+
+/* ---- Dark theme tokens (applied via body.dark-mode, kept in sync with legacy overrides below) ---- */
+body.dark-mode {
+    --bg: #0F172A;
+    --surface: #1E293B;
+    --surface-solid: #1E293B;
+    --card: #334155;
+    --text-primary: #F8FAFC;
+    --text-secondary: #CBD5E1;
+    --border: #475569;
+    --border-light: rgba(71, 85, 105, 0.6);
+    --accent: #8B5CF6;
+    --accent-hover: #A78BFA;
+    --accent-text: #A78BFA;
+    --accent-light: rgba(139, 92, 246, 0.16);
+    --secondary: #7C3AED;
+    --success: #22C55E;
+    --warning: #F59E0B;
+    --danger: #EF4444;
+    --control-muted-bg: #1E293B;
+
+    /* ---- Disclaimer / warning card (dark) ---- */
+    --disclaimer-bg: linear-gradient(135deg, #0e1424 0%, #151e33 100%);
+    --disclaimer-border: rgba(245, 158, 11, 0.45);
+    --disclaimer-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+    --disclaimer-title: #F59E0B;
+    --disclaimer-text: #CBD5E1;
+    --disclaimer-text-strong: #FFFFFF;
+    --disclaimer-link: #F59E0B;
+    --disclaimer-link-hover: #FBBF24;
+    --disclaimer-circle-bg: #F59E0B;
+    --disclaimer-circle-color: #0E1424;
+    --disclaimer-illustration-color: #FFFFFF;
+    --disclaimer-illustration-opacity: 0.15;
+}
+
+/* Smooth, lightweight theme switching across all themeable surfaces */
+body,
+.site-header,
+.site-footer,
+.container,
+input,
+select,
+button,
+a {
+    transition: var(--theme-transition);
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.001ms !important;
+        transition-duration: 0.001ms !important;
+    }
+}
+
+/* Visible, accessible focus ring for keyboard navigation (WCAG AA) */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: var(--radius-md);
 }
 
 * {
@@ -130,6 +239,19 @@ body {
     margin-bottom: 24px;
 }
 
+.hero-logo-img {
+    height: 96px;
+    width: auto;
+    margin-top: 8px;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 480px) {
+    .hero-logo-img {
+        height: 76px;
+    }
+}
+
 h1, h2 {
     font-size: 30px;
     font-weight: 800;
@@ -193,7 +315,7 @@ p {
     font-size: 16px;
     font-weight: 500;
     font-family: var(--font);
-    transition: all 0.2s;
+    transition: background-color 0.2s, border-color 0.2s, color 0.2s, transform 0.2s, box-shadow 0.2s;
     background: var(--surface-solid);
     outline: none;
     color: var(--text-primary);
@@ -231,7 +353,7 @@ input {
     font-size: 16px;
     font-weight: 500;
     font-family: var(--font);
-    transition: all 0.2s;
+    transition: background-color 0.2s, border-color 0.2s, color 0.2s, transform 0.2s, box-shadow 0.2s;
     background: var(--surface-solid);
     outline: none;
     color: var(--text-primary);
@@ -257,7 +379,7 @@ input:focus {
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: background-color 0.2s, border-color 0.2s, color 0.2s, transform 0.2s, box-shadow 0.2s;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -285,7 +407,7 @@ input:focus {
     font-weight: 600;
     font-family: var(--font);
     cursor: pointer;
-    transition: all 0.2s;
+    transition: background-color 0.2s, border-color 0.2s, color 0.2s, transform 0.2s, box-shadow 0.2s;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -572,7 +694,7 @@ th:last-child {
     border: 1px solid var(--border-light);
     box-shadow: var(--shadow-sm);
     text-align: left;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .site-footer:hover {
@@ -621,7 +743,7 @@ th:last-child {
     font-size: 13px;
     font-weight: 600;
     text-decoration: none;
-    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.25s cubic-bezier(0.4, 0, 0.2, 1), color 0.25s cubic-bezier(0.4, 0, 0.2, 1), transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     border: 1px solid var(--border);
 }
 
@@ -1189,7 +1311,7 @@ th:last-child {
     line-height: 1;
     padding: 4px;
     border-radius: var(--radius-full);
-    transition: all 0.2s;
+    transition: background-color 0.2s, border-color 0.2s, color 0.2s, transform 0.2s, box-shadow 0.2s;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1305,7 +1427,7 @@ th:last-child {
     font-family: var(--font);
     cursor: pointer;
     border-radius: 8px;
-    transition: all 0.2s;
+    transition: background-color 0.2s, border-color 0.2s, color 0.2s, transform 0.2s, box-shadow 0.2s;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1330,7 +1452,7 @@ th:last-child {
     border-radius: var(--radius-md);
     padding: 8px 4px;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: background-color 0.2s, border-color 0.2s, color 0.2s, transform 0.2s, box-shadow 0.2s;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1662,6 +1784,17 @@ body {
     font-size: 18px;
 }
 
+.header-logo-img {
+    height: 42px;
+    width: auto;
+    display: block;
+    transition: transform 0.25s var(--ease);
+}
+
+.header-logo:hover .header-logo-img {
+    transform: scale(1.05);
+}
+
 .logo-circle {
     width: 32px;
     height: 32px;
@@ -1672,6 +1805,24 @@ body {
     align-items: center;
     justify-content: center;
     font-size: 16px;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
 }
 
 .header-nav {
@@ -1692,6 +1843,14 @@ body {
     color: var(--text-primary);
 }
 
+/* Always-visible action group (theme toggle + hamburger) so the
+   theme toggle never disappears when the nav links collapse on mobile. */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
 .theme-toggle-btn {
     background: none;
     border: none;
@@ -1701,11 +1860,38 @@ body {
     padding: 4px;
     display: inline-flex;
     align-items: center;
-    transition: color 0.2s;
+    justify-content: center;
+    min-width: 36px;
+    min-height: 36px;
+    border-radius: var(--radius-md);
+    transition: color 0.2s, background 0.2s;
 }
 
 .theme-toggle-btn:hover {
     color: var(--text-primary);
+    background: var(--surface-hover, rgba(0, 0, 0, 0.04));
+}
+
+.theme-toggle-btn i {
+    display: inline-block;
+    transition: transform 0.4s var(--ease), opacity 0.25s var(--ease);
+}
+
+.theme-toggle-btn.spin i {
+    animation: themeIconFlip 0.4s var(--ease);
+}
+
+@keyframes themeIconFlip {
+    0% { transform: rotate(0deg) scale(1); opacity: 1; }
+    50% { transform: rotate(90deg) scale(0.6); opacity: 0; }
+    51% { transform: rotate(90deg) scale(0.6); opacity: 0; }
+    100% { transform: rotate(180deg) scale(1); opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .theme-toggle-btn.spin i {
+        animation: none;
+    }
 }
 
 .hamburger-btn {
@@ -1715,6 +1901,11 @@ body {
     font-size: 24px;
     color: var(--text-primary);
     cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    min-width: 36px;
+    min-height: 36px;
+    border-radius: var(--radius-md);
 }
 
 /* Mobile Nav Drawer */
@@ -1753,7 +1944,7 @@ body {
     font-size: 16px;
     font-weight: 500;
     font-family: var(--font);
-    transition: all 0.2s;
+    transition: background-color 0.2s, border-color 0.2s, color 0.2s, transform 0.2s, box-shadow 0.2s;
     background: var(--surface-solid);
     outline: none;
     color: var(--text-primary);
@@ -1947,7 +2138,7 @@ body {
     border-radius: var(--radius-md);
     cursor: pointer;
     font-size: 14px;
-    transition: all 0.2s;
+    transition: background-color 0.2s, border-color 0.2s, color 0.2s, transform 0.2s, box-shadow 0.2s;
     flex-shrink: 0;
 }
 
@@ -2149,7 +2340,7 @@ body {
     border: 1px solid var(--border-light);
     box-shadow: var(--shadow-sm);
     text-align: left;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .site-footer:hover {
@@ -2198,7 +2389,7 @@ body {
     font-size: 13px;
     font-weight: 600;
     text-decoration: none;
-    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.25s cubic-bezier(0.4, 0, 0.2, 1), color 0.25s cubic-bezier(0.4, 0, 0.2, 1), transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     border: 1px solid var(--border);
 }
 
@@ -2253,7 +2444,7 @@ body {
     }
 
     .hamburger-btn {
-        display: block;
+        display: flex;
     }
 
     .main-grid {
@@ -2350,7 +2541,7 @@ body.dark-mode .faq-card {
     border: 1px solid var(--border);
     border-radius: var(--radius-md);
     overflow: hidden;
-    transition: all 0.25s ease;
+    transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .faq-item[open] {
@@ -2605,7 +2796,7 @@ body.dark-mode .gpa-title {
     color: var(--text-primary);
     cursor: pointer;
     outline: none;
-    transition: all 0.2s;
+    transition: background-color 0.2s, border-color 0.2s, color 0.2s, transform 0.2s, box-shadow 0.2s;
     appearance: none;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%239ca3af' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
@@ -2625,7 +2816,7 @@ body.dark-mode .gpa-title {
     padding: 8px;
     font-size: 18px;
     border-radius: var(--radius-md);
-    transition: all 0.2s;
+    transition: background-color 0.2s, border-color 0.2s, color 0.2s, transform 0.2s, box-shadow 0.2s;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -2837,20 +3028,22 @@ body.dark-mode .gpa-title {
     }
 }
 
-/* Premium Disclaimer Card Styles */
+/* Premium Disclaimer Card Styles — theme-aware: light surface in light mode,
+   the original moody dark gradient is preserved for dark mode only. */
 .disclaimer-premium {
     margin-top: 36px;
     padding: 28px 32px;
-    background: linear-gradient(135deg, #0e1424 0%, #151e33 100%);
-    border: 1px solid rgba(245, 158, 11, 0.45);
+    background: var(--surface-solid);
+    border: 1px solid rgba(245, 158, 11, 0.35);
     border-radius: 18px;
     display: flex;
     align-items: center;
     gap: 28px;
     position: relative;
     overflow: hidden;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+    box-shadow: var(--shadow-md);
     text-align: left;
+    transition: var(--theme-transition);
 }
 
 .disclaimer-premium-badge {
@@ -2865,9 +3058,22 @@ body.dark-mode .gpa-title {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #0e1424;
+    color: #1c1305;
     font-size: 26px;
     box-shadow: 0 0 16px rgba(245, 158, 11, 0.35);
+    flex-shrink: 0;
+    animation: disclaimerPulse 2.6s ease-in-out infinite;
+}
+
+@keyframes disclaimerPulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.35); }
+    50% { box-shadow: 0 0 0 8px rgba(245, 158, 11, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .disclaimer-premium-circle {
+        animation: none;
+    }
 }
 
 .disclaimer-premium-content {
@@ -2878,15 +3084,22 @@ body.dark-mode .gpa-title {
 .disclaimer-premium-title {
     font-size: 19px;
     font-weight: 800;
-    color: #f59e0b;
     margin: 0 0 12px 0 !important;
     letter-spacing: 0.5px;
+    /* Override the global h1,h2 gradient-clip-text treatment: without this,
+       this heading inherits transparent text filled by a gradient meant for
+       page titles, which reads as near-invisible on a dark card background. */
+    background: none !important;
+    -webkit-background-clip: initial !important;
+    background-clip: initial !important;
+    -webkit-text-fill-color: initial !important;
+    color: #DC2626 !important;
 }
 
 .disclaimer-premium-text {
     font-size: 13.5px !important;
     line-height: 1.65 !important;
-    color: #cbd5e1 !important;
+    color: var(--text-secondary) !important;
     margin: 0 0 10px 0 !important;
     max-width: 90%;
     text-align: left !important;
@@ -2897,27 +3110,27 @@ body.dark-mode .gpa-title {
 }
 
 .disclaimer-premium-text strong {
-    color: #ffffff !important;
+    color: var(--text-primary) !important;
     font-weight: 700 !important;
 }
 
 .disclaimer-premium-link {
-    color: #f59e0b !important;
+    color: #b45309 !important;
     text-decoration: underline !important;
     font-weight: 600 !important;
     transition: color 0.25s ease !important;
 }
 
 .disclaimer-premium-link:hover {
-    color: #fbbf24 !important;
+    color: #92400e !important;
 }
 
 .disclaimer-premium-illustration {
     flex-shrink: 0;
     width: 95px;
     height: 95px;
-    color: #ffffff;
-    opacity: 0.15;
+    color: var(--text-primary);
+    opacity: 0.12;
     z-index: 1;
     display: flex;
     align-items: center;
@@ -2928,6 +3141,43 @@ body.dark-mode .gpa-title {
 .disclaimer-premium-illustration svg {
     width: 100%;
     height: 100%;
+}
+
+/* Dark mode: restore the original deep-navy gradient + brighter amber ink,
+   since that treatment only reads well against a dark surface. A visible
+   border + lifted shadow keeps the card from blending into the page
+   background, and text is bumped to near-white for maximum legibility.
+   The heading uses a brighter red than light mode (same red family) since
+   the darker shade that reads well on white is too low-contrast on navy. */
+body.dark-mode .disclaimer-premium {
+    background: linear-gradient(135deg, #0e1424 0%, #151e33 100%);
+    border: 1px solid rgba(245, 158, 11, 0.55);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(245, 158, 11, 0.08);
+}
+
+body.dark-mode .disclaimer-premium-title {
+    color: #EF4444 !important;
+}
+
+body.dark-mode .disclaimer-premium-text {
+    color: #e2e8f0 !important;
+}
+
+body.dark-mode .disclaimer-premium-text strong {
+    color: #ffffff !important;
+}
+
+body.dark-mode .disclaimer-premium-link {
+    color: #fbbf24 !important;
+}
+
+body.dark-mode .disclaimer-premium-link:hover {
+    color: #fde68a !important;
+}
+
+body.dark-mode .disclaimer-premium-illustration {
+    color: #ffffff;
+    opacity: 0.15;
 }
 
 @media (max-width: 768px) {
@@ -2951,6 +3201,23 @@ body.dark-mode .gpa-title {
     
     .disclaimer-premium-illustration {
         display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .disclaimer-premium {
+        padding: 20px 16px;
+        border-radius: 14px;
+        gap: 12px;
+    }
+
+    .disclaimer-premium-title {
+        font-size: 17px;
+    }
+
+    .disclaimer-premium-text {
+        font-size: 13px !important;
+        line-height: 1.55 !important;
     }
 }
 
@@ -2978,7 +3245,7 @@ body.dark-mode .gpa-title {
     padding: 8px 16px;
     border-radius: 30px;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
     display: inline-flex;
     align-items: center;
     gap: 6px;
@@ -3016,3 +3283,255 @@ body.dark-mode .gpa-title {
 }
 
 
+
+/* ---- Footer text hierarchy: clear grouping between credits, copyright, and links ---- */
+.site-footer .footer-info {
+    gap: 6px;
+}
+
+.site-footer .footer-credits {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.site-footer .developed-by {
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--text-secondary);
+    margin: 0;
+    font-weight: 500;
+}
+
+.site-footer .footer-contribution {
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--text-secondary);
+    opacity: 0.85;
+    margin: 0;
+    font-weight: 400;
+}
+
+.site-footer .footer-contribution strong {
+    font-weight: 600;
+}
+
+.site-footer .copyright {
+    font-size: 11px;
+    line-height: 1.5;
+    color: var(--text-secondary);
+    opacity: 0.7;
+    margin: 4px 0 0;
+    font-weight: 400;
+}
+
+.site-footer .footer-privacy {
+    margin: 2px 0 0;
+    font-size: 12.5px;
+    line-height: 1.5;
+}
+
+.site-footer .footer-privacy a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 500;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s var(--ease), color 0.2s var(--ease);
+}
+
+.site-footer .footer-privacy a:hover {
+    color: var(--accent-text);
+    border-bottom-color: currentColor;
+}
+
+@media (max-width: 600px) {
+    .site-footer .footer-credits {
+        align-items: center;
+    }
+}
+
+/* =========================================================================
+   Motion system v2 — scroll reveal, tactile press feedback, perf hints
+   Animates transform/opacity only (GPU-cheap, no layout thrashing).
+   ========================================================================= */
+
+/* Scroll-triggered reveal: hidden until JS (IntersectionObserver) flips
+   the class; falls back to fully visible if JS never runs (no-JS safe). */
+[data-reveal] {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.5s var(--ease), transform 0.5s var(--ease);
+}
+
+[data-reveal].is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Staggered entrance for grid items (trust-section cards) */
+[data-reveal].is-visible[data-reveal-index="0"] { transition-delay: 0s; }
+[data-reveal].is-visible[data-reveal-index="1"] { transition-delay: 0.08s; }
+[data-reveal].is-visible[data-reveal-index="2"] { transition-delay: 0.16s; }
+[data-reveal].is-visible[data-reveal-index="3"] { transition-delay: 0.24s; }
+
+@media (prefers-reduced-motion: reduce) {
+    [data-reveal] {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+}
+
+/* Tactile press feedback — quick, subtle scale on click for buttons that
+   previously had hover-only feedback with nothing on :active. */
+.secondary-btn:active,
+.footer-btn:active,
+.contribute-btn:active,
+.theme-toggle-btn:active,
+.hamburger-btn:active,
+.icon-btn:active {
+    transform: scale(0.97);
+}
+
+/* will-change scoped to the interactive state only, so idle cards don't
+   pay a compositing-layer cost while off-screen or unhovered. */
+.trust-item:hover,
+.explore-card:hover,
+.student-card:hover,
+.matrix-card:hover,
+.analytics-card:hover,
+.rank-card:hover,
+.primary-btn:hover,
+.secondary-btn:hover,
+.footer-btn:hover,
+.contribute-btn:hover {
+    will-change: transform, box-shadow;
+}
+
+.trust-item {
+    transition: background-color 0.25s var(--ease), border-color 0.25s var(--ease), box-shadow 0.25s var(--ease), transform 0.25s var(--ease), opacity 0.5s var(--ease);
+}
+
+.trust-item:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+}
+
+/* =========================================================================
+   Footer social groups — Developer + Contributor credits with their own
+   links, laid out to stay clean on both desktop and small phones.
+   ========================================================================= */
+.site-footer .footer-socials {
+    display: flex;
+    align-items: flex-start;
+    gap: 28px;
+    flex-wrap: wrap;
+}
+
+.footer-social-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.footer-social-label {
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    opacity: 0.75;
+}
+
+.footer-social-links {
+    display: flex;
+    gap: 10px;
+}
+
+@media (max-width: 600px) {
+    .site-footer .footer-socials {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+        gap: 20px;
+    }
+
+    .footer-social-group {
+        align-items: center;
+        flex: 1 1 200px;
+    }
+
+    .footer-social-links {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .footer-social-links .footer-btn {
+        flex: 1;
+        max-width: 140px;
+    }
+}
+
+@media (max-width: 380px) {
+    .footer-social-links {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .footer-social-links .footer-btn {
+        max-width: none;
+    }
+}
+
+/* =========================================================================
+   Interaction polish pass — smoother, more consistent easing across every
+   hover surface, using the same "premium" curve (var(--ease)) instead of
+   the browser's default linear/ease-in-out on some elements and a custom
+   cubic-bezier on others. This is purely additive/override, safe on top
+   of the rules above.
+   ========================================================================= */
+.primary-btn,
+.secondary-btn,
+.footer-btn,
+.contribute-btn,
+.theme-toggle-btn,
+.trust-item,
+.explore-card,
+.matrix-card,
+.analytics-card,
+.rank-card,
+.student-card {
+    transition-timing-function: var(--ease) !important;
+}
+
+.primary-btn:hover,
+.contribute-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.primary-btn:active,
+.contribute-btn:active {
+    transform: translateY(0) scale(0.98);
+    box-shadow: var(--shadow-sm);
+}
+
+.secondary-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent-text);
+    transform: translateY(-1px);
+}
+
+/* Sticky navbar gains depth once the page has scrolled, so it never looks
+   like it's floating flush against content underneath it. */
+.site-header {
+    transition: box-shadow 0.3s var(--ease), background-color 0.3s var(--ease);
+}
+
+.site-header.is-scrolled {
+    box-shadow: 0 4px 16px rgba(15, 23, 42, 0.08);
+}
+
+body.dark-mode .site-header.is-scrolled {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+}

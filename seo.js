@@ -55,7 +55,7 @@
             description: `Browse supported academic departments at ${config.UNIVERSITY_NAME}. View batch results and GPAs.`,
             path: '/departments'
         }
-    };    };
+    };
 
     function setMeta(name, content, isProperty) {
         const attr = isProperty ? 'property' : 'name';
