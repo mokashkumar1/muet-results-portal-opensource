@@ -1763,3 +1763,27 @@ initializeCalendarChips();
 
     revealEls.forEach(el => observer.observe(el));
 })();
+
+// =========================================================================
+// Sticky navbar elevation — adds shadow once scrolled, using a passive
+// scroll listener + requestAnimationFrame throttle to avoid layout thrash.
+// =========================================================================
+(function initNavbarScrollShadow() {
+    const header = document.querySelector(".site-header");
+    if (!header) return;
+
+    let ticking = false;
+    const applyState = () => {
+        header.classList.toggle("is-scrolled", window.scrollY > 8);
+        ticking = false;
+    };
+
+    window.addEventListener("scroll", () => {
+        if (!ticking) {
+            window.requestAnimationFrame(applyState);
+            ticking = true;
+        }
+    }, { passive: true });
+
+    applyState(); // set initial state (e.g. on reload mid-scroll)
+})();

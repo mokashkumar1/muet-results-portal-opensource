@@ -5,7 +5,7 @@ window.UNIVERSITY_CONFIG = {
   "SITE_TITLE": "Demo University Results Portal",
   "SITE_URL": "https://demo-university-results.vercel.app",
   "DATASET_NAME": "dummy_dataset.csv",
-  "DEVELOPER_NAME": "Mokesh Kumar",
-  "DEVELOPER_LINKEDIN": "https://www.linkedin.com/in/your-profile",
-  "DEVELOPER_GITHUB": "https://github.com/your-username"
+  "DEVELOPER_NAME": "Mukesh Kumar",
+  "DEVELOPER_LINKEDIN": "https://www.linkedin.com/in/mokashkumar/",
+  "DEVELOPER_GITHUB": "https://github.com/mokashkumar1"
 };
