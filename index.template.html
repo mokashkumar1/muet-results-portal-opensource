@@ -2,6 +2,17 @@
 <html lang="en">
 
 <head>
+    <script>
+        // Prevent flash-of-incorrect-theme: apply saved/system theme before first paint
+        (function () {
+            try {
+                var saved = localStorage.getItem('theme');
+                var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+                var isDark = saved ? saved === 'dark' : prefersDark;
+                if (isDark) document.documentElement.classList.add('theme-dark-init');
+            } catch (e) { /* localStorage unavailable, fall back to light theme */ }
+        })();
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
@@ -11,23 +22,32 @@
     <meta name="keywords"
         content="{{UNIVERSITY_SHORT_NAME}} Results, {{SITE_TITLE}}, {{UNIVERSITY_NAME}} Examination Results, {{UNIVERSITY_SHORT_NAME}} Semester Results, {{UNIVERSITY_SHORT_NAME}} Batch Results">
     <meta name="author" content="{{DEVELOPER_NAME}}">
-    <meta name="theme-color" content="#6366f1">
+    <meta name="theme-color" content="#00406C">
     <link rel="canonical" href="{{SITE_URL}}/">
     <link rel="sitemap" type="application/xml" title="Sitemap" href="{{SITE_URL}}/sitemap.xml">
     <title>{{SITE_TITLE}} | {{UNIVERSITY_NAME}}</title>
+
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon-192.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
 
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{SITE_URL}}/">
     <meta property="og:title" content="{{SITE_TITLE}}">
     <meta property="og:description"
         content="{{UNIVERSITY_NAME}} semester results, batch rankings, and CGPA lookup.">
+    <meta property="og:image" content="{{SITE_URL}}/images/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     <meta property="og:locale" content="en_US">
     <meta property="og:site_name" content="{{SITE_TITLE}}">
 
-    <meta name="twitter:card" content="summary">
+    <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="{{SITE_TITLE}}">
     <meta name="twitter:description"
         content="Lookup {{UNIVERSITY_NAME}} semester results, GPA, and batch rankings.">
+    <meta name="twitter:image" content="{{SITE_URL}}/images/og-image.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -124,22 +144,32 @@
 </head>
 
 <body>
+    <script>
+        // Apply the pre-computed theme to <body> immediately (still runs before first paint)
+        if (document.documentElement.classList.contains('theme-dark-init')) {
+            document.body.classList.add('dark-mode');
+        }
+    </script>
     <header class="site-header">
         <div class="header-container">
             <a href="/" class="header-logo">
-                <div class="logo-circle"><i class="ri-search-eye-line"></i></div>
-                <span>MUET Results Portal</span>
+                <img src="/images/logo-mark.png" alt="MUET Results Portal" class="header-logo-img" width="150" height="73">
+                <span class="sr-only">MUET Results Portal</span>
             </a>
-            <nav class="header-nav">
-                <a href="/departments" id="navDeptsLink">Departments</a>
-                <a href="#rankings" id="navRankingsLink">Rankings</a>
-                <a href="/gpa-calculator" id="navGpaLink">GPA Calculator</a>
-                <a href="/academic-calendar" id="navCalendarLink">Academic Calendar</a>
-                <a href="/about" id="navAboutLink">About</a>
-                <a href="/faq" id="navFaqLink">FAQs</a>
-                <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Toggle dark mode"><i class="ri-moon-line"></i></button>
-            </nav>
-            <button class="hamburger-btn" id="hamburgerBtn" aria-label="Toggle mobile menu"><i class="ri-menu-line"></i></button>
+            <div class="header-right">
+                <nav class="header-nav">
+                    <a href="/departments" id="navDeptsLink">Departments</a>
+                    <a href="#rankings" id="navRankingsLink">Rankings</a>
+                    <a href="/gpa-calculator" id="navGpaLink">GPA Calculator</a>
+                    <a href="/academic-calendar" id="navCalendarLink">Academic Calendar</a>
+                    <a href="/about" id="navAboutLink">About</a>
+                    <a href="/faq" id="navFaqLink">FAQs</a>
+                </nav>
+                <div class="header-actions">
+                    <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Toggle dark mode"><i class="ri-moon-line" id="themeToggleIcon"></i></button>
+                    <button class="hamburger-btn" id="hamburgerBtn" aria-label="Toggle mobile menu"><i class="ri-menu-line"></i></button>
+                </div>
+            </div>
         </div>
         <div class="mobile-nav-menu" id="mobileNavMenu">
             <a href="/departments" id="mobDeptsLink">Departments</a>
@@ -159,7 +189,7 @@
         <!-- Search Screen -->
         <main id="searchView" class="view active" aria-label="MUET result lookup">
             <div class="hero">
-                <div class="logo-icon" aria-hidden="true" style="margin-top: 16px;"><i class="ri-search-eye-line"></i></div>
+                <img src="/images/logo-medium.png" alt="" aria-hidden="true" class="hero-logo-img" width="240" height="139">
                 <h1 style="font-size: 36px;">MUET Results Portal</h1>
                 <p style="font-size: 16px; max-width: 480px; color: var(--text-secondary);">Check Mehran University of Engineering &amp; Technology Results Online</p>
             </div>
@@ -245,7 +275,7 @@
 
 
             <!-- Contribute Banner -->
-            <div class="contribute-banner">
+            <div class="contribute-banner" data-reveal>
                 <div class="contribute-left">
                     <i class="ri-upload-cloud-2-line contribute-icon"></i>
                     <div class="contribute-text">
@@ -258,22 +288,22 @@
 
             <!-- Why Students Trust Us -->
             <div class="trust-section" id="about">
-                <div class="trust-item">
+                <div class="trust-item" data-reveal data-reveal-index="0">
                     <i class="ri-search-eye-line"></i>
                     <h3>Easy Search</h3>
                     <p>Simply enter your roll number to find your results instantly.</p>
                 </div>
-                <div class="trust-item">
+                <div class="trust-item" data-reveal data-reveal-index="1">
                     <i class="ri-bar-chart-box-line"></i>
                     <h3>Detailed Analytics</h3>
                     <p>View performance trends.</p>
                 </div>
-                <div class="trust-item">
+                <div class="trust-item" data-reveal data-reveal-index="2">
                     <i class="ri-trophy-line"></i>
                     <h3>Rankings</h3>
                     <p>Check your position among peers.</p>
                 </div>
-                <div class="trust-item">
+                <div class="trust-item" data-reveal data-reveal-index="3">
                     <i class="ri-shield-keyhole-line"></i>
                     <h3>Secure &amp; Private</h3>
                     <p>Your data is secure and private.</p>
@@ -281,7 +311,7 @@
             </div>
 
 
-            <div class="disclaimer-premium" role="note" style="margin-top: 32px;">
+            <div class="disclaimer-premium" role="note" style="margin-top: 32px;" data-reveal>
                 <div class="disclaimer-premium-badge">
                     <div class="disclaimer-premium-circle">
                         <i class="ri-error-warning-fill"></i>
@@ -790,7 +820,7 @@
                         </div>
                     </div>
                     <div style="padding: 16px; text-align: center; background: #ffffff; border-radius: var(--radius-md); margin-top: 16px; border: 1px solid var(--border-light);">
-                        <img src="/Academic Calendar 2026-27.jpeg" alt="Official MUET Academic Calendar 2026-27 for Bachelor Degree Programs" style="max-width: 100%; height: auto; border-radius: var(--radius-sm); border: 1px solid var(--border-light);" />
+                        <img src="/Academic Calendar 2026-27.jpeg" alt="Official MUET Academic Calendar 2026-27 for Bachelor Degree Programs" width="720" height="944" loading="lazy" decoding="async" style="max-width: 100%; height: auto; border-radius: var(--radius-sm); border: 1px solid var(--border-light);" />
                     </div>
                     <p style="font-size: 13px; color: var(--text-secondary); margin-top: 12px; line-height: 1.5; font-style: italic;">
                         This is the official academic calendar published by MUET. Please refer to official university announcements for future updates or revisions.
@@ -1311,17 +1341,36 @@
 
     <footer class="site-footer">
         <div class="footer-info">
-            <p class="developed-by">Developed by <strong>{{DEVELOPER_NAME}}</strong></p>
-            <p class="copyright">© 2024 {{UNIVERSITY_NAME}}. All rights reserved.</p>
-            <p style="margin-top: 8px; font-size: 12.5px;"><a href="/privacy-policy" style="color: var(--text-secondary); text-decoration: none; font-weight: 500;" id="footerPrivacyLink">Privacy Policy</a></p>
+            <div class="footer-credits">
+                <p class="developed-by">Developed by <strong>{{DEVELOPER_NAME}}</strong></p>
+                <p class="footer-contribution">Frontend redesign by <strong>Muhammad Waqas</strong></p>
+            </div>
+            <p class="copyright">© 2026 MUET Results Portal. All rights reserved.</p>
+            <p class="footer-privacy"><a href="/privacy-policy" id="footerPrivacyLink">Privacy Policy</a></p>
         </div>
         <div class="footer-socials">
-            <a href="{{DEVELOPER_LINKEDIN}}" target="_blank" rel="noopener noreferrer" class="footer-btn linkedin">
-                <i class="ri-linkedin-box-fill"></i> LinkedIn
-            </a>
-            <a href="{{DEVELOPER_GITHUB}}" target="_blank" rel="noopener noreferrer" class="footer-btn github">
-                <i class="ri-github-fill"></i> GitHub
-            </a>
+            <div class="footer-social-group">
+                <span class="footer-social-label">Mukesh Kumar</span>
+                <div class="footer-social-links">
+                    <a href="{{DEVELOPER_LINKEDIN}}" target="_blank" rel="noopener noreferrer" class="footer-btn linkedin" aria-label="Mukesh Kumar on LinkedIn">
+                        <i class="ri-linkedin-box-fill"></i> LinkedIn
+                    </a>
+                    <a href="{{DEVELOPER_GITHUB}}" target="_blank" rel="noopener noreferrer" class="footer-btn github" aria-label="Mukesh Kumar on GitHub">
+                        <i class="ri-github-fill"></i> GitHub
+                    </a>
+                </div>
+            </div>
+            <div class="footer-social-group">
+                <span class="footer-social-label">Muhammad Waqas</span>
+                <div class="footer-social-links">
+                    <a href="https://www.linkedin.com/in/waqas-abbasi-07aa5a261/" target="_blank" rel="noopener noreferrer" class="footer-btn linkedin" aria-label="Muhammad Waqas on LinkedIn">
+                        <i class="ri-linkedin-box-fill"></i> LinkedIn
+                    </a>
+                    <a href="https://github.com/waqas12-lab" target="_blank" rel="noopener noreferrer" class="footer-btn github" aria-label="Muhammad Waqas on GitHub">
+                        <i class="ri-github-fill"></i> GitHub
+                    </a>
+                </div>
+            </div>
         </div>
     </footer>
 
