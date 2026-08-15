@@ -1,47 +1,4 @@
-function gradeFromCgpa(cgpa) {
-    if (cgpa >= 3.8) return "A+";
-    if (cgpa >= 3.5) return "A";
-    if (cgpa >= 3.0) return "B";
-    return "C";
-}
-
-function buildBatchStudents(semesterMaps) {
-    const allIds = new Set();
-    semesterMaps.forEach(map => Object.keys(map).forEach(id => allIds.add(id)));
-
-    const publishedSemestersCount = semesterMaps.length;
-
-    const students = [];
-    allIds.forEach(id => {
-        const semesters = semesterMaps.map(map => map[id] || 0);
-        const cgpa = publishedSemestersCount > 0
-            ? semesters.reduce((sum, g) => sum + g, 0) / publishedSemestersCount
-            : 0;
-
-        students.push({
-            id,
-            semesters,
-            cgpa,
-            grade: gradeFromCgpa(cgpa)
-        });
-    });
-
-    students.sort((a, b) => b.cgpa - a.cgpa);
-
-    let rank = 0;
-    let prevCgpa = null;
-
-    students.forEach(s => {
-        const cgpaRounded = Math.round(s.cgpa * 100) / 100;
-        if (prevCgpa === null || cgpaRounded !== prevCgpa) {
-            rank++;
-            prevCgpa = cgpaRounded;
-        }
-        s.rank = rank;
-    });
-
-    return students;
-}
+const { gradeFromCgpa, buildBatchStudents, getBatchStats } = window.ResultsCore;
 
 const batches = generatedBatches;
 
@@ -49,18 +6,6 @@ Object.values(batches).forEach(batch => {
     batch.students = buildBatchStudents(batch.semesters);
     batch.semesterCount = batch.semesters.length;
 });
-
-function getBatchStats(batch) {
-    const { students } = batch;
-    const total = students.length;
-    const avgCgpa = total
-        ? students.reduce((sum, s) => sum + s.cgpa, 0) / total
-        : 0;
-    const highest = total ? students[0].cgpa : 0;
-    const highPerformers = students.filter(s => s.cgpa >= 3.5).length;
-
-    return { total, avgCgpa, highest, highPerformers };
-}
 
 function getRankBadge(rank) {
     if (rank === 1) return '<span class="rank-badge gold"><i class="ri-medal-fill"></i> 1st</span>';

@@ -1,143 +1,89 @@
 # Configurable University Results Portal
 
-**This project demonstrates how to build a scalable university results portal using a zero-cost architecture powered by static assets, serverless APIs, OCR integration, GitHub-backed storage, and advanced SEO techniques. All datasets included in this repository are completely synthetic and generated solely for demonstration purposes.**
+A configurable JavaScript results portal for roll-number lookup, semester GPA history, batch statistics, dense rankings, and an authenticated result-ingestion workflow.
 
----
+The repository contains synthetic demonstration data. It is not an official MUET service and should not be treated as an authoritative academic record.
 
-### Badge Section
-
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Framework: Vanilla-JS](https://img.shields.io/badge/Stack-Vanilla_JavaScript-blue.svg)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
-[![Deployment: Vercel](https://img.shields.io/badge/Host-Vercel-black.svg?logo=vercel)](https://vercel.com)
-[![APIs: Serverless](https://img.shields.io/badge/API-Serverless_Functions-orange.svg)](https://vercel.com/docs/functions)
-[![OCR: Gemini-1.5-Flash](https://img.shields.io/badge/OCR-Gemini_AI_API-purple.svg)](https://ai.google.dev/)
-[![Database: CSV](https://img.shields.io/badge/Database-CSV_Flatfile-green.svg)](data/dummy_dataset.csv)
-[![Dependencies: Zero](https://img.shields.io/badge/Dependencies-Zero_Client_Side-red.svg)](#)
-
----
-
-## Executive Summary & Tech Stack
-
-This portal provides students with immediate GPA search, batch rankings leaderboards, and grade calculations. Staff and coordinators can upload official result announcements as image scans; a serverless backend leverages the **Google Gemini API** via native HTTPS calls to run OCR, extract scores, merge changes directly into a GitHub-backed CSV dataset, and trigger automatic static re-generation deployments.
-
-### Technologies
-- **Core Frontend:** HTML5, Vanilla CSS, and modular Vanilla JavaScript.
-- **Serverless API Engine:** Node.js serverless functions running on Vercel.
-- **AI OCR Processing:** Google Gemini API REST interface (zero-dependency, native HTTP requests).
-- **Persistent Storage:** Flatfile CSV database synchronized directly through the GitHub repository API.
-- **Build Pre-rendering:** Automated build scripts for sitemap and static SEO pages generation.
-
----
-
-## Architecture Diagram
-
-```mermaid
-graph TD
-    A[Staff Uploads Official Result Image] -->|Admin Panel| B(Serverless API: /api/extract-result)
-    B -->|Native REST Post| C[Google Gemini API]
-    C -->|AI OCR Text Extraction| B
-    B -->|Returns JSON GPAs| A
-    A -->|Edits / Saves Drafts| D(Serverless API: /api/save-result)
-    D -->|Authenticates via JWT Cookie| E[GitHub Contents API]
-    E -->|Git Commit to Main Branch| F[GitHub Repo: data/dummy_dataset.csv]
-    F -->|Vercel Auto-deploy webhook| G[Vercel Serverless Rebuild]
-    G -->|Runs scripts/compile-data.js| H[Generated data.js Asset]
-    G -->|Runs scripts/generate-static-pages.js| I[Pre-rendered HTML static pages]
-    G -->|Runs scripts/generate-sitemap.js| J[sitemap.xml Update]
-    H -->|Served to clients| K[Browser Result Search]
-    I -->|Crawled by Googlebot| L[SEO Rank Matrix Pages]
-```
-
----
+[Live demo](https://muetresults.vercel.app/) · [Portfolio](https://mokashkumar.vercel.app/)
 
 ## Features
 
-- **✓ OCR Result Parsing:** Automatic image scanning via Gemini API to extract tabular data (roll numbers and GPAs).
-- **✓ GPA Search:** Instant client-side roll number lookups with complete historical semester breakdowns.
-- **✓ Batch Standings & Rankings:** Complete interactive leaderboards sorted by CGPA with high-performer tiers.
-- **✓ Advanced SEO Optimization:** Build-time pre-rendered pages, JSON-LD schema graphs, meta descriptions, and sitemap updates.
-- **✓ Admin Dashboard & Coordinator RBAC:** Authenticated admin panels. Coordinators have department-restricted access, enforced using serverless-issued JWT cookies.
-- **✓ Dynamic Branding Engine:** Centrally controlled configuration file `config/university.json` compiles titles, logos, URLs, and authorship signals at build time.
-- **✓ Zero-Cost Architecture:** Designed to fit entirely on Vercel's free tier, utilizing Git commits as the state store.
+- Client-side result lookup and semester history
+- Batch statistics and deterministic dense ranking
+- Build-generated department, result, ranking, and sitemap pages
+- Configurable university and department metadata
+- JWT authentication in HTTP-only cookies
+- Coordinator-scoped administrative workflow
+- Optional Gemini-assisted OCR with a human review step
+- GitHub-backed CSV updates for the demonstration deployment
 
----
+## Stack
 
-## Screenshots Placeholder
+- HTML, CSS, and vanilla JavaScript
+- Node.js build scripts and Vercel Functions
+- Zod, JSON Web Tokens, bcrypt, and cookie helpers
+- CSV source data
+- Node's built-in test runner
 
-*Below are structural outlines of the responsive portal interface:*
+## How the data flow works
 
-### 1. Homepage & Student GPA Lookup
-- Clean search canvas with light/dark theme toggle, search bar for student roll numbers, and a batch selector.
-- Dynamically queries client-side search indexing to display semester matrices and rank positions.
+1. `data/dummy_dataset.csv` is the source dataset.
+2. `scripts/compile-data.js` validates it and generates `data.js`.
+3. `lib/results-core.js` calculates grades, averages, and dense rankings in the browser.
+4. Build scripts generate static pages and the sitemap.
+5. Optional serverless functions authenticate coordinators, extract draft values from an image, validate edits, and update the configured GitHub CSV.
 
-### 2. Administrative Ingestion Dashboard (`/admin`)
-- Glassmorphism authentication console featuring coordinator checkboxes and security locks.
-- OCR result extraction sidebar allowing side-by-side verification of original result cards with parsed JSON.
+GitHub-backed CSV storage keeps this demonstration simple, but it is not a transactional database. OCR output must always be reviewed before saving.
 
-### 3. Departmental Hub & Batch Leaderboard (`/ranking/*`)
-- Fully populated table showing students ranked by CGPA, semester breakdowns, grades, and top student medals.
+## Local setup
 
----
+Requirements: Node.js 18 or newer and npm.
 
-## Local Setup & Installation
+```bash
+git clone https://github.com/mokashkumar1/muet-results-portal-opensource.git
+cd muet-results-portal-opensource
+npm ci
+```
 
-### Prerequisites
-- [Node.js](https://nodejs.org/) (v16 or higher)
-- Optional: [Python 3](https://www.python.org/) (for running local OCR service mocks)
+Copy `.env.example` to `.env`. The public lookup and build work without production credentials. Administrative and OCR flows require the relevant variables documented in `.env.example`.
 
-### Setup Steps
+```bash
+npm run build
+npm run dev
+```
 
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/your-username/results-portal.git
-   cd results-portal
-   ```
+Open `http://localhost:3000`.
 
-2. **Install dependencies:**
-   ```bash
-   npm install
-   ```
+## Configuration
 
-3. **Configure branding properties:**
-   Open `config/university.json` and customize your configuration parameters:
-   ```json
-   {
-     "UNIVERSITY_NAME": "Your University Name",
-     "UNIVERSITY_SHORT_NAME": "SHORT-NAME",
-     "SITE_TITLE": "Results Portal",
-     "SITE_URL": "http://localhost:3000",
-     "DATASET_NAME": "dummy_dataset.csv"
-   }
-   ```
+- `config/university.json` - institution name, site URL, dataset, and branding
+- `config/departments.json` - department codes and route metadata
+- `data/dummy_dataset.csv` - synthetic demonstration records
 
-4. **Setup environment variables:**
-   Copy `.env.example` to `.env`:
-   ```bash
-   cp .env.example .env
-   ```
-   Fill in your Gemini API Key, GitHub personal token, and JWT secret. For offline/local mock mode, use `mock` for `GITHUB_TOKEN` and `COORDINATORS_GIST_ID`.
+Student rows use `Student_ID`, `Batch`, `Dept`, and up to eight `GPA_S*` columns. The compiler rejects GPAs outside `0-4` and duplicate student IDs within the same batch.
 
-5. **Run template compilation & data build:**
-   ```bash
-   npm run build
-   ```
+## Testing and builds
 
-6. **Start local development server:**
-   ```bash
-   npm run dev
-   ```
-   Open `http://localhost:3000` in your browser. The administrative panel is available at `http://localhost:3000/admin` (passcode is generated in terminal output if none is provided in `.env`).
+```bash
+npm test
+npm run build
+npm run verify-seo
+```
 
----
+Tests cover grade boundaries, GPA calculation, dense ranking, missing-semester behavior, statistics, CSV compilation, invalid values, duplicate records, request validation, and authentication helpers.
 
-## Deployment to Vercel
+## Security notes
 
-1. **Connect Repository:** Push your code to GitHub and connect the repository in the Vercel Dashboard.
-2. **Add Environment Variables:**
-   Add the following environment variables in the project settings:
-   - `JWT_SECRET`: Random secure string.
-   - `ADMIN_PASSWORD_HASH`: Bcrypt hashed password for the administrative account.
-   - `GEMINI_API_KEY`: Google Gemini API access token.
-   - `GITHUB_TOKEN`: GitHub personal access token with content write permissions.
-   - `COORDINATORS_GIST_ID`: Gist ID storing coordinator access credentials.
-3. **Build Commands:** Configure the build command as `npm run build` and output directory as `.`.
+- JWT signing secrets and GitHub/Gemini tokens belong only in deployment environment variables.
+- Authentication cookies are HTTP-only, same-site strict, and secure in production.
+- API input is validated before result updates.
+- Coordinator credentials are hashed; the source repository must never contain plaintext production credentials.
+
+These controls reduce risk but do not constitute a security audit or guarantee. A real institution should use a transactional database, formal role management, audit logs, key rotation, privacy review, and independent testing.
+
+## Limitations
+
+- The CSV parser is intentionally simple and does not support quoted fields containing commas.
+- Missing semester entries follow the existing portal rule and contribute `0` when that semester is published for the batch.
+- OCR accuracy depends on scan quality and model output.
+- GitHub API write access and deployment configuration must be secured by each adopter.
